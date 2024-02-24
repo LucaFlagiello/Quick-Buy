@@ -5,12 +5,18 @@
 
 .slick-slider {
   position: relative;
-  max-width: 600px;
+  max-width: 1150px;
   margin: auto;
+  padding-left: 13.5rem;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
 }
 
 .slick-dots {
   position: absolute;
+  bottom: 0;
+  margin-bottom: .5rem;
 }
 
 .slick-dots li button {  
@@ -27,4 +33,6 @@
   box-sizing: border-box;
   cursor: pointer;
   margin: 0 2px;
+  height: 12px;
+  width: 12px;
 }

@@ -1,6 +1,9 @@
+const { addDynamicIconSelectors } = require('@iconify/tailwind');
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  plugins: [addDynamicIconSelectors()],
   theme: {
     extend: {
       colors: {
@@ -8,6 +11,10 @@ module.exports = {
         'secondary-color' : '#1e293b',
         'tertiary-color' : '#f4cad0',
         'light-black' : '#464545',
+        'hero-bg-pink' : 'rgba(253, 61, 87, 0.19)',
+        'hero-bg-gray' : '#cccccc',
+        'hero-bg-blue' : '#7cc8f8ba',
+        'light-gray-price' : '#687188;',
       },
       fontFamily: {
         'Roboto': ['Roboto', 'sans-serif'],
@@ -19,6 +26,5 @@ module.exports = {
     },
     
   },
-  plugins: [],
 }
 

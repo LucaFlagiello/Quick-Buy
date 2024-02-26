@@ -1,30 +1,77 @@
-
+import productsList from '../../productsData/productsList';
+import ProductComponent from '../RankingProduct/ProductComponent';
 
 export default function RankingGrid() {
-  return (
-    <section>
-      <div>
-        <h2>Top Ranking</h2>
-        <div className="flex    ">
-          <div className="flex">
-            <div className="container-img">
-              <img src="" alt="watch" />
-            </div> 
+  const pc = productsList.pc;
+  const phone = productsList.phone;
+  const watch = productsList.watch;
+  const headphones = productsList.headphone;
+  const tv = productsList.tv;
 
-            <div>
-              <h4>Apple Watch</h4>
-              <div className="flex">
-                <span>200.00</span>  
-                <span className="line-through">300.45</span>  
-              </div> 
-              <div className="container stars number flex ">
-                <div className="flex container stars">
-                <span className="icon-[emojione--star]"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
+  return (
+    <section className='flex justify-center'>
+      <div>
+        <h2 className='mb-[2rem] text-[32px] font-medium text-Roboto'>Top Ranking</h2>
+        <div className="grid grid-cols-4 gap-x-[2rem]">
+          <ul className="grid grid-cols-1 gap-y-[2rem] font-Roboto"> 
+            <h4 className='font-medium text-[18px]'>Watch</h4>
+            {watch.map(product =>
+            <li key={product.model}>
+            <ProductComponent 
+              model={product.model}
+              originalPrice={product.originalPrice}
+              newPrice={product.newPrice}
+              reviewsNum={product.reviewsNum}
+              rank={product.rank}
+              img={product.img}
+            />
+          </li>)}
+          </ul>
+
+          <ul className="grid grid-cols-1 gap-y-[2rem]"> 
+            <h4 className='font-medium text-[18px]'>Mobile</h4>
+            {phone.map(product =>
+            <li key={product.model}>
+            <ProductComponent 
+              model={product.model}
+              originalPrice={product.originalPrice}
+              newPrice={product.newPrice}
+              reviewsNum={product.reviewsNum}
+              rank={product.rank}
+              img={product.img}
+            />
+          </li>)}
+          </ul>
+
+          <ul className="grid grid-cols-1 gap-y-[2rem]"> 
+            <h4 className='font-medium text-[18px]'>Laptop</h4>
+            {pc.map(product =>
+            <li key={product.model}>
+            <ProductComponent 
+              model={product.model}
+              originalPrice={product.originalPrice}
+              newPrice={product.newPrice}
+              reviewsNum={product.reviewsNum}
+              rank={product.rank}
+              img={product.img}
+            />
+          </li>)}
+          </ul>
+
+          <ul className="grid grid-cols-1 gap-y-[2rem]"> 
+            <h4 className='font-medium text-[18px]'>Headphones</h4>
+            {headphones.map(product =>
+            <li key={product.model}>
+            <ProductComponent 
+              model={product.model}
+              originalPrice={product.originalPrice}
+              newPrice={product.newPrice}
+              reviewsNum={product.reviewsNum}
+              rank={product.rank}
+              img={product.img}
+            />
+          </li>)}
+          </ul>
         </div>
       </div>
     </section>

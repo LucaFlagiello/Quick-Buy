@@ -6,8 +6,13 @@ import './hero-slide.css'
 import iphone11ProImg  from '../../Assets/iphone.png'
 import iphoneXrImg  from '../../Assets/iphone-xr.png'
 import iphone12Img  from '../../Assets/iphone-12.png'
+import { useSelector } from "react-redux";
+import { selectTheme } from "../../state/themeSlice"
 
 export default function Hero() {
+
+  const theme = useSelector(selectTheme);
+
   let settings = {
     dots: true,
     infinite: true,
@@ -26,11 +31,11 @@ export default function Hero() {
             <div>
               <p className="font-Poppins">Get up to 50&#37; off Today only</p>
               <h2 className="font-Roboto text-[2.5rem] font-medium">iPhone 11 Pro Max</h2>
-              <div className="flex gap-x-3 mt-1 font-Roboto font-medium">
-                <span className="text-primary-color">	&#36;450.00</span>
-                <span className="text-light-gray-price line-through">	&#36;550.45</span>
+              <div className="flex  items-center  gap-x-3 mt-1 font-Roboto font-medium">
+                <span className={`text-${theme}`}>	&#36;450.00</span>
+                <span className="text-light-gray-price text-[12px] line-through">	&#36;550.45</span>
               </div>
-              <button className="font-Poppins bg-primary-color border-primary-color border-[1px] text-[15px] font-medium text-white py-[8px] px-[1.3rem] rounded-md cursor-pointer hover:bg-white hover:text-primary-color transition duration-[.5s] ease mt-[2rem]">SHOP NOW</button>
+              <button className={`font-Poppins bg-${theme} border-${theme} border-[1px] text-[15px] font-medium text-white py-[8px] px-[1.3rem] rounded-md cursor-pointer hover:bg-white hover:text-${theme} transition duration-[.5s] ease mt-[2rem]`}>SHOP NOW</button>
             </div>
             <img className="h-[280px]" src={iphone11ProImg} alt="" />
           </div>
@@ -40,11 +45,11 @@ export default function Hero() {
             <div>
               <p className="font-Poppins">Get up to 50&#37; off Today only</p>
               <h2 className="font-Roboto text-[2.5rem] font-medium">iPhone 12 Pro Max</h2>
-              <div className="flex gap-x-3 mt-1 font-Roboto font-medium">
-                <span className="text-primary-color">	&#36;450.00</span>
-                <span className="text-light-gray-price line-through">	&#36;550.45</span>
+              <div className="flex items-center  gap-x-3 mt-1 font-Roboto font-medium">
+                <span className={`text-${theme}`}>&#36;450.00</span>
+                <span className="text-light-gray-price text-[12px] line-through">	&#36;550.45</span>
               </div>
-              <button className="font-Poppins bg-primary-color border-primary-color border-[1px] text-[15px] font-medium text-white py-[8px] px-[1.3rem] rounded-md cursor-pointer hover:bg-white hover:text-primary-color transition duration-[.5s] ease mt-[2rem]">SHOP NOW</button>
+              <button className={`font-Poppins bg-${theme} border-${theme} border-[1px] text-[15px] font-medium text-white py-[8px] px-[1.3rem] rounded-md cursor-pointer hover:bg-white hover:text-${theme} transition duration-[.5s] ease mt-[2rem]`}>SHOP NOW</button>
             </div>
             <img className="h-[280px]" src={iphoneXrImg} alt="" />
           </div>
@@ -54,11 +59,11 @@ export default function Hero() {
             <div>
               <p className="font-Poppins">Get up to 50&#37; off Today only</p>
               <h2 className="font-Roboto text-[2.5rem] font-medium">Apple iPhone XR</h2>
-              <div className="flex gap-x-3 mt-1 font-Roboto font-medium">
-                <span className="text-primary-color">	&#36;450.00</span>
-                <span className="text-light-gray-price line-through">	&#36;550.45</span>
+              <div className="flex  items-center  gap-x-3 mt-1 font-Roboto font-medium">
+                <span className={`text-${theme}`}>	&#36;450.00</span>
+                <span className="text-light-gray-price text-[12px] line-through">	&#36;550.45</span>
               </div>
-              <button className="font-Poppins bg-primary-color border-primary-color border-[1px] text-[15px] font-medium text-white py-[8px] px-[1.3rem] rounded-md cursor-pointer hover:bg-white hover:text-primary-color transition duration-[.5s] ease mt-[2rem]">SHOP NOW</button>
+              <button className={`font-Poppins bg-${theme} border-${theme} border-[1px] text-[15px] font-medium text-white py-[8px] px-[1.3rem] rounded-md cursor-pointer hover:bg-white hover:text-${theme} transition duration-[.5s] ease mt-[2rem]`}>SHOP NOW</button>
             </div>
             <img className="h-[280px]" src={iphone12Img} alt="" />
           </div>

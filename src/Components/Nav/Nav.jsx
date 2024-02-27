@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
 import { useSelector } from "react-redux";
-import { selectTheme } from "../../state/themeSlice";
+
 
 const Nav = () => {
 
@@ -14,7 +14,7 @@ const Nav = () => {
   const [isBabiesCategorySelected, setIsBabiesCategorySelected] = useState(false);
   const [isMouseOnAccount, setIsMouseOnAccount] = useState(false);
 
-  const theme = useSelector(selectTheme);
+  const theme = useSelector((state) => state.theme.value);
 
   const getCategory = (value) => {
     setCategory(value);

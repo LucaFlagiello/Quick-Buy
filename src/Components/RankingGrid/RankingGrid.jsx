@@ -1,5 +1,6 @@
 import productsList from '../../productsData/productsList';
 import ProductComponent from '../RankingProduct/ProductComponent';
+import { useSelector } from 'react-redux'
 
 export default function RankingGrid() {
   const pc = productsList.pc;
@@ -7,6 +8,7 @@ export default function RankingGrid() {
   const watch = productsList.watch;
   const headphones = productsList.headphone;
   const tv = productsList.tv;
+  const theme = useSelector((state) => state.theme.value);
 
   return (
     <section className='flex justify-center'>
@@ -24,6 +26,7 @@ export default function RankingGrid() {
               reviewsNum={product.reviewsNum}
               rank={product.rank}
               img={product.img}
+              theme={theme}
             />
           </li>)}
           </ul>
@@ -39,6 +42,7 @@ export default function RankingGrid() {
               reviewsNum={product.reviewsNum}
               rank={product.rank}
               img={product.img}
+              theme={theme}
             />
           </li>)}
           </ul>
@@ -54,6 +58,7 @@ export default function RankingGrid() {
               reviewsNum={product.reviewsNum}
               rank={product.rank}
               img={product.img}
+              theme={theme}
             />
           </li>)}
           </ul>
@@ -69,6 +74,7 @@ export default function RankingGrid() {
               reviewsNum={product.reviewsNum}
               rank={product.rank}
               img={product.img}
+              theme={theme}
             />
           </li>)}
           </ul>

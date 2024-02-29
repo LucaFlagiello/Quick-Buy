@@ -3,7 +3,7 @@ const { addDynamicIconSelectors } = require('@iconify/tailwind');
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  plugins: [addDynamicIconSelectors()],
+  plugins: [addDynamicIconSelectors(), 'prettier-plugin-tailwindcss'],
   theme: {
     extend: {
       colors: {

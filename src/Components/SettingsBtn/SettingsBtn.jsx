@@ -6,7 +6,7 @@ export default function SettingsBtn () {
 
   const [settingsOn, setSettingsOn] = useState(false);
   const dispatch = useDispatch();
-  const theme = useSelector((state) => state.value);
+  const theme = useSelector((state) => state.theme.value);
 
   function showSettings() {
     setSettingsOn(prevSettings => !prevSettings);

@@ -104,7 +104,8 @@ const Nav = () => {
         <input className='border-l pl-5 w-[24rem] border-black text-[14px] outline-none placeholder:text-[14px] placeholder:text-gray-400' type='text' placeholder='Search product...'/>
         <button className='bg-secondary-color rounded-l-none font-medium px-10 text-white font-Poppins rounded-r-[6px]'>Search</button>
       </div>
-
+      
+      <div className={`hover:bg-${theme}`}></div>
       <div className='flex gap-x-5'>
         <div className='flex-col cursor-pointer'>
           <div className='relative '>

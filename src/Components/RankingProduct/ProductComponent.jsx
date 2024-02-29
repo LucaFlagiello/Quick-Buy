@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 
+export const ProductComponent = ({ model, originalPrice, newPrice, rank, reviewsNum, img }) => {
 
-export default function product({ model, originalPrice, newPrice, rank, reviewsNum, img, theme }) {
+  const theme = useSelector((state) => state.theme.value);
 
   return (
     <div className="grid grid-cols-[105px,1fr] gap-x-[1rem] items-center">
@@ -12,7 +14,7 @@ export default function product({ model, originalPrice, newPrice, rank, reviewsN
       <div className="w-[100%]">
         <h4 className={`font-medium hover:text-${theme} transition duration-[.3s] ease cursor-pointer`}>{model}</h4>
         <div className="flex gap-x-[.5rem] w-[100%] items-center">
-           <span className={` font-medium text-[16px]`} style={{color: theme}}>&#36;{newPrice}</span>
+           <span className={`font-medium text-[16px] text-${theme}`}>&#36;{newPrice}</span>
           <span className="line-through text-light-gray-price font-medium text-[14px]">&#36;{originalPrice}</span>
         </div>
         <div className="flex items-center gap-x-2 mt-[.1rem]">
@@ -29,3 +31,5 @@ export default function product({ model, originalPrice, newPrice, rank, reviewsN
     </div>
   )
 }
+
+export default ProductComponent;

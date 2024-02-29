@@ -47,6 +47,8 @@
   "devDependencies": {
     "@iconify/json": "^2.2.186",
     "@iconify/tailwind": "^0.1.4",
+    "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1"
   }
 }

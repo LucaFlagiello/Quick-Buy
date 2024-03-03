@@ -3,6 +3,7 @@ import Nav from '../../Components/Nav/Nav'
 import Hero from '../../Components/Hero/Hero'
 import FeaturesArea from '../../Components/FeaturesArea/FeaturesAresa'
 import RankingGrid from '../../Components/RankingGrid/RankingGrid'
+import NewArrivals from '../../Components/NewArrivals/NewArrivals'
 
 const Home = () => {
   return (
@@ -12,6 +13,7 @@ const Home = () => {
       <Hero />
       <FeaturesArea />
       <RankingGrid />
+      <NewArrivals />
     </div>
   )
 }

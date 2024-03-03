@@ -1,12 +1,11 @@
-import productsList from '../../productsData/productsList';
+import productList from '../../productsRankingData/productsList'
 import ProductComponent from '../RankingProduct/ProductComponent';
 
 export default function RankingGrid() {
-  const pc = productsList.pc;
-  const phone = productsList.phone;
-  const watch = productsList.watch;
-  const headphones = productsList.headphone;
-  const tv = productsList.tv;
+  const pc = productList.pc;
+  const phone = productList.phone;
+  const watch = productList.watch;
+  const headphones = productList.headphone;
 
   return (
     <section className='flex justify-center'>

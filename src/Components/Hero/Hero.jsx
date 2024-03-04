@@ -41,17 +41,17 @@ export default function Hero() {
   
   return (
     <section className={'px-[1rem]'}>
-      <div className="ml-[12.2rem]">
-        <div className="relative flex justify-center items-center max-w-[993px] m-auto h-[407px] overflow-hidden">
+      <div className="ml-[14.2rem]">
+        <div className="relative flex justify-center items-center max-w-[1015px] m-auto h-[407px] overflow-hidden">
           {dataSlider.map((slide,index) => {
             const indexSlide = index+1;
             return (
-              <div key={index} className={currSlide === indexSlide ? `absolute transform translate-x-0 transition duration-[1s] ease w-[993px] h-[100%] ${slide.bgColor} ` : currSlide < indexSlide ? `absolute  transition duration-[1s] ease transform translate-x-[+993px]  h-[100%] w-[100%] ${slide.bgColor}` : `absolute top-0  transition duration-[1s] ease transform translate-x-[-993px] h-[100%] w-[100%] ${slide.bgColor}`}>
+              <div key={index} className={currSlide === indexSlide ? `absolute transform translate-x-0 transition duration-[1s] ease w-[1015px] h-[100%] ${slide.bgColor} ` : currSlide < indexSlide ? `absolute  transition duration-[1s] ease transform translate-x-[+1015px]  h-[100%] w-[100%] ${slide.bgColor}` : `absolute top-0  transition duration-[1s] ease transform translate-x-[-1015px] h-[100%] w-[100%] ${slide.bgColor}`}>
                 <div className="flex justify-center items-center gap-x-[9rem] h-[100%]">  
                   <div>
                     <p className="font-Poppins">Get up to 50&#37; off Today only</p>
                     <h2 className="font-Roboto text-[2.5rem] font-medium">{slide.model}</h2>
-                    <div className="flex  items-center  gap-x-3 mt-1 font-Roboto font-medium">
+                    <div className="flex items-center mt-1 font-medium gap-x-3 font-Roboto">
                       <span className={`text-${theme}`}>	&#36;{slide.newPrice}</span>
                       <span className="text-light-gray-price text-[12px] line-through">&#36;{slide.oldPrice}</span>
                     </div>

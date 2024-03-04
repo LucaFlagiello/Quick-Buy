@@ -25,6 +25,7 @@ export default function NewArrivals() {
                   originalPrice={product.originalPrice}
                   newPrice={product.newPrice}
                   reviewsNum={product.reviewsNum}
+                  theme={theme}
                 />
               </li>
             )

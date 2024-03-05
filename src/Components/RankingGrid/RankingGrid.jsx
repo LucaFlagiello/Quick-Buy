@@ -1,11 +1,7 @@
-import productList from '../../productsRankingData/productsList'
-import ProductComponent from '../RankingProduct/ProductComponent';
+import productList from '../../Data/productsRankingData/rankingProductsList';
+import ProductComponent from '../RankingGrid/RankingProduct/ProductComponent'
 
 export default function RankingGrid() {
-  const pc = productList.pc;
-  const phone = productList.phone;
-  const watch = productList.watch;
-  const headphones = productList.headphone;
 
   return (
     <section className='flex justify-center'>
@@ -14,62 +10,78 @@ export default function RankingGrid() {
         <div className="grid grid-cols-4 gap-x-[2rem]">
           <ul className="grid grid-cols-1 gap-y-[2rem] font-Roboto"> 
             <h4 className='font-medium text-[18px]'>Watch</h4>
-            {watch.map(product =>
-            <li key={product.model}>
-            <ProductComponent 
-              model={product.model}
-              originalPrice={product.originalPrice}
-              newPrice={product.newPrice}
-              reviewsNum={product.reviewsNum}
-              rank={product.rank}
-              img={product.img}
-            />
-          </li>)}
+            {productList.map(product => {
+              if(product.inRanking && product.type === 'watch') {
+                return (
+                  <li key={product.model}>
+                    <ProductComponent 
+                      model={product.model}
+                      originalPrice={product.originalPrice}
+                      newPrice={product.newPrice}
+                      reviewsNum={product.reviewsNum}
+                      rank={product.rank}
+                      img={product.img}
+                    />
+                  </li>
+                )} return null
+            })}
           </ul>
 
           <ul className="grid grid-cols-1 gap-y-[2rem]"> 
             <h4 className='font-medium text-[18px]'>Mobile</h4>
-            {phone.map(product =>
-            <li key={product.model}>
-            <ProductComponent 
-              model={product.model}
-              originalPrice={product.originalPrice}
-              newPrice={product.newPrice}
-              reviewsNum={product.reviewsNum}
-              rank={product.rank}
-              img={product.img}
-            />
-          </li>)}
+            {productList.map(product => {
+              if(product.inRanking && product.type === 'phone') {
+                return (
+                  <li key={product.model}>
+                    <ProductComponent 
+                      model={product.model}
+                      originalPrice={product.originalPrice}
+                      newPrice={product.newPrice}
+                      reviewsNum={product.reviewsNum}
+                      rank={product.rank}
+                      img={product.img}
+                    />
+                  </li>
+                )} return null
+            })}
           </ul>
 
           <ul className="grid grid-cols-1 gap-y-[2rem]"> 
             <h4 className='font-medium text-[18px]'>Laptop</h4>
-            {pc.map(product =>
-            <li key={product.model}>
-            <ProductComponent 
-              model={product.model}
-              originalPrice={product.originalPrice}
-              newPrice={product.newPrice}
-              reviewsNum={product.reviewsNum}
-              rank={product.rank}
-              img={product.img}
-            />
-          </li>)}
+            {productList.map(product => {
+              if(product.inRanking && product.type === 'laptop') {
+                return (
+                  <li key={product.model}>
+                    <ProductComponent 
+                      model={product.model}
+                      originalPrice={product.originalPrice}
+                      newPrice={product.newPrice}
+                      reviewsNum={product.reviewsNum}
+                      rank={product.rank}
+                      img={product.img}
+                    />
+                  </li>
+                )} return null
+            })}
           </ul>
 
           <ul className="grid grid-cols-1 gap-y-[2rem]"> 
             <h4 className='font-medium text-[18px]'>Headphones</h4>
-            {headphones.map(product =>
-            <li key={product.model}>
-            <ProductComponent 
-              model={product.model}
-              originalPrice={product.originalPrice}
-              newPrice={product.newPrice}
-              reviewsNum={product.reviewsNum}
-              rank={product.rank}
-              img={product.img}
-            />
-          </li>)}
+            {productList.map(product => {
+              if(product.inRanking && product.type === 'headphone') {
+                return (
+                  <li key={product.model}>
+                    <ProductComponent 
+                      model={product.model}
+                      originalPrice={product.originalPrice}
+                      newPrice={product.newPrice}
+                      reviewsNum={product.reviewsNum}
+                      rank={product.rank}
+                      img={product.img}
+                    />
+                  </li>
+                )} return null
+            })}
           </ul>
         </div>
       </div>

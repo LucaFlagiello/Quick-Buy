@@ -28,8 +28,7 @@ module.exports = {
       },
       boxShadow: {
         "light-shadow": '0 0 5px #00000020;',
-        "mid-shadow": '0px 0px 12px rgba(0 0 0 / .3);'
-      },
+        "default": '0px 5px 11px rgb(0 0 0 / 0.32)',
       animation: {
         'spin-slow': 'spin 3.5s linear infinite',
       }
@@ -37,4 +36,4 @@ module.exports = {
     
   },
 }
-
+}

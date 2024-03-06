@@ -1,10 +1,13 @@
 import productList from "../../Data/productsRankingData/rankingProductsList"
 import NewArrivalsProduct from "./NewArrivalsProduct";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { showPreview } from "../../state/productPreviewSlice";
 
 export default function NewArrivals() {
   
   const theme = useSelector((state) => state.theme.value);
+  const productPreviewStatus = useSelector((state) => state.productPreview);
+  const dispatch = useDispatch()
   
   return (
     <section className="max-w-[1120px] py-[6rem] m-auto">
@@ -26,6 +29,9 @@ export default function NewArrivals() {
                   newPrice={product.newPrice}
                   reviewsNum={product.reviewsNum}
                   theme={theme}
+                  productPreviewStatus={productPreviewStatus}
+                  dispatch={dispatch}
+                  showPreview={showPreview}
                 />
               </li>
             )

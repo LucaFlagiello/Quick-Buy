@@ -1,10 +1,19 @@
 import { useState } from "react";
 import { increment } from "../../state/cartQuantitySlice";
+import { addProduct } from "../../state/cartProductsList";
+import productList from "../../Data/productsRankingData/rankingProductsList";
 
 export default function NewArrivalsProduct({ img, model, originalPrice, newPrice, reviewsNum, theme, productPreviewStatus, dispatch, showPreview }) {
 
   const [isMouseOnProduct, setIsMouseOnProduct] = useState(false);
 
+  /*REMEMBER TO USE GROUP HERE!! YOU CAN T RENDER EVERY TIME YOUR MOUSE GOES ON A BTN*/
+
+  const addNewCartProduct = () => {
+    dispatch(increment());
+    const product = productList.find(prdct => prdct.model === model);
+    dispatch(addProduct(product));
+  };
 
   return (
     <div onMouseEnter={() => setIsMouseOnProduct(true)} onMouseLeave={() => setIsMouseOnProduct(false)}>
@@ -34,7 +43,7 @@ export default function NewArrivalsProduct({ img, model, originalPrice, newPrice
           </div>
           <span className="text-Poppins text-[12px] text-light-gray-price">{`(${reviewsNum})`}</span>
         </div>
-        <button onClick={() => dispatch(increment())} className={isMouseOnProduct ? `absolute bottom-0 transform translate-y-[-23px] bg-${theme} text-white font-medium font-Poppins text-[14px] border border-${theme} rounded-[4px] py-[7px] px-8 hover:text-${theme} hover:bg-white transition-all duration-[.3s] ease` : `absolute bottom-0 transform translate-y-0 text-white font-medium font-Poppins text-[14px] border border-${theme} rounded-[4px] py-[7px] px-8  opacity-0 transition-all duration-[.3s] ease`}>ADD TO CART</button>
+        <button onClick={() => addNewCartProduct()} className={isMouseOnProduct ? `absolute bottom-0 transform translate-y-[-23px] bg-${theme} text-white font-medium font-Poppins text-[14px] border border-${theme} rounded-[4px] py-[7px] px-8 hover:text-${theme} hover:bg-white transition-all duration-[.3s] ease` : `absolute bottom-0 transform translate-y-0 text-white font-medium font-Poppins text-[14px] border border-${theme} rounded-[4px] py-[7px] px-8  opacity-0 transition-all duration-[.3s] ease`}>ADD TO CART</button>
       </div>
     </div>
   )

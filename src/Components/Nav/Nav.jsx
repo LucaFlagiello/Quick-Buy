@@ -1,6 +1,7 @@
 import { nanoid } from '@reduxjs/toolkit';
 import { useState } from 'react';
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { decrement } from '../../state/cartQuantitySlice';
 import Categories from '../../Data/navSideCategories';
 import brand1Img from '../../Assets/brand-1.png'
 import brand2Img from '../../Assets/brand-2.png'
@@ -9,9 +10,9 @@ import brand4Img from '../../Assets/brand-4.png'
 import brand5Img from '../../Assets/brand-5.png'
 import brand6Img from '../../Assets/brand-6.png'
 import brand7Img from '../../Assets/brand-7.png'
+import { removeProduct } from '../../state/cartProductsList';
 
 const Nav = () => {
-
   const searchCategoriesData = [
     {category: 'Men', isSelected: false}, 
     {category: 'Women',  isSelected: false}, 
@@ -23,10 +24,13 @@ const Nav = () => {
   const [searchCategories, setSearchCategories] = useState(searchCategoriesData);
   const [searchCategory, setSearchCategory] = useState('Women');
   const [isMouseOnAccount, setIsMouseOnAccount] = useState(false);
-
   const [sideCategorySelected, setSideCategorySelected] = useState('');
   const theme = useSelector((state) => state.theme.value);
-  
+  const cartQuantity = useSelector((state) => state.cartQuantity);
+  const cartProductsList = useSelector((state) => state.cartProductsList);
+  const dispatch = useDispatch();
+  let carSubTotal = 0; 
+
   const opendropSearchCategory = () => {
     setdropSearchCategory(prevStatus => !prevStatus);
   }
@@ -51,8 +55,13 @@ const Nav = () => {
     setSearchCategories(updateSearchCategories);
   }
 
+  const removeCartProduct = (product) => {
+    dispatch(decrement());
+    dispatch(removeProduct(product));
+  }
+
   return (
-    <nav className={`static bg-${theme} box-border max-w-full h-[65px] flex justify-center gap-x-[4.8rem] items-center`}>
+    <nav className={`bg-${theme} box-border max-w-full h-[65px] flex justify-center gap-x-[4.8rem] items-center`}>
       <div className="bg-secondary-color relative flex items-center gap-x-2 h-10 px-10 py-6 rounded-[5px]">
         <span className="icon-[la--bars] text-white text-[22px]"></span>
         <h3 className='font-medium text-white font-Poppins text-md'>All categories</h3>
@@ -129,12 +138,46 @@ const Nav = () => {
           </div>
           <span className='text-white text-[11px] font-Poppins'>Wish List</span>
         </div>
-        <div className='grid gap-y-[2px] text-center cursor-pointer'>
+        <div className='relative grid gap-y-[2px] text-center cursor-pointer group'>
           <div className='relative grid'>
             <span className="icon-[cil--cart]  text-white items-center h-[28px] w-[28px] "></span>
-            <span className='absolute cursor-pointer top-[-5px] right-[-8px] bg-black text-white text-[9px] font-medium rounded-full flex justify-center items-center w-[15px] h-[15px]'>2</span>
+            <span className='absolute cursor-pointer top-[-5px] right-[-8px] bg-black text-white text-[9px] font-medium rounded-full flex justify-center items-center w-[15px] h-[15px]'>{cartQuantity}</span>
           </div>
-          <span className='text-white text-[11px] font-Poppins'>Cart</span>
+          <div className='absolute top-[53px] right-[-5px] w-[310px] bg-white z-10 pb-4 duration-600 ease opacity-0 group-hover:opacity-100 transform duration-500 ease translate-y-4 shadow-default invisible group-hover:translate-y-0 group-hover:visible'>
+            <div className='mt-6 ml-6 font-medium text-start font-Roboto'>{cartQuantity} Items</div>
+            
+            {cartProductsList.length > 0 ? 
+              <div className='flex flex-col py-3 mx-6 mt-1 border-y gap-y-6 border-[#d8d8d8]'>
+                {cartProductsList.map((product) => {
+                  carSubTotal += parseFloat(product.newPrice);
+                  carSubTotal= parseFloat(carSubTotal.toFixed(2));
+                  const shortModelName = product.model.length > 15 ? product.model.slice(0, 15) + '...' : product.model;
+                  
+                  return (
+                    <div key={nanoid()} className='relative flex gap-x-4 '>
+                      <img className='w-[55px] object-fit' src={product.img} alt="" />
+                      <div>
+                        <h4 className={`font-medium font-Roboto max-w-[170px] text-start hover:text-${theme} transition duration-300 ease`}>{shortModelName}</h4>
+                        <div className='flex items-center gap-x-3 font-Poppins'>
+                          <p >x1</p>
+                          <p className='text-[14px]'>&#36;{product.newPrice}</p>
+                        </div>
+                      </div>
+                      <span onClick={() => removeCartProduct(product)} className="absolute top-[5px] right-0 icon-[la--times] hover:text-red-500"></span>
+                    </div>
+                  )
+                })}
+              </div> : null}
+              <div className='flex justify-between mx-6 mt-4'>
+                <h4 className='font-medium font-Roboto'>SUB TOTAL :</h4>
+                <span className='font-medium font-Roboto'>&#36;{carSubTotal}</span>
+              </div>
+              <div className='flex justify-center mt-4 gap-x-4'>
+                <button className={`bg-${theme} text-white font-Poppins py-[9px] px-[22px] border border-${theme} rounded-[4px] font-medium text-[14px] transition duration-500 ease hover:bg-transparent hover:text-${theme}`}>VIEW CART</button>
+                <button className={`text-${theme} font-Poppins py-[9px] px-[22px] border border-${theme} rounded-[4px] font-medium text-[14px] transition duration-500 ease hover:bg-${theme}  hover:text-white`}>CHECKOUT</button>
+              </div>
+          </div>
+          <span className='text-white text-[11px] font-Poppins'>cart</span>
         </div>
         <div className='relative grid text-center cursor-pointer' onMouseEnter={() => setIsMouseOnAccount(true)} onMouseLeave={() => setIsMouseOnAccount(false)}>
           <div className='grid justify-center'>
@@ -142,7 +185,7 @@ const Nav = () => {
           </div>
           <span className='text-white text-[11px] font-Poppins'>Account</span>
           <div className='absolute h-[20px] w-[100%] bottom-[-20px]' onMouseEnter={() => setIsMouseOnAccount(true)}>
-            <div className={isMouseOnAccount ? 'bg-white absolute opacity-1 transition duration-[.3s] easy  shadow-md left-[-170px] mt-[4px] px-4 pt-5 rounded-[4px] z-[10]' : ' translate-y-[20px] shadow-md left-[-170px] px-4 pt-6 absolute transition-drop-in duration-[.4s]  pointer-events-none opacity-0 z-[10'}>
+            <div className={isMouseOnAccount ? 'bg-white absolute opacity-1 transition duration-[.3s] easy  shadow-md left-[-168px] mt-[6px] px-4 pt-5 rounded-[4px] z-[10]' : ' translate-y-[20px] shadow-md left-[-178px]  px-4 pt-5 absolute transition-drop-in duration-[.4s]  pointer-events-none opacity-0 z-10'}>
               <h3 className='font-Roboto text-light-black font-medium text-[14px]'>Welcome to QUICKBUY Shop</h3>
               <div className='flex justify-between mt-4 gap-x-3'>
                 <button className={`bg-${theme} font-Roboto font-medium text-[14px] text-white px-[26px] py-[4px] rounded-[4px] hover:bg-white hover:text-${theme} border-${theme} border-[1px] transition duration-[.5s] ease`}>JOIN</button>

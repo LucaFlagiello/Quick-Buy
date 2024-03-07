@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = 2;
+const initialState = 0;
 
 const cartQuantitySlice = createSlice({
   name:'cartQuanity',
@@ -15,10 +15,10 @@ const cartQuantitySlice = createSlice({
     }),
 
     decrement: ((state) => {
-      return state--;
+      return state -= 1;
     })
   }
-})
+});
 
 export const { increment, decrement, incrementByAmount } = cartQuantitySlice.actions;
 

@@ -4,16 +4,18 @@ import Hero from '../../Components/Hero/Hero'
 import FeaturesArea from '../../Components/FeaturesArea/FeaturesAresa'
 import RankingGrid from '../../Components/RankingGrid/RankingGrid'
 import NewArrivals from '../../Components/NewArrivals/NewArrivals'
+import ProductPreview from '../../Components/ProductPreview/ProductPreview'
 
 const Home = () => {
   return (
-    <div>
+    <div className='relative'>
       <Header />
       <Nav />
       <Hero />
       <FeaturesArea />
       <RankingGrid />
       <NewArrivals />
+      <ProductPreview />
     </div>
   )
 }

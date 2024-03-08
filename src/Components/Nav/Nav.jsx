@@ -10,7 +10,7 @@ import brand4Img from '../../Assets/brand-4.png'
 import brand5Img from '../../Assets/brand-5.png'
 import brand6Img from '../../Assets/brand-6.png'
 import brand7Img from '../../Assets/brand-7.png'
-import { removeProduct } from '../../state/cartProductsList';
+import { removeProduct } from '../../state/cartListSlice';
 
 const Nav = () => {
   const searchCategoriesData = [
@@ -56,7 +56,7 @@ const Nav = () => {
   }
 
   const removeCartProduct = (product) => {
-    dispatch(decrement());
+    dispatch(decrement(product));
     dispatch(removeProduct(product));
   }
 
@@ -149,7 +149,7 @@ const Nav = () => {
             {cartProductsList.length > 0 ? 
               <div className='flex flex-col py-3 mx-6 mt-1 border-y gap-y-6 border-[#d8d8d8]'>
                 {cartProductsList.map((product) => {
-                  carSubTotal += parseFloat(product.newPrice);
+                  carSubTotal += parseFloat(product.newPrice * product.quantity);
                   carSubTotal= parseFloat(carSubTotal.toFixed(2));
                   const shortModelName = product.model.length > 15 ? product.model.slice(0, 15) + '...' : product.model;
                   
@@ -158,9 +158,9 @@ const Nav = () => {
                       <img className='w-[55px] object-fit' src={product.img} alt="" />
                       <div>
                         <h4 className={`font-medium font-Roboto max-w-[170px] text-start hover:text-${theme} transition duration-300 ease`}>{shortModelName}</h4>
-                        <div className='flex items-center gap-x-3 font-Poppins'>
-                          <p >x1</p>
-                          <p className='text-[14px]'>&#36;{product.newPrice}</p>
+                        <div className='flex items-center gap-x-3 font-Poppins text-[14px]'>
+                          <p>x{product.quantity}</p>
+                          <p>&#36;{product.newPrice}</p>
                         </div>
                       </div>
                       <span onClick={() => removeCartProduct(product)} className="absolute top-[5px] right-0 icon-[la--times] hover:text-red-500"></span>

@@ -5,14 +5,23 @@ import sliderImg4 from '../../Assets/slider-3.png'
 import sliderImg5 from '../../Assets/slider-4.png'
 import { useState, useEffect, useMemo } from 'react'
 import { nanoid } from '@reduxjs/toolkit'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
+import ProductSizeComponent from '../ProductSizeComponent/ProductSizeComponent'
+import ProductColorComponent from '../ProductColorComponent/ProductColorComponent'
+import ProductQuantityComponent from '../ProductQuantityComponent/ProductQuantityComponent'
+import { showPreview } from '../../state/productPreviewSlice'
+import { incrementByAmount } from '../../state/cartQuantitySlice'
 
 export default function ProductPreview() {
   
   const [mainImg, setMainImg] = useState(sliderImg1);
   const [countSlide, setCountSlide] = useState(1);
+  const [productSizeData, setProductSizeData] = useState([{size: 'XS', isBtnClicked: false},{size: 'S', isBtnClicked: false}, {size: 'M', isBtnClicked: true},{size: 'L', isBtnClicked: false},{size: 'XL', isBtnClicked: false}]);
+  const [productColorData, setProductColorData] = useState([{isColorClicked: true},{isColorClicked: false}, {isColorClicked: false}]);
+  const [productQuantity, setProductQuantity] = useState(1);
   const theme = useSelector((state) => state.theme.value);
-
+  const productPreviewStatus =useSelector((state) => state.productPreview);
+  
   const sliderData = useMemo(() => [
     {slideImg: sliderImg1, index: 1},
     {slideImg: sliderImg2, index: 2},
@@ -20,11 +29,9 @@ export default function ProductPreview() {
     {slideImg: sliderImg4, index: 4},
     {slideImg: sliderImg5, index: 5}
   ], []);
-
-  const productSizeData = [
-    {size: 'XS'},{size: 'S'}, {size: 'M'},{size: 'L'},{size: 'XL'},
-  ]
     
+  const dispatch = useDispatch();
+
   const selectImgOnSlide = (img) => {
     setCountSlide(img.index);
     setMainImg(img.slideImg);
@@ -51,12 +58,31 @@ export default function ProductPreview() {
     if (selectedSlide) {setMainImg(selectedSlide.slideImg);}
   }, [countSlide, sliderData]);
   
+
+  const isSizeClicked = (productBtnSize) => {
+    const updateSizeData = productSizeData.map(btnSize => {
+      return btnSize === productBtnSize ? { ...productBtnSize, isBtnClicked: true } : { ...btnSize, isBtnClicked: false };
+    });
+    setProductSizeData(updateSizeData);
+  }
+  
+  const isColorClicked = (btnColorIndex) => {
+    const updateColorData = productColorData.map((btnColor, i) => {
+      return i === btnColorIndex ? { ...btnColor, isColorClicked: true } : { ...btnColor, isColorClicked: false };
+    });
+    setProductColorData(updateColorData);
+  }
+
   return (
-    <div className='fixed top-0 left-0 flex justify-center items-center w-full h-full bg-[#00000080] z-[999999]'>
-      <div className="flex p-8 bg-white rounded-[4px] gap-x-6">
+    <div className={productPreviewStatus ? 'fixed top-0 left-0 flex justify-center items-center w-full h-full bg-[#00000080] z-[999999] transition duration-[.3s] ease' : 'transition duration-[.3s] ease'}>
+      <div className={productPreviewStatus ? "relative flex p-8 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease" : "opacity-0 relative flex p-8 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease"}>
         <div className='max-w-[452px]'>
+          <div onClick={() => dispatch(showPreview(false))} className={`flex bg-${theme} absolute top-[8px] right-[8px] p-1 rounded-[3px] cursor-pointer`}>
+            <span className="icon-[la--times] text-white font-extrabold w-[17px] h-[17px]"></span>
+          </div>
+
           <div className='bg-[#e5e5e58c] p-1'>
-            <img className= 'w-full max-h[444px]' src={mainImg} alt="" />
+            <img className= 'w-[444px] h-[444px]' src={mainImg} alt="" />
           </div>
     
           <div className='relative flex items-center mt-4 overflow-x-auto gap-x-3'>
@@ -65,8 +91,8 @@ export default function ProductPreview() {
                 <img key={nanoid()} onClick={() => selectImgOnSlide(img)} className={img.index === countSlide ? `max-w-[80px] object-contain cursor-pointer border border-${theme}` : 'max-w-[80px] object-contain cursor-pointer'} src={img.slideImg} alt="" />
               )
             })}
-            <button onClick={() => selectImgOnArrow('left')} className='absolute flex items-center justify-center left-0 text-white shadow-md bg-white w-[28px] h-[28px] shadow-default'><span className="icon-[la--angle-left] text-secondary-color"></span></button>
-            <button onClick={() => selectImgOnArrow('right')} className='absolute flex items-center justify-center right-0 text-white bg-white w-[28px]  h-[28px] shadow-default'><span className="icon-[la--angle-right] text-secondary-color"></span></button>
+            <button onClick={() => selectImgOnArrow('left')} className='absolute flex items-center justify-center left-[3px] text-white bg-white w-[28px] h-[28px] shadow-default'><span className="icon-[la--angle-left] text-secondary-color"></span></button>
+            <button onClick={() => selectImgOnArrow('right')} className='absolute flex items-center justify-center right-[5px] text-white bg-white w-[28px]  h-[28px] shadow-default'><span className="icon-[la--angle-right] text-secondary-color"></span></button>
           </div>
         </div>
         <div>
@@ -81,7 +107,7 @@ export default function ProductPreview() {
           </div>
           <span className="text-Poppins text-[14px] text-[#687188]">{`332 Reviews`}</span>
         </div>
-        <ul className='mt-4 leading-[30px] mb-3'>
+        <ul className='mt-4 leading-[33px] mb-3'>
           <li className='flex font-medium font-Poppins gap-x-3'>Availability:<span className='text-[#08b54c]'>In Stock</span></li>
           <li className='flex font-Poppins gap-x-3'><span className='font-medium'>Brand:</span><span className=''>Bata</span></li>
           <li className='flex font-Poppins gap-x-3'><span className='font-medium'>Category:</span><span className=''>Clothing</span></li>
@@ -96,33 +122,48 @@ export default function ProductPreview() {
           </div>
         </div>
         <p className='font-Poppins text-[16px] max-w-[450px] text-[#18181b] py-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim exercitationem quaerat....</p>
-        <div className='penultimo div'>
-          <div className='size div'>
-            <h5 className='font-Roboto'>Size</h5>
-            <div className='flex gap-x-1'>
-              {productSizeData.map(productSize => {
-                return (
-                  <button key={nanoid()} className='border-[1px] border-[#e9e4e4] rounded-[3px] font-Poppins text-[12px] w-[24px] h-[23px]'>{productSize.size}</button>
-                )
-              })}
-            </div>
+        <div>
+          <ProductSizeComponent 
+          theme={theme}
+          isSizeClicked={isSizeClicked}
+          productSizeData={productSizeData}
+          />
+          
+          <ProductColorComponent 
+          theme={theme}
+          isColorClicked={isColorClicked}
+          productColorData={productColorData}
+          />
+
+          <ProductQuantityComponent 
+            productQuantity={productQuantity}
+            setProductQuantity={setProductQuantity}
+          />
+          
+          <div className='flex border-b-[1px] gap-x-3 pb-5'>
+            <button onClick={() => dispatch(incrementByAmount(productQuantity))} className={`flex items-center gap-x-3 bg-${theme} text-white border border-${theme} text-Poppins font-medium py-[10px] px-6 rounded-[4px] text-[15px] hover:bg-transparent hover:text-${theme} transition duration-[.5s] ease group`}>
+              <span className={`icon-[cil--cart]  text-white items-center h-[16px] w-[16px] transition duration-[.5s] ease group-hover:text-${theme} transition duration-[.5s] ease`}></span> ADD TO CART
+            </button>
+            
+            <button className={`flex items-center gap-x-3 bg-white text-${theme} border border-${theme} text-Poppins font-medium py-[10px] px-6 rounded-[4px] text-[15px] hover:bg-${theme} hover:text-white transition duration-[.5s] ease group`}>
+              <span className={`icon-[teenyicons--heart-outline] text-${theme} w-[16px] h-[16px] group-hover:text-white transition duration-[.5s] ease`}></span>WISHLIST
+            </button>
           </div>
-          <div className='color div'>
-            <h5>Color</h5>
-            <div className='flex'>
-              <button className={`bg-${theme} w-[24px] h-[24px]`}></button>
-              <button className='bg-white w-[24px] h-[24px]'></button>
-              <button className='bg-black w-[24px] h-[24px]'></button>
-            </div>
+          
+          <div className='flex mt-4 gap-x-3'>
+            <button className='flex  border-[1px] rounded-full p-[6px] hover:bg-[#e9e4e4] transition duration-[.3s]'>
+              <span className="icon-[la--facebook-f] w-[17px] h-[17px]"></span>
+            </button>
+            
+            <button className='flex  border-[1px] rounded-full p-[6px] hover:bg-[#e9e4e4] transition duration-[.3s]'>
+              <span className="icon-[la--twitter] w-[17px] h-[17px]"></span>
+            </button>
+            
+            <button className='flex  border-[1px] rounded-full p-[6px] hover:bg-[#e9e4e4] transition duration-[.3s]'>
+              <span className="icon-[la--instagram] w-[17px] h-[17px]"></span>
+            </button>
           </div>
-          <div className='quantity div'>
-            <h5>Quantity</h5>
-            <div className='flex'>
-              <button >-</button>
-              <div></div>
-              <button>+</button>
-            </div>
-          </div>
+    
         </div>
         </div>
       </div>

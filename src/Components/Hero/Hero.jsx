@@ -21,9 +21,8 @@ export default function Hero() {
       oldPrice: '550.45',
       img: iphone12Img,
       bgColor: 'bg-hero-bg-gray'
-    },
-    { 
-      model: 'Apple iPhone XR',
+    }, 
+    { model: 'Apple iPhone XR',
       newPrice: '450.00',
       oldPrice: '550.45',
       img: iphoneXrImg,

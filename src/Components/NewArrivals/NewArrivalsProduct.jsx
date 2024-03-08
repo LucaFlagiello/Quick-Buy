@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { increment } from "../../state/cartQuantitySlice";
-import { addProduct } from "../../state/cartProductsList";
-import productList from "../../Data/productsRankingData/rankingProductsList";
+import { addProduct } from "../../state/cartListSlice";
+import productList from "../../Data/productList/productsList";
 
 export default function NewArrivalsProduct({ img, model, originalPrice, newPrice, reviewsNum, theme, productPreviewStatus, dispatch, showPreview }) {
 

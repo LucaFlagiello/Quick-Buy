@@ -1,4 +1,4 @@
-import productList from "../../Data/productsRankingData/rankingProductsList"
+import productList from "../../Data/productList/productsList"
 import NewArrivalsProduct from "./NewArrivalsProduct";
 import { useDispatch, useSelector } from "react-redux";
 import { showPreview } from "../../state/productPreviewSlice";

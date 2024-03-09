@@ -134,7 +134,7 @@ const Nav = () => {
             <span className="icon-[cil--cart]  text-white items-center h-[28px] w-[28px] "></span>
             <span className='absolute cursor-pointer top-[-5px] right-[-8px] bg-black text-white text-[9px] font-medium rounded-full flex justify-center items-center w-[15px] h-[15px]'>{cartQuantity}</span>
           </div>
-          <div className='absolute top-[53px] right-[-5px] w-[310px] bg-white z-10 pb-4 duration-600 ease opacity-0 group-hover:opacity-100 transform duration-500 ease translate-y-4 shadow-default invisible group-hover:translate-y-0 group-hover:visible'>
+          <div className='absolute top-[53px] right-[-5px] w-[310px] bg-white z-10 pb-4 duration-600 ease opacity-0 group-hover:opacity-100 transform duration-500 ease translate-y-4 shadow-default  invisible group-hover:translate-y-0 group-hover:visible'>
             <div className='mt-6 ml-6 font-medium text-start font-Roboto'>{cartQuantity} Items</div>
             
             {cartProductsList.length > 0 ? 
@@ -145,8 +145,8 @@ const Nav = () => {
                   const shortModelName = product.model.length > 15 ? product.model.slice(0, 15) + '...' : product.model;
                   
                   return (
-                    <div key={nanoid()} className='relative flex gap-x-4 '>
-                      <img className='w-[55px] object-fit' src={product.img} alt="" />
+                    <div key={nanoid()} className='relative flex gap-x-4'>
+                      <img className='w-[60px] object-fit' src={product.img} alt="product" />
                       <div>
                         <h4 className={`font-medium font-Roboto max-w-[170px] text-start hover:text-${theme} transition duration-300 ease`}>{shortModelName}</h4>
                         <div className='flex items-center gap-x-3 font-Poppins text-[14px]'>

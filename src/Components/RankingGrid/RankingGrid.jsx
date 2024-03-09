@@ -1,4 +1,4 @@
-import productList from '../../Data/productsRankingData/rankingProductsList';
+import productList from '../../Data/productList/productsList'
 import ProductComponent from '../RankingGrid/RankingProduct/ProductComponent'
 
 export default function RankingGrid() {

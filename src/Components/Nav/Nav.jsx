@@ -2,7 +2,10 @@ import { nanoid } from '@reduxjs/toolkit';
 import { useState } from 'react';
 import { useSelector, useDispatch } from "react-redux";
 import { decrement } from '../../state/cartQuantitySlice';
+import { removeCartProduct } from '../../state/cartListSlice';
 import Categories from '../../Data/navSideCategories';
+import NavSubCategories from '../NavSubCategories/NavSubCategories';
+import SideCategoriesBrand from '../SideCategoriesBrand/SideCategoriesBrand';
 import brand1Img from '../../Assets/brand-1.png'
 import brand2Img from '../../Assets/brand-2.png'
 import brand3Img from '../../Assets/brand-3.png'
@@ -10,7 +13,6 @@ import brand4Img from '../../Assets/brand-4.png'
 import brand5Img from '../../Assets/brand-5.png'
 import brand6Img from '../../Assets/brand-6.png'
 import brand7Img from '../../Assets/brand-7.png'
-import { removeProduct } from '../../state/cartListSlice';
 
 const Nav = () => {
   const searchCategoriesData = [
@@ -28,8 +30,11 @@ const Nav = () => {
   const theme = useSelector((state) => state.theme.value);
   const cartQuantity = useSelector((state) => state.cartQuantity);
   const cartProductsList = useSelector((state) => state.cartProductsList);
+  const wishListQuantity = useSelector((state) => state.wishListQuantity);
   const dispatch = useDispatch();
   let carSubTotal = 0; 
+
+  const sideCategoriesBrands = [{img: brand1Img}, {img: brand2Img}, {img: brand3Img}, {img: brand4Img}, {img: brand5Img}, {img: brand6Img}, {img: brand7Img}, {img: brand1Img}, {img: brand2Img}, {img: brand3Img}, {img: brand4Img}, {img: brand5Img}, {img: brand6Img}, {img: brand7Img}]
 
   const opendropSearchCategory = () => {
     setdropSearchCategory(prevStatus => !prevStatus);
@@ -55,9 +60,9 @@ const Nav = () => {
     setSearchCategories(updateSearchCategories);
   }
 
-  const removeCartProduct = (product) => {
+  const removeCartListProduct = (product) => {
     dispatch(decrement(product));
-    dispatch(removeProduct(product));
+    dispatch(removeCartProduct(product));
   }
 
   return (
@@ -78,32 +83,18 @@ const Nav = () => {
                     return item.sideCategories.map(list => {
                       return (
                         <ul key={nanoid()} className= 'leading-[28px]'>
-                          <li className='text-[18px] font-Roboto font-medium mb-1'>{list.headerCategory}</li>
-                          <li className={`font-Poppins hover:text-${theme} cursor-pointer transition duration-[.2s] ease`}>{list.subCategory1}</li>
-                          <li className={`font-Poppins hover:text-${theme} cursor-pointer transition duration-[.2s] ease`}>{list.subCategory2}</li>
-                          <li className={`font-Poppins hover:text-${theme} cursor-pointer transition duration-[.2s] ease`}>{list.subCategory3}</li>
-                          <li className={`font-Poppins hover:text-${theme} cursor-pointer transition duration-[.2s] ease`}>{list.subCategory4}</li>
-                          <li className={`font-Poppins hover:text-${theme} cursor-pointer transition duration-[.2s] ease`}>{list.subCategory5}</li>
+                          <NavSubCategories theme={theme} list={list}/>
                         </ul>
                       )
                     })
                   } return null
                 })} 
                 <div className={sideCategorySelected ? 'absolute top-[20px] right-[-250px] grid grid-cols-2 gap-2' : 'hidden'}>
-                  <img className='w-[90px] shadow-light-shadow' src={brand1Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand2Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand3Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand4Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand5Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand6Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand7Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand1Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand2Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand3Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand4Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand5Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand6Img} alt="" />
-                  <img className='w-[90px] shadow-light-shadow' src={brand7Img} alt="" />
+                  {sideCategoriesBrands.map(brand => {
+                    return (
+                      <SideCategoriesBrand key={nanoid()} brandImg={brand.img} />  
+                    )
+                  })}
                 </div>
               </div>
             </div>
@@ -134,7 +125,7 @@ const Nav = () => {
         <div className='grid gap-y-[2px] text-center cursor-pointer'>
           <div className='relative grid'>
             <span className="icon-[teenyicons--heart-outline]  text-white m-auto w-[28px] h-[28px]"></span>
-            <span className='absolute top-[-5px] right-[2px] bg-black text-white text-[9px] font-medium rounded-full flex justify-center items-center w-[15px] h-[15px]'>3</span>
+            <span className='absolute top-[-5px] right-[2px] bg-black text-white text-[9px] font-medium rounded-full flex justify-center items-center w-[15px] h-[15px]'>{wishListQuantity}</span>
           </div>
           <span className='text-white text-[11px] font-Poppins'>Wish List</span>
         </div>
@@ -163,7 +154,7 @@ const Nav = () => {
                           <p>&#36;{product.newPrice}</p>
                         </div>
                       </div>
-                      <span onClick={() => removeCartProduct(product)} className="absolute top-[5px] right-0 icon-[la--times] hover:text-red-500"></span>
+                      <span onClick={() => removeCartListProduct(product)} className="absolute top-[5px] right-0 icon-[la--times] hover:text-red-500"></span>
                     </div>
                   )
                 })}
@@ -185,7 +176,7 @@ const Nav = () => {
           </div>
           <span className='text-white text-[11px] font-Poppins'>Account</span>
           <div className='absolute h-[20px] w-[100%] bottom-[-20px]' onMouseEnter={() => setIsMouseOnAccount(true)}>
-            <div className={isMouseOnAccount ? 'bg-white absolute opacity-1 transition duration-[.3s] easy  shadow-md left-[-168px] mt-[6px] px-4 pt-5 rounded-[4px] z-[10]' : ' translate-y-[20px] shadow-md left-[-178px]  px-4 pt-5 absolute transition-drop-in duration-[.4s]  pointer-events-none opacity-0 z-10'}>
+            <div className={isMouseOnAccount ? 'bg-white absolute opacity-1 transition duration-[.3s] easy  shadow-md left-[-168px] mt-[6px] px-4 pt-5 rounded-[4px] z-[10]' : ' translate-y-[20px] shadow-md left-[-168px]  px-4 pt-5 absolute transition-drop-in duration-[.4s]  pointer-events-none opacity-0 z-10'}>
               <h3 className='font-Roboto text-light-black font-medium text-[14px]'>Welcome to QUICKBUY Shop</h3>
               <div className='flex justify-between mt-4 gap-x-3'>
                 <button className={`bg-${theme} font-Roboto font-medium text-[14px] text-white px-[26px] py-[4px] rounded-[4px] hover:bg-white hover:text-${theme} border-${theme} border-[1px] transition duration-[.5s] ease`}>JOIN</button>

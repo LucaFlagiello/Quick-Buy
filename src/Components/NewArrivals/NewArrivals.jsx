@@ -1,5 +1,5 @@
 import productList from "../../Data/productList/productsList"
-import NewArrivalsProduct from "./NewArrivalsProduct";
+import Product from "../Product/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { showPreview } from "../../state/productPreviewSlice";
 
@@ -17,12 +17,12 @@ export default function NewArrivals() {
           See more <span className="icon-[la--angle-right]"></span>
         </span>
       </div>
-      <ul className="grid grid-cols-4 gap-x-[1.2rem]">
+      <ul className="grid grid-cols-4 gap-x-[1.4rem]">
         {productList.map(product => {
           if(product.isNewArrival) {
             return (
               <li key={product.model} className="border-[1px] border-[#dddddd] rounded-t-md">
-                <NewArrivalsProduct
+                <Product
                   img={product.img}
                   model={product.model}
                   originalPrice={product.originalPrice}
@@ -32,6 +32,7 @@ export default function NewArrivals() {
                   productPreviewStatus={productPreviewStatus}
                   dispatch={dispatch}
                   showPreview={showPreview}
+                  productTag={'New'}
                 />
               </li>
             )

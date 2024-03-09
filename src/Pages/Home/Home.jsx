@@ -5,6 +5,10 @@ import FeaturesArea from '../../Components/FeaturesArea/FeaturesAresa'
 import RankingGrid from '../../Components/RankingGrid/RankingGrid'
 import NewArrivals from '../../Components/NewArrivals/NewArrivals'
 import ProductPreview from '../../Components/ProductPreview/ProductPreview'
+import OfferBanner from '../../Components/OfferBanner/OfferBanner'
+import Recomended from '../../Components/Recomended/Recomended'
+import Download from '../../Components/Download/Download'
+
 
 const Home = () => {
   return (
@@ -16,6 +20,9 @@ const Home = () => {
       <RankingGrid />
       <NewArrivals />
       <ProductPreview />
+      <OfferBanner />
+      <Recomended />
+      <Download />
     </div>
   )
 }

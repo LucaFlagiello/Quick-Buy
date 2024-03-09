@@ -6,11 +6,11 @@ const cartQuantitySlice = createSlice({
   name:'cartQuanity',
   initialState,
   reducers: {
-    increment: ((state) => {
+    incrementCartQuantity: ((state) => {
       return state += 1 ;
     }),
 
-    incrementByAmount: ((state, action) => {
+    incrementCartQuantityByAmount: ((state, action) => {
       return state += action.payload ;
     }),
 
@@ -20,6 +20,6 @@ const cartQuantitySlice = createSlice({
   }
 });
 
-export const { increment, decrement, incrementByAmount } = cartQuantitySlice.actions;
+export const { incrementCartQuantity, decrement, incrementCartQuantityByAmount } = cartQuantitySlice.actions;
 
 export default cartQuantitySlice.reducer;

@@ -6,17 +6,20 @@ import sliderImg5 from '../../Assets/slider-4.png'
 import { useState, useEffect, useMemo } from 'react'
 import { nanoid } from '@reduxjs/toolkit'
 import { useSelector, useDispatch } from 'react-redux'
+import { showPreview } from '../../state/productPreviewSlice'
+import { incrementCartQuantityByAmount } from '../../state/cartQuantitySlice'
+import { incrementWishListQuantity } from '../../state/wishListQuantitySlice'
 import ProductSizeComponent from '../ProductSizeComponent/ProductSizeComponent'
 import ProductColorComponent from '../ProductColorComponent/ProductColorComponent'
 import ProductQuantityComponent from '../ProductQuantityComponent/ProductQuantityComponent'
-import { showPreview } from '../../state/productPreviewSlice'
-import { incrementByAmount } from '../../state/cartQuantitySlice'
 
 export default function ProductPreview() {
   
   const [mainImg, setMainImg] = useState(sliderImg1);
   const [countSlide, setCountSlide] = useState(1);
-  const [productSizeData, setProductSizeData] = useState([{size: 'XS', isBtnClicked: false},{size: 'S', isBtnClicked: false}, {size: 'M', isBtnClicked: true},{size: 'L', isBtnClicked: false},{size: 'XL', isBtnClicked: false}]);
+  const [productSizeData, setProductSizeData] = useState([
+    {size: 'XS', isBtnClicked: false},{size: 'S', isBtnClicked: false}, {size: 'M', isBtnClicked: true},{size: 'L', isBtnClicked: false},{size: 'XL', isBtnClicked: false}
+  ]);
   const [productColorData, setProductColorData] = useState([{isColorClicked: true},{isColorClicked: false}, {isColorClicked: false}]);
   const [productQuantity, setProductQuantity] = useState(1);
   const theme = useSelector((state) => state.theme.value);
@@ -73,8 +76,9 @@ export default function ProductPreview() {
     setProductColorData(updateColorData);
   }
 
+
   return (
-    <div className={productPreviewStatus ? 'fixed top-0 left-0 flex justify-center items-center w-full h-full bg-[#00000080] z-[999999] transition duration-[.3s] ease' : 'transition duration-[.3s] ease'}>
+    <div className={productPreviewStatus ? 'fixed top-0 left-0 flex justify-center items-center w-full h-full bg-[#00000080] z-[999999] transition duration-[.3s] ease' : 'fixed transition duration-[.3s] ease top-[-3000px]'}>
       <div className={productPreviewStatus ? "relative flex p-8 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease" : "opacity-0 relative flex p-8 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease"}>
         <div className='max-w-[452px]'>
           <div onClick={() => dispatch(showPreview(false))} className={`flex bg-${theme} absolute top-[8px] right-[8px] p-1 rounded-[3px] cursor-pointer`}>
@@ -141,11 +145,11 @@ export default function ProductPreview() {
           />
           
           <div className='flex border-b-[1px] gap-x-3 pb-5'>
-            <button onClick={() => dispatch(incrementByAmount(productQuantity))} className={`flex items-center gap-x-3 bg-${theme} text-white border border-${theme} text-Poppins font-medium py-[10px] px-6 rounded-[4px] text-[15px] hover:bg-transparent hover:text-${theme} transition duration-[.5s] ease group`}>
+            <button onClick={() => dispatch(incrementCartQuantityByAmount(productQuantity))} className={`flex items-center gap-x-3 bg-${theme} text-white border border-${theme} text-Poppins font-medium py-[10px] px-6 rounded-[4px] text-[15px] hover:bg-transparent hover:text-${theme} transition duration-[.5s] ease group`}>
               <span className={`icon-[cil--cart]  text-white items-center h-[16px] w-[16px] transition duration-[.5s] ease group-hover:text-${theme} transition duration-[.5s] ease`}></span> ADD TO CART
             </button>
             
-            <button className={`flex items-center gap-x-3 bg-white text-${theme} border border-${theme} text-Poppins font-medium py-[10px] px-6 rounded-[4px] text-[15px] hover:bg-${theme} hover:text-white transition duration-[.5s] ease group`}>
+            <button onClick={() => dispatch(incrementWishListQuantity())} className={`flex items-center gap-x-3 bg-white text-${theme} border border-${theme} text-Poppins font-medium py-[10px] px-6 rounded-[4px] text-[15px] hover:bg-${theme} hover:text-white transition duration-[.5s] ease group`}>
               <span className={`icon-[teenyicons--heart-outline] text-${theme} w-[16px] h-[16px] group-hover:text-white transition duration-[.5s] ease`}></span>WISHLIST
             </button>
           </div>
@@ -163,7 +167,6 @@ export default function ProductPreview() {
               <span className="icon-[la--instagram] w-[17px] h-[17px]"></span>
             </button>
           </div>
-    
         </div>
         </div>
       </div>

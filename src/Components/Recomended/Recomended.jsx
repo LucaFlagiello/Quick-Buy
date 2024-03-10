@@ -10,7 +10,7 @@ export default function Recomended() {
   const dispatch = useDispatch()
   
   return (
-    <section className="max-w-[1120px] py-[6rem] m-auto">
+    <section className="max-w-[1120px] pt-10 pb-12 m-auto">
       <div className="flex items-center justify-between mb-6">
         <h2 className="font-medium text-[2rem]">Recomended</h2>
         <span className={`text-${theme} cursor-pointer flex items-center font-medium font-Poppins text-[15px] mt-3`}>

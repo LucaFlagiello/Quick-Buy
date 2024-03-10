@@ -7,7 +7,7 @@ export default function Download() {
   const theme = useSelector((state) => state.theme.value);
 
   return (
-    <section className='pb-[10rem]'>
+    <section className='mb-[3rem]'>
       <div className="flex justify-center max-w-[1120px] max-h-[450px] bg-[#f3f3f3] m-auto gap-x-14">
         <img className='object-fit max-h-[450px]' src={downloadImg} alt="download-img" />
         <div className='py-[6rem]'>

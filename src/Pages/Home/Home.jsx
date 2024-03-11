@@ -10,6 +10,7 @@ import Recomended from '../../Components/Recomended/Recomended'
 import Download from '../../Components/Download/Download'
 import Footer from '../../Components/Footer/Footer'
 import Copyright from '../../Components/Copyrigth/Copyright'
+import ScrollTopBtn from '../../Components/ScrollTopBtn/ScrollTopBtn'
 
 const Home = () => {
   return (
@@ -26,6 +27,7 @@ const Home = () => {
       <Download />
       <Footer />
       <Copyright />
+      <ScrollTopBtn />
     </div>
   )
 }

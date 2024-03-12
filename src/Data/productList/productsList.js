@@ -11,6 +11,7 @@ import headphone1Img from '../../Assets/headphone-1.png'
 import headphone2Img from '../../Assets/headphone-2.png'
 import headphone3Img from '../../Assets/headphone-3.png'
 import tvSamsung from '../../Assets/tv-samsung.png'
+import mousePad from '../../Assets/coverpad.png'
 
 const productList = [
   {
@@ -23,6 +24,7 @@ const productList = [
     rank: '1',
     img: laptop1Img,
     isNewArrival: false,
+    isRecomended: true,
     quantity: 1,
   },
   {
@@ -35,6 +37,7 @@ const productList = [
     rank: '2',
     img: laptop3Img,
     isNewArrival: true,
+    isRecomended: false,
     quantity: 1,
   },
   {
@@ -47,6 +50,7 @@ const productList = [
     rank: '3',
     img: laptop2Img,
     isNewArrival: false,
+    isRecomended: true,
     quantity: 1,
   },
   {
@@ -59,6 +63,7 @@ const productList = [
     rank: '1',
     img: phone2Img,
     isNewArrival: false,
+    isRecomended: true,
     quantity: 1,
   },
   {
@@ -71,6 +76,7 @@ const productList = [
     rank: '2',
     img: phone1Img,
     isNewArrival: true,
+    isRecomended: false,
     quantity: 1,
   },
   {
@@ -83,6 +89,7 @@ const productList = [
     rank: '3',
     img: phone3Img,
     isNewArrival: false,
+    isRecomended: true,
     quantity: 1,
   },
   {
@@ -95,6 +102,7 @@ const productList = [
     rank: '1',
     img: headphone1Img,
     isNewArrival: false,
+    isRecomended: true,
     quantity: 1,
   },
   {
@@ -107,6 +115,7 @@ const productList = [
     rank: '2',
     img: headphone2Img,
     isNewArrival: true,
+    isRecomended: true,
     quantity: 1,
   },
   {
@@ -119,6 +128,7 @@ const productList = [
     rank: '3',
     img: headphone3Img,
     isNewArrival: false,
+    isRecomended: true,
     quantity: 1,
   },
   {
@@ -131,6 +141,7 @@ const productList = [
     rank: '1',
     img: watch1Img,
     isNewArrival: false,
+    isRecomended: false,
     quantity: 1,
   },
   {
@@ -143,6 +154,7 @@ const productList = [
     rank: '2',
     img: watch2Img,
     isNewArrival: false,
+    isRecomended: false,
     quantity: 1,
   },
   {
@@ -155,6 +167,7 @@ const productList = [
     rank: '3',
     img: watch3Img,
     isNewArrival: false,
+    isRecomended: false,
     quantity: 1,
   },   
   {
@@ -166,6 +179,19 @@ const productList = [
     inRanking: false,
     img: tvSamsung,
     isNewArrival: true,
+    isRecomended: false,
+    quantity: 1,
+  },
+  {
+    type: 'mouse pad',
+    model: "Anti-Fray Cloth Gaming",
+    originalPrice: '85.23',
+    newPrice: '43.22',
+    reviewsNum: '81',
+    inRanking: false,
+    img: mousePad,
+    isNewArrival: false,
+    isRecomended: true,
     quantity: 1,
   },
 ]

@@ -18,11 +18,11 @@ export default function Footer() {
       {link: 'Privacy Policy'},
       {link: 'FAQ'},
     ]
-  ]
+  ];
   
   return (
-    <footer className="bg-[#f3f3f3]">
-      <section className="flex justify-center py-8 m-auto gap-x-[4rem]">
+    <footer className="bg-[#f3f3f3] px-4">
+      <section className="flex justify-center py-8 m-auto gap-x-[4rem] 2xs:grid 2xs:grid-cols-1 2xs:gap-y-8 xs:grid xs:grid-cols-1 xs:gap-y-8   sm:grid sm:grid-cols-2 sm:max-w-[700px] md:gap-y-10 md:max-w-[700px] md:grid md:grid-cols-2 md:m-auto lg:gap-x-[2rem] lg:max-w-[930px]">
         <div>
           <h2 className="text-[1.8rem] font-Roboto font-medium mb-3"><span className="text-primary-color">QUICK</span>BUY</h2>
           <p className="max-w-[360px] text-secondary-color text-[15px] font-Poppins">
@@ -38,13 +38,13 @@ export default function Footer() {
           return (
             <ul className="leading-[35px] " key={nanoid()}>
               {list.map(listLink => {
-                return (<li className={`first:font-Roboto first:font-medium first:text-[1.1rem] first:mb-2  first:pointer-events-none hover:text-${theme} text-[#18181b] cursor-pointer transition duration-600 ease`} key={nanoid()}>{listLink.link}</li>)
+                return (<li className={`first:font-Roboto first:font-medium first:text-[1.1rem] lg:first:text-[16px] first:mb-2  first:pointer-events-none hover:text-${theme} text-[#18181b] cursor-pointer transition duration-600 ease`} key={nanoid()}>{listLink.link}</li>)
               })}
             </ul>
           )
         })}  
         <ul className="leading-[35px] text-secondary-color text-[15px]">
-          <li className='font-Roboto first:font-medium text-[1.1rem] mb-3'>CONTACT</li>
+          <li className='font-Roboto first:font-medium text-[1.1rem] lg:first:text-[17px] mb-3'>CONTACT</li>
           <li className="flex mb-2 font-Poppins gap-x-3">
             <span className="icon-[la--map-marker] w-[17px] h-[17px] mt-[3px]"></span>
             <p className="max-w-[300px] leading-[25px]">
@@ -65,13 +65,13 @@ export default function Footer() {
           </li>
           <li className="flex mt-3 gap-x-3">
             <div className="w-[32px] h-[32px] bg-[#3b5998] rounded-full flex items-center justify-center cursor-pointer"> 
-              <span class="icon-[la--facebook-f] text-white"></span>
+              <span className="icon-[la--facebook-f] text-white"></span>
             </div>
             <div className="w-[32px] h-[32px] bg-black rounded-full flex items-center justify-center cursor-pointer"> 
-              <span class="icon-[pajamas--twitter] text-white"></span>
+              <span className="icon-[pajamas--twitter] text-white"></span>
             </div>
             <div className="w-[32px] h-[32px] bg-[#d53982] rounded-full flex items-center justify-center cursor-pointer"> 
-              <span class="icon-[la--instagram] text-white"></span>
+              <span className="icon-[la--instagram] text-white"></span>
             </div>
           </li>
         </ul>

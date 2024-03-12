@@ -10,14 +10,14 @@ export default function NewArrivals() {
   const dispatch = useDispatch()
   
   return (
-    <section className="max-w-[1120px] py-10 m-auto">
-      <div className="flex items-center justify-between mb-6">
+    <section className="max-w-[1150px] py-14 m-auto md:max-w-[740px] lg:max-w-[965px] px-4">
+      <div className="flex items-center justify-between mb-9">
         <h2 className="font-medium text-[2rem]">New Arrivals</h2>
         <span className={`text-${theme} cursor-pointer flex items-center font-medium font-Poppins text-[15px] mt-3`}>
           See more <span className="icon-[la--angle-right]"></span>
         </span>
       </div>
-      <ul className="grid grid-cols-4 gap-x-[1.4rem]">
+      <ul className="grid grid-cols-4 gap-x-[1.4rem] gap-y-4 2xs:grid-cols-1 sm:m-auto sm:max-w-[670px] sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2">
         {productList.map(product => {
           if(product.isNewArrival) {
             return (

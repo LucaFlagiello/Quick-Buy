@@ -4,11 +4,11 @@ import ProductComponent from '../RankingGrid/RankingProduct/ProductComponent'
 export default function RankingGrid() {
 
   return (
-    <section className='flex justify-center'>
-      <div>
-        <h2 className='mb-[2rem] text-[32px] font-medium text-Roboto'>Top Ranking</h2>
-        <div className="grid grid-cols-4 gap-x-[2rem]">
-          <ul className="grid grid-cols-1 gap-y-[2rem] font-Roboto"> 
+    <section className='flex justify-center sm:w-full'>
+      <div className='sm:w-full sm:px-6'>
+        <h2 className='mb-[1rem] text-[32px] font-medium text-Roboto'>Top Ranking</h2>
+        <div className="grid grid-cols-4 gap-x-[2rem] items-center gap-y-8 2xs:grid-cols-1 xs:m-auto xs:w-full xs:grid-cols-2 sm:grid-cols-2 md:gap-x-2 md:w-[700px] lg:w-[940px]">
+          <ul className="grid grid-cols-1 gap-y-[2rem] font-Roboto lg:max-w-[300px]"> 
             <h4 className='font-medium text-[18px]'>Watch</h4>
             {productList.map(product => {
               if(product.inRanking && product.type === 'watch') {

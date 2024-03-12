@@ -5,8 +5,8 @@ const Header = () => {
   const theme = useSelector((state) => state.theme.value)
 
   return (
-    <header className="flex justify-between items-center max-w-6xl m-auto py-3">
-      <div className='flex items-center gap-x-24'>
+    <header className="flex items-center justify-between py-3 m-auto max-w-[1230px] lg:max-w-[960px] md:hidden sm:hidden">
+      <div className='flex items-center gap-x-24 md:gap-x-0'>
         <span className='text-primary-color cursor-pointer font-Roboto font-bold text-[28px]'>QUICK<span className='text-black'>BUY</span></span>
 
         <ul className='flex gap-x-8 font-Poppins font-medium text-secondary-color text-[16px]'>

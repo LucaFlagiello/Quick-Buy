@@ -39,24 +39,24 @@ export default function Hero() {
   }, [currSlide, dataSlider.length]);
   
   return (
-    <section className={'px-[1rem]'}>
-      <div className="ml-[14.2rem]">
-        <div className="relative flex justify-center items-center max-w-[1015px] m-auto h-[407px] overflow-hidden">
+    <section className={'px-[1rem] md:w-full sm:px-0 md:p-0'}>
+      <div className="pl-[14.2rem] md:w-full sm:pl-0 md:pl-0 lg:pl-[14.4rem] sm:w-full">
+        <div className="relative flex justify-center items-center max-w-[1015px] lg:max-w-[745px] m-auto h-[407px] overflow-hidden md:max-w-full md:m-0 sm:w-full">
           {dataSlider.map((slide,index) => {
             const indexSlide = index+1;
             return (
-              <div key={index} className={currSlide === indexSlide ? `absolute transform translate-x-0 transition duration-[1s] ease w-[1015px] h-[100%] ${slide.bgColor} ` : currSlide < indexSlide ? `absolute  transition duration-[1s] ease transform translate-x-[+1015px]  h-[100%] w-[100%] ${slide.bgColor}` : `absolute top-0  transition duration-[1s] ease transform translate-x-[-1015px] h-[100%] w-[100%] ${slide.bgColor}`}>
-                <div className="flex justify-center items-center gap-x-[9rem] h-[100%]">  
-                  <div>
+              <div key={index} className={currSlide === indexSlide ? `absolute transform translate-x-0 transition duration-[1s] ease w-[1015px] h-[100%] ${slide.bgColor} ` : currSlide < indexSlide ? `absolute  transition duration-[1s] ease transform translate-x-[1015px]  h-[100%] w-[100%] ${slide.bgColor} lg:translate-x-[880px] md:translate-x-[1005px]` : `absolute top-0  transition duration-[1s] ease transform translate-x-[-1015px] lg:translate-x-[-880px] md:translate-x-[-1005px] h-[100%] w-[100%] ${slide.bgColor}`}>
+                <div className="flex justify-center items-center gap-x-[6rem] h-[100%] md:gap-[9rem] sm:gap-x-[5rem]">  
+                  <div className='sm:text-center'>
                     <p className="font-Poppins">Get up to 50&#37; off Today only</p>
-                    <h2 className="font-Roboto text-[2.5rem] font-medium">{slide.model}</h2>
-                    <div className="flex items-center mt-1 font-medium gap-x-3 font-Roboto">
-                      <span className={`text-${theme}`}>	&#36;{slide.newPrice}</span>
+                    <h2 className="font-Roboto text-[2.5rem] font-medium md:text-[2rem] sm:text-[1.8rem]">{slide.model}</h2>
+                    <div className="flex items-center font-medium text-center gap-x-3 font-Roboto sm:justify-center">
+                      <span className={`text-${theme}`}>&#36;{slide.newPrice}</span>
                       <span className="text-light-gray-price text-[12px] line-through">&#36;{slide.oldPrice}</span>
                     </div>
                     <button className={`heroBtn font-Poppins border-${theme}  border-[1px] text-[15px] font-medium text-white py-[8px] px-[1.3rem] hover:text-${theme} bg-${theme} rounded-md cursor-pointer hover:bg-transparent transition duration-[.5s] ease mt-[2rem]`}>SHOP NOW</button>
                   </div>
-                  <img className="h-[280px]" src={slide.img} alt="phone-img" />
+                  <img className="h-[280px] object-contain sm:hidden" src={slide.img} alt="phone-img" />
                 </div>
               </div>
             )

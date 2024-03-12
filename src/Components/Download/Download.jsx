@@ -7,10 +7,10 @@ export default function Download() {
   const theme = useSelector((state) => state.theme.value);
 
   return (
-    <section className='mb-[3rem]'>
-      <div className="flex justify-center max-w-[1120px] max-h-[450px] bg-[#f3f3f3] m-auto gap-x-14">
-        <img className='object-fit max-h-[450px]' src={downloadImg} alt="download-img" />
-        <div className='py-[6rem]'>
+    <section className='mb-[3rem] px-4'>
+      <div className="flex justify-center max-w-[1120px] bg-[#f3f3f3] m-auto gap-x-14 2xs:max-w-full sm:max-w-[705px] sm:grid md:max-w-[705px] md:grid lg:grid lg:max-w-[930px]">
+        <img className='object-fit max-h-[450px] 2xs:max-w-full sm:m-auto sm:max-h-[250px] md:m-auto lg:m-auto' src={downloadImg} alt="download-img" />
+        <div className='py-[6rem] px-3 sm:py-[2rem] md:py-[2rem] lg:py-[2rem]'>
           <h2 className='text-[1.7rem] font-medium font-Roboto mb-3'>Download QUICKBUY App Now!</h2>
           <p className='font-Poppins max-w-[470px] mb-4'>
             Shopping fastly and easily more with our app. Get a link to download the app on your phone

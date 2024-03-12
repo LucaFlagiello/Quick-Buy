@@ -79,27 +79,27 @@ export default function ProductPreview() {
 
   return (
     <div className={productPreviewStatus ? 'fixed top-0 left-0 flex justify-center items-center w-full h-full bg-[#00000080] z-[999999] transition duration-[.3s] ease' : 'fixed transition duration-[.3s] ease top-[-3000px]'}>
-      <div className={productPreviewStatus ? "relative flex p-8 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease" : "opacity-0 relative flex p-8 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease"}>
-        <div className='max-w-[452px]'>
+      <div className={productPreviewStatus ? "relative flex p-8 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease  sm:flex-col sm:max-h-[800px] sm:w-[900px] sm:overflow-y-auto sm:pt-14 md:flex-col md:max-h-[800px] md:w-[900px] md:overflow-y-auto md:pt-14" : "opacity-0 relative flex p-8 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease"}>
+        <div className='max-w-[452px] sm:max-w-full md:max-w-full'>
           <div onClick={() => dispatch(showPreview(false))} className={`flex bg-${theme} absolute top-[8px] right-[8px] p-1 rounded-[3px] cursor-pointer`}>
             <span className="icon-[la--times] text-white font-extrabold w-[17px] h-[17px]"></span>
           </div>
 
-          <div className='bg-[#e5e5e58c] p-1'>
-            <img className= 'w-[444px] h-[444px]' src={mainImg} alt="" />
+          <div className='p-1 bg-[#eceef0] max-w-full'>
+            <img className= 'w-[444px] h-[444px] object-contain 2xs:h-[200px] xs:h-[300px] sm:max-w-full sm:m-auto md:m-auto' src={mainImg} alt="" />
           </div>
     
           <div className='relative flex items-center mt-4 overflow-x-auto gap-x-3'>
             {sliderData.map(img => {
               return (
-                <img key={nanoid()} onClick={() => selectImgOnSlide(img)} className={img.index === countSlide ? `max-w-[80px] object-contain cursor-pointer border border-${theme}` : 'max-w-[80px] object-contain cursor-pointer'} src={img.slideImg} alt="" />
+                <img key={nanoid()} onClick={() => selectImgOnSlide(img)} className={img.index === countSlide ? `max-w-[80px] 2xs:max-w-[75px] xs:max-w-[95px] sm:max-w-[115px] md:max-w-[160px] object-contain cursor-pointer border border-${theme}` : '2xs:max-w-[75px] xs:max-w-[95px] sm:max-w-[115px] max-w-[80px] md:max-w-[160px] object-contain cursor-pointer'} src={img.slideImg} alt="" />
               )
             })}
             <button onClick={() => selectImgOnArrow('left')} className='absolute flex items-center justify-center left-[3px] text-white bg-white w-[28px] h-[28px] shadow-default'><span className="icon-[la--angle-left] text-secondary-color"></span></button>
             <button onClick={() => selectImgOnArrow('right')} className='absolute flex items-center justify-center right-[5px] text-white bg-white w-[28px]  h-[28px] shadow-default'><span className="icon-[la--angle-right] text-secondary-color"></span></button>
           </div>
         </div>
-        <div>
+        <div className='sm:mt-6 md:mt-6'>
           <h2 className='font-Roboto font-medium text-[1.8rem] '>MEN'S ADIDAS COURTSMASH</h2>
           <div className="flex items-center gap-x-2 mt-[.1rem]">
           <div className='flex gap-x-1'>
@@ -144,7 +144,7 @@ export default function ProductPreview() {
             setProductQuantity={setProductQuantity}
           />
           
-          <div className='flex border-b-[1px] gap-x-3 pb-5'>
+          <div className='flex border-b-[1px] gap-x-3 pb-5 2xs:flex-col 2xs:max-w-[175px] 2xs:gap-y-4 xs:flex-col xs:max-w-[175px] xs:gap-y-4'>
             <button onClick={() => dispatch(incrementCartQuantityByAmount(productQuantity))} className={`flex items-center gap-x-3 bg-${theme} text-white border border-${theme} text-Poppins font-medium py-[10px] px-6 rounded-[4px] text-[15px] hover:bg-transparent hover:text-${theme} transition duration-[.5s] ease group`}>
               <span className={`icon-[cil--cart]  text-white items-center h-[16px] w-[16px] transition duration-[.5s] ease group-hover:text-${theme} transition duration-[.5s] ease`}></span> ADD TO CART
             </button>

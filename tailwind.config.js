@@ -6,6 +6,14 @@ module.exports = {
   plugins: [addDynamicIconSelectors(), 'prettier-plugin-tailwindcss'],
   theme: {
     extend: {
+      screens: {
+        '2xs': {'max':'368px'},
+        'xs': {'min':'369px', 'max':'598px'},
+        'sm': {'max':'743px'},
+        'md': {'min':'743px', 'max': '1012px'},
+        'lg': {'min':'1013px', 'max':'1284px'},
+        'xl': {'min':'1284px'}
+      },
       colors: {
         'primary-color': '#FD3D57',
         'primary-color2': '#3498db',

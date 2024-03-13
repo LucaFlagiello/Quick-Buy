@@ -8,15 +8,11 @@ import ProductPreview from '../../Components/ProductPreview/ProductPreview'
 import OfferBanner from '../../Components/OfferBanner/OfferBanner'
 import Recomended from '../../Components/Recomended/Recomended'
 import Download from '../../Components/Download/Download'
-import Footer from '../../Components/Footer/Footer'
-import Copyright from '../../Components/Copyrigth/Copyright'
 import ScrollTopBtn from '../../Components/ScrollTopBtn/ScrollTopBtn'
 
 const Home = () => {
   return (
     <div className='relative'>
-      <Header />
-      <Nav />
       <Hero />
       <FeaturesArea />
       <RankingGrid />
@@ -25,8 +21,6 @@ const Home = () => {
       <OfferBanner />
       <Recomended />
       <Download />
-      <Footer />
-      <Copyright />
       <ScrollTopBtn />
     </div>
   )

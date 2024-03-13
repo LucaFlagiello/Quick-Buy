@@ -1,5 +1,6 @@
 import '../../App.css'
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const theme = useSelector((state) => state.theme.value)
@@ -10,8 +11,8 @@ const Header = () => {
         <span className='text-primary-color cursor-pointer font-Roboto font-bold text-[28px]'>QUICK<span className='text-black'>BUY</span></span>
 
         <ul className='flex gap-x-8 font-Poppins font-medium text-secondary-color text-[16px]'>
-          <li className={`hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>Home</li>
-          <li className={`hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>Shop</li>
+          <Link to={'/'}><li className={`hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>Home</li></Link>
+          <Link to={'/Shop'}><li className={`hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>Shop</li></Link>
           <li className={`hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>Contact</li>
         </ul>
       </div>

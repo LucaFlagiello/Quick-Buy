@@ -35,6 +35,7 @@ module.exports = {
         'drop-in' : ['all 0.2s cubic-bezier(0.5, 0, 0, 1.25), opacity 0.15s ease-out'],
       },
       boxShadow: {
+        "shop-shadow": '0 0 5px rgba(0 0 0 / 0.1);',
         "light-shadow": '0 0 5px rgba(0 0 0 / 0.3);',
         "default": '0px 5px 11px rgba(0 0 0 / .32)',
       },

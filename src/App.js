@@ -24,11 +24,9 @@ const router = createBrowserRouter([
         <Header />
         <Nav />
         <Outlet />
-        <div className='hidden'> 
-          <Footer />
-          <Copyright />
-          <SettingsBtn />
-        </div>
+        <Footer />
+        <Copyright />
+        <SettingsBtn />
       </>
     ),
     children: [

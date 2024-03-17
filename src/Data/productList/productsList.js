@@ -17,6 +17,7 @@ const productList = [
   {
     type: 'laptop',
     model: 'Dell inspire 14',
+    brand: 'dell',
     originalPrice: '655.45',
     newPrice: '445.00',
     reviewsNum: '375',
@@ -30,6 +31,7 @@ const productList = [
   {
     type: 'laptop',
     model: 'HP Pavillon 15',
+    brand: 'hp',
     originalPrice: '355.45',
     newPrice: '258.99',
     reviewsNum: '624',
@@ -43,6 +45,7 @@ const productList = [
   {
     type: 'laptop',
     model: 'HP Omen 13',
+    brand: 'hp',
     originalPrice: '181.17',
     newPrice: '133.12',
     reviewsNum: '624',
@@ -56,6 +59,7 @@ const productList = [
   {
     type: 'phone',
     model: 'iPhone 11 max',
+    brand: 'apple',
     originalPrice: '855.45',
     newPrice: '645.30',
     reviewsNum: '875',
@@ -69,6 +73,7 @@ const productList = [
   {
     type: 'phone',
     model: 'Xiaomi Note 7',
+    brand: 'xiaomi',
     originalPrice: '486.25',
     newPrice: '235.73',
     reviewsNum: '321',
@@ -82,6 +87,7 @@ const productList = [
   {
     type: 'phone',
     model: 'Oppo poco f1',
+    brand: 'oppo',
     originalPrice: '372.5',
     newPrice: '148.99',
     reviewsNum: '114',
@@ -93,8 +99,9 @@ const productList = [
     quantity: 1,
   },
   {
-    type: 'headphone',
+    type: 'headphones',
     model: 'Bose Headphones',
+    brand: 'bose',
     originalPrice: '486.25',
     newPrice: '235.73',
     reviewsNum: '321',
@@ -106,8 +113,9 @@ const productList = [
     quantity: 1,
   },
   {
-    type: 'headphone',
+    type: 'headphones',
     model: 'COWIN E7 Active',
+    brand: 'cowin',
     originalPrice: '46.25',
     newPrice: '25.23',
     reviewsNum: '621',
@@ -119,8 +127,9 @@ const productList = [
     quantity: 1,
   },
   {
-    type: 'headphone',
+    type: 'headphones',
     model: 'Beats Headphones',
+    brand: 'beats',
     originalPrice: '263.15',
     newPrice: '191.23',
     reviewsNum: '521',
@@ -134,6 +143,7 @@ const productList = [
   {
     type: 'watch',
     model: 'Apple Watch',
+    brand: 'apple',
     originalPrice: '836.25',
     newPrice: '628.39',
     reviewsNum: '921',
@@ -147,6 +157,7 @@ const productList = [
   {
     type: 'watch',
     model: 'Callie Smartwatch',
+    brand: 'callie',
     originalPrice: '216.25',
     newPrice: '164.93',
     reviewsNum: '473',
@@ -160,6 +171,7 @@ const productList = [
   {
     type: 'watch',
     model: 'Cruz Smartwatch',
+    brand: 'cruz',
     originalPrice: '119.99',
     newPrice: '103.22',
     reviewsNum: '79',
@@ -173,6 +185,7 @@ const productList = [
   {
     type: 'tv',
     model: "SAMSUNG 27'' Class Curved",
+    brand: 'samsung',
     originalPrice: '419.99',
     newPrice: '243.22',
     reviewsNum: '88',
@@ -185,6 +198,7 @@ const productList = [
   {
     type: 'mouse pad',
     model: "Anti-Fray Cloth Gaming",
+    brand: 'corsair',
     originalPrice: '85.23',
     newPrice: '43.22',
     reviewsNum: '81',

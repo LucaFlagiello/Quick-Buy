@@ -68,7 +68,7 @@ export default function RankingGrid() {
           <ul className="grid grid-cols-1 gap-y-[2rem]"> 
             <h4 className='font-medium text-[18px]'>Headphones</h4>
             {productList.map(product => {
-              if(product.inRanking && product.type === 'headphone') {
+              if(product.inRanking && product.type === 'headphones') {
                 return (
                   <li key={product.model}>
                     <ProductComponent 

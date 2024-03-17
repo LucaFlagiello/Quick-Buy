@@ -17,10 +17,6 @@ export default function ProductPreview() {
   
   const [mainImg, setMainImg] = useState(sliderImg1);
   const [countSlide, setCountSlide] = useState(1);
-  const [productSizeData, setProductSizeData] = useState([
-    {size: 'XS', isBtnClicked: false},{size: 'S', isBtnClicked: false}, {size: 'M', isBtnClicked: true},{size: 'L', isBtnClicked: false},{size: 'XL', isBtnClicked: false}
-  ]);
-  const [productColorData, setProductColorData] = useState([{isColorClicked: true},{isColorClicked: false}, {isColorClicked: false}]);
   const [productQuantity, setProductQuantity] = useState(1);
   const theme = useSelector((state) => state.theme.value);
   const productPreviewStatus =useSelector((state) => state.productPreview);
@@ -61,22 +57,6 @@ export default function ProductPreview() {
     if (selectedSlide) {setMainImg(selectedSlide.slideImg);}
   }, [countSlide, sliderData]);
   
-
-  const isSizeClicked = (productBtnSize) => {
-    const updateSizeData = productSizeData.map(btnSize => {
-      return btnSize === productBtnSize ? { ...productBtnSize, isBtnClicked: true } : { ...btnSize, isBtnClicked: false };
-    });
-    setProductSizeData(updateSizeData);
-  }
-  
-  const isColorClicked = (btnColorIndex) => {
-    const updateColorData = productColorData.map((btnColor, i) => {
-      return i === btnColorIndex ? { ...btnColor, isColorClicked: true } : { ...btnColor, isColorClicked: false };
-    });
-    setProductColorData(updateColorData);
-  }
-
-
   return (
     <div className={productPreviewStatus ? 'fixed top-0 left-0 flex justify-center items-center w-full h-full bg-[#00000080] z-[999999] transition duration-[.3s] ease' : 'fixed transition duration-[.3s] ease top-[-3000px]'}>
       <div className={productPreviewStatus ? "relative flex p-8 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease  sm:flex-col sm:max-h-[800px] sm:w-[900px] sm:overflow-y-auto sm:pt-14 md:flex-col md:max-h-[800px] md:w-[900px] md:overflow-y-auto md:pt-14" : "opacity-0 relative flex p-8 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease"}>
@@ -127,18 +107,8 @@ export default function ProductPreview() {
         </div>
         <p className='font-Poppins text-[16px] max-w-[450px] text-[#18181b] py-3'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim exercitationem quaerat....</p>
         <div>
-          <ProductSizeComponent 
-          theme={theme}
-          isSizeClicked={isSizeClicked}
-          productSizeData={productSizeData}
-          />
-          
-          <ProductColorComponent 
-          theme={theme}
-          isColorClicked={isColorClicked}
-          productColorData={productColorData}
-          />
-
+          <ProductSizeComponent theme={theme} />
+          <ProductColorComponent theme={theme} />
           <ProductQuantityComponent 
             productQuantity={productQuantity}
             setProductQuantity={setProductQuantity}
@@ -172,4 +142,4 @@ export default function ProductPreview() {
       </div>
     </div>
   )
-}
+};

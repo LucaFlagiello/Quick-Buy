@@ -1,6 +1,3 @@
-import Categories from '../../Data/navSideCategories';
-import NavSubCategories from '../NavSubCategories/NavSubCategories';
-import SideCategoriesBrand from '../SideCategoriesBrand/SideCategoriesBrand';
 import brand1Img from '../../Assets/brand-1.png'
 import brand2Img from '../../Assets/brand-2.png'
 import brand3Img from '../../Assets/brand-3.png'
@@ -14,18 +11,13 @@ import { useSelector, useDispatch } from "react-redux";
 import { decrement } from '../../state/cartQuantitySlice';
 import { removeCartProduct } from '../../state/cartListSlice';
 import { useLocation } from 'react-router-dom';
+import Categories from '../../Data/navSideCategories';
+import NavSubCategories from '../NavSubCategories/NavSubCategories';
+import SideCategoriesBrand from '../SideCategoriesBrand/SideCategoriesBrand';
+import SearchCategory from '../SearchCategory/SearchCategory'
 
 const Nav = () => {
-  const searchCategoriesData = [
-    {category: 'Men', isSelected: false}, 
-    {category: 'Women',  isSelected: false}, 
-    {category: 'Babies', isSelected: false}
-  ];
-
   const [navSidecategories, setNavSideCategories] = useState(Categories);
-  const [dropSearchCategory, setdropSearchCategory] = useState(false);
-  const [searchCategories, setSearchCategories] = useState(searchCategoriesData);
-  const [searchCategory, setSearchCategory] = useState('Women');
   const [isMouseOnAccount, setIsMouseOnAccount] = useState(false);
   const [sideCategorySelected, setSideCategorySelected] = useState('');
   const location = useLocation();
@@ -39,9 +31,6 @@ const Nav = () => {
 
   const sideCategoriesBrands = [{img: brand1Img}, {img: brand2Img}, {img: brand3Img}, {img: brand4Img}, {img: brand5Img}, {img: brand6Img}, {img: brand7Img}, {img: brand1Img}, {img: brand2Img}, {img: brand3Img}, {img: brand4Img}, {img: brand5Img}, {img: brand6Img}, {img: brand7Img}];
 
-  const opendropSearchCategory = () => {
-    setdropSearchCategory(prevStatus => !prevStatus);
-  };
 
   const rightArrowCategoriesAnimation = (value) => {
     setSideCategorySelected(value);
@@ -51,16 +40,6 @@ const Nav = () => {
       } return { ...item, isOnCategory: false, showSideContainer: false };
     })
     setNavSideCategories(updateCategories);
-  };
-  
-  const changeSelectedCategory = (value) => {
-    setSearchCategory(value);
-    let updateSearchCategories = searchCategories.map(item => {
-      if(item.category === value) {
-        return { ...item, isSelected: true }
-      } return { ...item, isSelected: false }
-    })
-    setSearchCategories(updateSearchCategories);
   };
 
   const removeCartListProduct = (product) => {
@@ -110,19 +89,7 @@ const Nav = () => {
           </ul>
         </div>
         <div className='flex h-[44px] font-Poppins md:hidden sm:hidden'>
-          <div className='bg-white relative cursor-pointer pr-0 flex  items-center rounded-l-md justify-between min-w-[110px] text-[14px] px-5 z-10' onClick={() => opendropSearchCategory()}>
-            {searchCategory} 
-            
-            <svg  className={dropSearchCategory ? 'transition-all duration-[0.15s] ease-in-out rotate-180' : ' transition-all duration-[0.15s] ease-in-out rotate-[360deg]'} xmlns="http://www.w3.org/2000/svg" height="1.6em" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" d="m7 10l5 5l5-5"/></svg>
-            
-            <ul className={dropSearchCategory ? 'opacity-1 visible absolute top-[46px] left-0 rounded-[4px] text-[13px] bg-white w-full shadow-md duration-[.2s] ease transition-drop-in transform-[50%] scale-[1] translate-y-[0] z-10' : 'absolute w-full left-0 invisible transform-[50% 0] scale-[0.75] translate-y-[-21px] ease-out z-10'}>
-              {searchCategories.map(((item) => {
-                return (
-                  <li key={item.category} className={item.isSelected ? 'bg-gray-200 pl-5 py-1.5 rounded-t-[4px] transition duration-[.2s] ease w-full font-semibold' : 'hover:bg-slate-100 pl-5 py-1.5 rounded-t-[4px] transition duration-[.2s] ease w-full'} onClick={(e) => changeSelectedCategory(e.target.getAttribute('value'))} value={item.category}>{item.category}</li>
-                )
-              }))}            
-            </ul>
-          </div>
+          <SearchCategory categories={Categories} />
           <input className='border-l pl-5 w-[24rem] border-black text-[14px] outline-none placeholder:text-[14px] placeholder:text-gray-400 lg:w-[15rem]' type='text' placeholder='Search product...'/>
           <button className='bg-secondary-color rounded-l-none font-medium px-10 text-white font-Poppins rounded-r-[6px]'>Search</button>
         </div>

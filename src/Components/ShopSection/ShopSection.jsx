@@ -17,6 +17,7 @@ export default function ShopSection() {
   const [filteredTypesProducts, setFilteredTypesProducts] = useState([]);
   const [filteredBrandsProducts, setFilteredBrandsProducts] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [isProductsList, setIsProductsList] = useState(false);
   const theme = useSelector((state) => state.theme.value);
   const rangeValues = [min, max];
   const productsTypes = [ 
@@ -26,6 +27,7 @@ export default function ShopSection() {
     {category: 'Headphones', stock: 7,}, 
     {category: 'Tv', stock: 10,},
   ];
+  
   const productsBrands = [ 
     {brand:'Apple'}, 
     {brand:'Oppo'}, 
@@ -76,7 +78,7 @@ export default function ShopSection() {
   };
 
   return (
-    <section className="max-w-[1265px] m-auto px-4 lg:max-w-[1000px]">
+    <section className="max-w-[1265px] m-auto px-4 lg:max-w-[995px]">
       <div className="flex mt-6 gap-x-6">
         <div className={"w-[300px] max-h-[750px] p-4 bg-white shadow-shop-shadow  sm:hidden md:hidden"}>
           <h3 className="font-medium font-Roboto text-[1.3rem] mb-4">CATEGORIES</h3>
@@ -235,8 +237,8 @@ export default function ShopSection() {
             </div>
             </div>
             <div className="flex h-[32px] gap-x-2 lg:pr-4">
-              <button className={`flex bg-${theme} items-center px-[12px] rounded-[3px]`}><span className="icon-[mingcute--grid-fill] text-white"></span></button>
-              <button className={`flex items-center px-[7px] border border-[#c1c1c1;] rounded-[3px]`}><span className="icon-[la--list] w-[24px] h-[24px] text-[#717171]"></span>
+              <button className={isProductsList ? `flex bg-white items-center px-[12px] rounded-[3px] border border-[#c1c1c1]` : `flex bg-${theme} items-center px-[12px] rounded-[3px]`}onClick={() => setIsProductsList(false)}><span className={isProductsList ? `icon-[mingcute--grid-fill] text-[#717171] border` :"icon-[mingcute--grid-fill] text-white"}></span></button>
+              <button className={isProductsList ? `flex items-center px-[7px]  rounded-[3px] bg-${theme}` : `flex items-center px-[7px] border border-[#c1c1c1] rounded-[3px]`} onClick={() => setIsProductsList(true)}><span className={isProductsList ? "icon-[la--list] w-[24px] h-[24px] text-white" : "icon-[la--list] w-[24px] h-[24px] text-[#717171]"}></span>
               </button>
            </div>
           </div>
@@ -246,6 +248,7 @@ export default function ShopSection() {
             filterBrandsCategories={filteredTypesProducts}
             filteredBrandsProducts={filteredBrandsProducts}
             rangeValues={rangeValues}
+            isProductsList={isProductsList}
           />
         </div>
       </div>

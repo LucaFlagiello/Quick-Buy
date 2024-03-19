@@ -19,7 +19,6 @@ const Home = () => {
       <OfferBanner />
       <Recomended />
       <Download />
-      <ScrollTopBtn />
     </div>
   )
 }

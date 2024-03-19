@@ -7,6 +7,7 @@ import Header from './Components/Header/Header';
 import Nav from './Components/Nav/Nav';
 import Footer from './Components/Footer/Footer';
 import Copyright from './Components/Copyrigth/Copyright';
+import ScrollTopBtn from './Components/ScrollTopBtn/ScrollTopBtn';
 
 /*Tailwind can't process dinamically variables changes, first it needs to see those classes somewhere in source code*/
 
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
         <Footer />
         <Copyright />
         <SettingsBtn />
+        <ScrollTopBtn />
       </>
     ),
     children: [
@@ -36,7 +38,7 @@ const router = createBrowserRouter([
         element: <Home/>,
       },
       {
-        path: '/Shop',
+        path: '/Shop/:page',
         element: <Shop />,
       },
     ]

@@ -1,10 +1,7 @@
 import { useSelector } from "react-redux"
-import { useLocation } from "react-router-dom";
 
-export default function PageIndicator() {
+export default function PageIndicator({ page }) {
   const theme = useSelector((state) => state.theme.value);
-  const location = useLocation();
-  const page = location.pathname.slice(1);
   
   return (
     <div className="max-w-[1265px] m-auto px-4 pt-6 md:max-w-[690px] lg:max-w-[995px]">

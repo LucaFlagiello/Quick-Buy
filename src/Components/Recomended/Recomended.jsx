@@ -3,7 +3,7 @@ import Product from "../Product/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { showPreview } from "../../state/productPreviewSlice";
 
-export default function Recomended({ page, filterSortProducts, filterBrandsCategories, rangeValues, filteredBrandsProducts, isProductsList }) {
+export default function Recomended({ page, filterSortProducts, filterBrandsCategories, rangeValues, filteredBrandsProducts, isProductsList, pageProductsList }) {
   
   const theme = useSelector((state) => state.theme.value);
   const productPreviewStatus = useSelector((state) => state.productPreview);
@@ -12,15 +12,15 @@ export default function Recomended({ page, filterSortProducts, filterBrandsCateg
 
   //Filter products
   if(filterSortProducts === 'Price Low-High') {
-    recomendedProducts = productList
-    .filter(product => product.isRecomended === true)
+    recomendedProducts = [ ...pageProductsList ]
     .sort((a,b) => a.newPrice-b.newPrice);
   } else if(filterSortProducts === 'Price High-Low') {
-    recomendedProducts = productList
-    .filter(product => product.isRecomended === true)
+    recomendedProducts = [ ...pageProductsList ]
     .sort((a,b) => b.newPrice-a.newPrice);
   } else {
-    recomendedProducts = productList.filter(product => product.isRecomended === true);
+    recomendedProducts = page === 'shop' 
+      ? [ ...pageProductsList ] 
+      : productList.filter(product => product.isRecomended === true) ;
   };
   //Product Type filter
   if(page === 'shop' && filterBrandsCategories.length > 0){ 

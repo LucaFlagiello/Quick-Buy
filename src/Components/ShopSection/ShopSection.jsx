@@ -9,17 +9,32 @@ import SearchCategory from "../SearchCategory/SearchCategory";
 import Categories from "../../Data/navSideCategories";
 import Recomended from "../Recomended/Recomended";
 import ProductPreview from "../ProductPreview/ProductPreview";
+import { useParams, Link } from "react-router-dom";
+import productList from "../../Data/productList/productsList";
 
 export default function ShopSection() {
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(800);
+  const theme = useSelector((state) => state.theme.value);
+  //filters states
   const [filterSortProducts, setFilterSortProducts] = useState('');
   const [filteredTypesProducts, setFilteredTypesProducts] = useState([]);
   const [filteredBrandsProducts, setFilteredBrandsProducts] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isProductsList, setIsProductsList] = useState(false);
-  const theme = useSelector((state) => state.theme.value);
+  
+  //Pages States
+  const { page } = useParams();
+  const [currentPage, setCurrentPage] = useState(parseInt(page) || 1);
+  const productsPerPage = 6;
+  const startIndex = (currentPage - 1) * productsPerPage;
+  const endIndex = startIndex + (productsPerPage);
+  const pageProductsList = productList.slice(startIndex, endIndex);
+  const totalPages = Math.ceil(productList.length / productsPerPage);
+  
+  //Range price slide states
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(800);
   const rangeValues = [min, max];
+  
   const productsTypes = [ 
     {category: 'Laptop', stock: 15,}, 
     {category: 'Phone', stock: 32,}, 
@@ -78,7 +93,7 @@ export default function ShopSection() {
   };
 
   return (
-    <section className="max-w-[1265px] m-auto px-4 lg:max-w-[995px]">
+    <section className={isProductsList ? 'max-w-[1265px] pb-[3rem] m-auto px-4 lg:max-w-[995px]' : "max-w-[1265px] m-auto px-4 lg:max-w-[995px] lg:h-[850px] xl:h-[850px]"}>
       <div className="flex mt-6 gap-x-6">
         <div className={"w-[300px] max-h-[750px] p-4 bg-white shadow-shop-shadow  sm:hidden md:hidden"}>
           <h3 className="font-medium font-Roboto text-[1.3rem] mb-4">CATEGORIES</h3>
@@ -249,7 +264,17 @@ export default function ShopSection() {
             filteredBrandsProducts={filteredBrandsProducts}
             rangeValues={rangeValues}
             isProductsList={isProductsList}
+            pageProductsList={pageProductsList}
           />
+          <ul className="flex justify-center mb-[1rem] gap-x-2">
+            {Array.from({  length:totalPages  }).map((_, index) => {
+              return (
+                <Link key={nanoid()} onClick={() => setCurrentPage(index+1)} to={`/Shop/:${index+1}`}> 
+                  <li className={currentPage === index+1 ? `flex justify-center items-center border font-Poppins bg-${theme} text-white w-[30px] h-[30px] cursor-pointer` : `flex justify-center items-center border font-Poppins  w-[30px] h-[30px] cursor-pointer`}>{index+1}</li>
+                </Link>
+              )
+            })}
+          </ul>
         </div>
       </div>
       <ProductPreview />

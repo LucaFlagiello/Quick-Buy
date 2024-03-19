@@ -5,7 +5,7 @@ import ShopSection from "../../Components/ShopSection/ShopSection";
 export default function Shop() {
   return (
     <div>
-      <PageIndicator />
+      <PageIndicator page={'Shop'}/>
       <ShopSection />
     </div>
   )

@@ -93,7 +93,7 @@ export default function ShopSection() {
   };
 
   return (
-    <section className={isProductsList ? 'max-w-[1265px] pb-[3rem] m-auto px-4 lg:max-w-[995px]' : "max-w-[1265px] m-auto px-4 lg:max-w-[995px] lg:h-[850px] xl:h-[850px]"}>
+    <section className={isProductsList ? 'max-w-[1165px] pb-[3rem] m-auto px-4  lg:max-w-[965px]' : "max-w-[1165px] m-auto px-4 lg:max-w-[965px] lg:h-[850px] xl:h-[850px]"}>
       <div className="flex mt-6 gap-x-6">
         <div className={"w-[300px] max-h-[750px] p-4 bg-white shadow-shop-shadow  sm:hidden md:hidden"}>
           <h3 className="font-medium font-Roboto text-[1.3rem] mb-4">CATEGORIES</h3>
@@ -168,8 +168,8 @@ export default function ShopSection() {
               <button className={` bg-${theme} py-[7px] text-white w-[150px] rounded-[6px] font-Poppins font-medium border border-${theme} hover:bg-white hover:text-${theme} transition duration-500 ease lg:hidden xl:hidden`} onClick={() => setIsFilterOpen(prev => !prev)}>
                 FILTER
               </button>
-              <div className={isFilterOpen ? "w-[300px] max-h-[750px] p-4 bg-white shadow-shop-shadow top-[48px] z-10 sm:absolute md:absolute lg:hidden xl:hidden" : 'hidden invisible'}>
-          <div className="pb-2 mb-4 border-b">
+              <div className={isFilterOpen ? "w-[300px]  p-4 bg-white shadow-shop-shadow top-[48px] z-10 sm:absolute md:absolute lg:hidden xl:hidden" : 'hidden invisible'}>
+          <div className="pb-2 mb-4 border-b md:hidden">
             <h3 className="font-medium font-Roboto text-[1.3rem] mb-3">SORT BY</h3>  
             <SearchCategory 
               categories={Categories} 
@@ -251,7 +251,7 @@ export default function ShopSection() {
               />
             </div>
             </div>
-            <div className="flex h-[32px] gap-x-2 lg:pr-4">
+            <div className="flex h-[32px] gap-x-2 ">
               <button className={isProductsList ? `flex bg-white items-center px-[12px] rounded-[3px] border border-[#c1c1c1]` : `flex bg-${theme} items-center px-[12px] rounded-[3px]`}onClick={() => setIsProductsList(false)}><span className={isProductsList ? `icon-[mingcute--grid-fill] text-[#717171] border` :"icon-[mingcute--grid-fill] text-white"}></span></button>
               <button className={isProductsList ? `flex items-center px-[7px]  rounded-[3px] bg-${theme}` : `flex items-center px-[7px] border border-[#c1c1c1] rounded-[3px]`} onClick={() => setIsProductsList(true)}><span className={isProductsList ? "icon-[la--list] w-[24px] h-[24px] text-white" : "icon-[la--list] w-[24px] h-[24px] text-[#717171]"}></span>
               </button>
@@ -269,7 +269,7 @@ export default function ShopSection() {
           <ul className="flex justify-center mb-[1rem] gap-x-2">
             {Array.from({  length:totalPages  }).map((_, index) => {
               return (
-                <Link key={nanoid()} onClick={() => setCurrentPage(index+1)} to={`/Shop/:${index+1}`}> 
+                <Link key={nanoid()} onClick={() => setCurrentPage(index+1)} to={`/Shop/${index+1}`}> 
                   <li className={currentPage === index+1 ? `flex justify-center items-center border font-Poppins bg-${theme} text-white w-[30px] h-[30px] cursor-pointer` : `flex justify-center items-center border font-Poppins  w-[30px] h-[30px] cursor-pointer`}>{index+1}</li>
                 </Link>
               )

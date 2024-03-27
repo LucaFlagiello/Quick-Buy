@@ -23,9 +23,11 @@ export default function SearchCategory({ page, setFilterSortProducts }) {
 
   const changeSelectedCategory = (value) => {
     setShownFilterProducts(value) 
-    setSearchCategory(value);
-    setFilterSortProducts(value);
-
+    setSearchCategory(value) 
+    if(page === 'shop') {
+      setFilterSortProducts(value);
+    }; 
+    
     let updateData = data.map(item => {
       if(item.category === value) {
         return { ...item, isSelected: true }

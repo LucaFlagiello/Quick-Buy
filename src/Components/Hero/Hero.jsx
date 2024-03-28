@@ -39,13 +39,13 @@ export default function Hero() {
   }, [currSlide, dataSlider.length]);
   
   return (
-    <section className={'px-[1rem] md:w-full sm:px-0 md:p-0'}>
-      <div className="pl-[14.2rem] md:w-full sm:pl-0 md:pl-0 lg:pl-[14.4rem] sm:w-full">
-        <div className="relative flex justify-center items-center max-w-[1015px] lg:max-w-[745px] m-auto h-[407px] overflow-hidden md:max-w-full md:m-0 sm:w-full">
+    <section className={'px-[1rem] sm:px-0 md:w-full md:p-0'}>
+      <div className="pl-[14.2rem] sm:pl-0 sm:w-full md:w-full md:pl-0 lg:pl-[14.2rem]">
+        <div className="relative flex justify-center items-center lg:max-w-[705px] m-auto h-[407px] overflow-hidden md:w-full md:m-0 sm:w-full xl:max-w-[918px]">
           {dataSlider.map((slide,index) => {
             const indexSlide = index+1;
             return (
-              <div key={index} className={currSlide === indexSlide ? `absolute transform translate-x-0 transition duration-[1s] ease w-[1015px] h-[100%] ${slide.bgColor} ` : currSlide < indexSlide ? `absolute  transition duration-[1s] ease transform translate-x-[1015px]  h-[100%] w-[100%] ${slide.bgColor} lg:translate-x-[880px] md:translate-x-[1005px]` : `absolute top-0  transition duration-[1s] ease transform translate-x-[-1015px] lg:translate-x-[-880px] md:translate-x-[-1005px] h-[100%] w-[100%] ${slide.bgColor}`}>
+              <div key={index} className={currSlide === indexSlide ? `absolute transform translate-x-0 transition duration-[1s] ease w-[918px] h-[100%] md:w-full ${slide.bgColor}` : currSlide < indexSlide ? `absolute  transition duration-[1s] ease transform translate-x-[918px] h-[100%] w-[100%] ${slide.bgColor} lg:translate-x-[810px] md:translate-x-[991px]` : `absolute top-0  transition duration-[1s] ease transform translate-x-[-918px] lg:translate-x-[-810px] md:translate-x-[-991px] h-[100%] w-[100%] ${slide.bgColor}`}>
                 <div className="flex justify-center items-center gap-x-[6rem] h-[100%] md:gap-[9rem] sm:gap-x-[5rem]">  
                   <div className='sm:text-center'>
                     <p className="font-Poppins">Get up to 50&#37; off Today only</p>

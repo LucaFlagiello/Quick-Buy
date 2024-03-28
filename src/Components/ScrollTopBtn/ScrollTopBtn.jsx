@@ -21,7 +21,7 @@ export default function ScrollTopBtn() {
 
   return (
     <>
-      <div onClick={scrollToTop} className={isVisible ? `fixed flex justify-center items-center bottom-[20px] right-[20px] w-[40px] h-[40px] bg-${theme} text-white  rounded-full cursor-pointer` : 'hidden '}>
+      <div onClick={scrollToTop} className={isVisible ? `fixed flex justify-center items-center bottom-[20px] right-[10px] w-[40px] h-[40px] bg-${theme} text-white  rounded-full cursor-pointer sm:bottom-[70px] md:bottom-[70px] md:z-[10] z-1` : 'hidden '}>
       <span className="icon-[la--arrow-up] text-[18px] font-extrabold"></span>      
       </div>
     </>

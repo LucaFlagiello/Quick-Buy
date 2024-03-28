@@ -1,31 +1,21 @@
-import { nanoid } from '@reduxjs/toolkit';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useSelector, useDispatch } from "react-redux";
-import { decrement } from '../../state/cartQuantitySlice';
-import { removeCartProduct } from '../../state/cartListSlice';
+import { useSelector } from "react-redux";
 import Categories from '../../Data/navSideCategories';
 import SearchCategory from '../SearchCategory/SearchCategory';
 import NavAsideCategories from '../NavAsideCategories/NavAsideCategories';
+import CartProductPreview from '../CartProductsPreview/CartProductPreview';
 
 const Nav = () => {
   const [isMouseOnAccount, setIsMouseOnAccount] = useState(false);
   const theme = useSelector((state) => state.theme.value);
-  const cartQuantity = useSelector((state) => state.cartQuantity);
-  const cartProductsList = useSelector((state) => state.cartProductsList);
   const wishListQuantity = useSelector((state) => state.wishListQuantity);
-  const dispatch = useDispatch();
-  let carSubTotal = 0; 
-
-  const removeCartListProduct = (product) => {
-    dispatch(decrement(product));
-    dispatch(removeCartProduct(product));
-  };
+  let carSubTotal = 0;
 
   return (
     <nav className={`bg-${theme} box-border h-[65px] flex justify-center w-full`}>
-      <div className='box-border h-[65px] flex justify-center items-center sm:justify-between sm:gap-x-0 sm:px-2 w-full md:justify-between md:px-7 gap-x-[4.7rem] lg:gap-x-[2rem]'>
-        <Link to={"/"}>
+      <div className='box-border h-[65px] flex items-center justify-center gap-x-[4rem] sm:justify-between sm:gap-x-0 sm:w-full sm:px-4 md:justify-between md:w-[770px] md:px-7 lg:gap-x-[2rem]'>
+        <Link to={"/"} className='xl:hidden lg:hidden'>
           <span className='text-white cursor-pointer font-Roboto font-bold text-[28px] xl:hidden lg:hidden'>QUICK<span className='text-black'>BUY</span></span>
         </Link>
         <div className="bg-secondary-color relative flex items-center gap-x-2 h-10 px-10 py-6 rounded-[5px] group sm:hidden md:hidden">
@@ -41,7 +31,7 @@ const Nav = () => {
           <button className='bg-secondary-color rounded-l-none font-medium px-10 text-white font-Poppins rounded-r-[6px]'>Search</button>
         </div>
         
-        <div className={`hover:bg-${theme}`}></div>
+        <div className={`hidden hover:bg-${theme}`}></div>
         <div className='flex mt-[6px] items-center gap-x-5'>
           <div className='grid gap-y-[2px] text-center cursor-pointer'>
             <div className='relative grid'>
@@ -50,47 +40,10 @@ const Nav = () => {
             </div>
             <span className='text-white text-[11px] font-Poppins'>Wish List</span>
           </div>
-          <div className='relative grid gap-y-[2px] text-center cursor-pointer group sm:hidden md:hidden'>
-            <div className='relative grid'>
-              <span className="icon-[cil--cart] text-white items-center h-[28px] w-[28px]"></span>
-              <span className='absolute cursor-pointer top-[-5px] right-[-8px] bg-black text-white text-[9px] font-medium rounded-full flex justify-center items-center w-[15px] h-[15px]'>{cartQuantity}</span>
-            </div>
-            <div className='absolute top-[53px] right-[-5px] w-[310px] bg-white z-10 pb-4 duration-600 ease opacity-0 group-hover:opacity-100 transform duration-500 ease translate-y-4 shadow-default  invisible group-hover:translate-y-0 group-hover:visible'>
-              <div className='mt-6 ml-6 font-medium text-start font-Roboto'>{cartQuantity} Items</div>
-              
-              {cartProductsList.length > 0 ? 
-                <div className='flex flex-col py-3 mx-6 mt-1 border-y gap-y-6 border-[#d8d8d8]'>
-                  {cartProductsList.map((product) => {
-                    carSubTotal += parseFloat(product.newPrice * product.quantity);
-                    carSubTotal= parseFloat(carSubTotal.toFixed(2));
-                    const shortModelName = product.model.length > 15 ? product.model.slice(0, 15) + '...' : product.model;
-                    
-                    return (
-                      <div key={nanoid()} className='relative flex gap-x-4'>
-                        <img className='w-[60px] object-fit' src={product.img} alt="product" />
-                        <div>
-                          <h4 className={`font-medium font-Roboto max-w-[170px] text-start hover:text-${theme} transition duration-300 ease`}>{shortModelName}</h4>
-                          <div className='flex items-center gap-x-3 font-Poppins text-[14px]'>
-                            <p>x{product.quantity}</p>
-                            <p>&#36;{product.newPrice}</p>
-                          </div>
-                        </div>
-                        <span onClick={() => removeCartListProduct(product)} className="absolute top-[5px] right-0 icon-[la--times] hover:text-red-500"></span>
-                      </div>
-                    )
-                  })}
-                </div> : null}
-                <div className='flex justify-between mx-6 mt-4'>
-                  <h4 className='font-medium font-Roboto'>SUB TOTAL :</h4>
-                  <span className='font-medium font-Roboto'>&#36;{carSubTotal}</span>
-                </div>
-                <div className='flex justify-center mt-4 gap-x-4'>
-                  <button className={`bg-${theme} text-white font-Poppins py-[9px] px-[22px] border border-${theme} rounded-[4px] font-medium text-[14px] transition duration-500 ease hover:bg-transparent hover:text-${theme}`}>VIEW CART</button>
-                  <button className={`text-${theme} font-Poppins py-[9px] px-[22px] border border-${theme} rounded-[4px] font-medium text-[14px] transition duration-500 ease hover:bg-${theme}  hover:text-white`}>CHECKOUT</button>
-                </div>
-            </div>
-            <span className='text-white text-[11px] font-Poppins'>cart</span>
-          </div>
+          <CartProductPreview 
+            theme={theme}
+            carSubTotal={carSubTotal}
+          />
           <div className='relative grid text-center cursor-pointer' onMouseEnter={() => setIsMouseOnAccount(true)} onMouseLeave={() => setIsMouseOnAccount(false)}>
             <div className='grid justify-center'>
             <span className="icon-[clarity--user-line]  text-white w-[30px] h-[30px] sm:w-[25px]"></span>

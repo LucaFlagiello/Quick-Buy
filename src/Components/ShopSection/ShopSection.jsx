@@ -14,26 +14,70 @@ import productList from "../../Data/productList/productsList";
 
 export default function ShopSection() {
   const theme = useSelector((state) => state.theme.value);
+
   //filters states
   const [filterSortProducts, setFilterSortProducts] = useState('');
   const [filteredTypesProducts, setFilteredTypesProducts] = useState([]);
   const [filteredBrandsProducts, setFilteredBrandsProducts] = useState([]);
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isProductsList, setIsProductsList] = useState(false);
-  
+
   //Pages States
   const { page } = useParams();
   const [currentPage, setCurrentPage] = useState(parseInt(page) || 1);
   const productsPerPage = 6;
-  const startIndex = (currentPage - 1) * productsPerPage;
-  const endIndex = startIndex + (productsPerPage);
-  const pageProductsList = productList.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(productList.length / productsPerPage);
-  
+  const [pageProductsList, setPageProductsList] = useState([]);
+    
   //Range price slide states
   const [min, setMin] = useState(0);
   const [max, setMax] = useState(800);
   const rangeValues = [min, max];
+
+  // Function to filter products based on filters
+  const filterProducts = () => {
+    let filteredList = productList;
+    
+    // Sort Products Filters
+    if(filterSortProducts === 'Price Low-High') {
+      filteredList = [ ...filteredList ]
+      .sort((a,b) => a.newPrice-b.newPrice);
+    } else if(filterSortProducts === 'Price High-Low') {
+      filteredList = [ ...filteredList ]
+      .sort((a,b) => b.newPrice-a.newPrice);
+    } 
+
+    // Apply type filters
+    if (filteredTypesProducts.length > 0) {
+      filteredList = filteredList.filter(product =>
+        filteredTypesProducts.includes(product.type.toLowerCase())
+      );
+    };
+
+    // Apply brand filters
+    if (filteredBrandsProducts.length > 0) {
+      filteredList = filteredList.filter(product =>
+        filteredBrandsProducts.includes(product.brand.toLowerCase())
+      );
+    };
+
+    // Apply price range filter
+    filteredList = filteredList.filter(product =>
+      product.newPrice >= min && product.newPrice <= max
+    );
+    
+    return filteredList;
+  };
+
+  // Function to get paginated list of products
+  const getPageProductsList = () => {
+    const filteredList = filterProducts();
+    const start = (currentPage - 1) * productsPerPage;
+    const end = start + productsPerPage;
+    return filteredList.slice(start, end);
+  }; 
+
+  // Total number of pages after filtering
+  const totalFilteredPages = Math.ceil(filterProducts().length / productsPerPage);
   
   const productsTypes = [ 
     {category: 'Laptop', stock: 15,}, 
@@ -73,7 +117,7 @@ export default function ShopSection() {
     default:
       trackColor = '#FD3D57';  
   };
-
+  
   const filterProductType = (category) => {
     const formattedCategory = category.charAt(0).toLowerCase() + category.slice(1);
     if(!filteredTypesProducts.includes(formattedCategory)) {
@@ -258,23 +302,29 @@ export default function ShopSection() {
            </div>
           </div>
           <Recomended 
-            page={'shop'} 
+            page={'shop'}
             filterSortProducts={filterSortProducts}
-            filterBrandsCategories={filteredTypesProducts}
+            filteredTypesProducts={filteredTypesProducts}
             filteredBrandsProducts={filteredBrandsProducts}
             rangeValues={rangeValues}
             isProductsList={isProductsList}
-            pageProductsList={pageProductsList}
+            pageProductsList={getPageProductsList()} // Use filtered and paginated list
+            startIndex={(currentPage - 1) * productsPerPage}
+            endIndex={(currentPage - 1) * productsPerPage + getPageProductsList().length}
           />
-          <ul className="flex justify-center mb-[1rem] gap-x-2">
-            {Array.from({  length:totalPages  }).map((_, index) => {
-              return (
-                <Link key={nanoid()} onClick={() => setCurrentPage(index+1)} to={`/Shop/${index+1}`}> 
-                  <li className={currentPage === index+1 ? `flex justify-center items-center border font-Poppins bg-${theme} text-white w-[30px] h-[30px] cursor-pointer` : `flex justify-center items-center border font-Poppins  w-[30px] h-[30px] cursor-pointer`}>{index+1}</li>
-                </Link>
-              )
-            })}
-          </ul>
+          {
+           totalFilteredPages !== 1 ?  
+            <ul className="flex justify-center mb-[1rem] gap-x-2">
+              {Array.from({  length:totalFilteredPages  }).map((_, index) => {
+                return (
+                  <Link key={nanoid()} onClick={() => setCurrentPage(index+1)} to={`/Shop/${index+1}`}> 
+                    <li className={currentPage === index+1 ? `flex justify-center items-center border font-Poppins bg-${theme} text-white w-[30px] h-[30px] cursor-pointer` : `flex justify-center items-center border font-Poppins  w-[30px] h-[30px] cursor-pointer`}>{index+1}</li>
+                  </Link>
+                )
+              })}
+            </ul>
+            : null
+          }
         </div>
       </div>
       <ProductPreview />

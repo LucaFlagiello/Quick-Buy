@@ -8,9 +8,9 @@ import Nav from './Components/Nav/Nav';
 import Footer from './Components/Footer/Footer';
 import Copyright from './Components/Copyrigth/Copyright';
 import ScrollTopBtn from './Components/ScrollTopBtn/ScrollTopBtn';
+import MobileNavBar from './Components/MobileNavBar/MobileNavBar';
 
 /*Tailwind can't process dinamically variables changes, first it needs to see those classes somewhere in source code*/
-
 const colorVariants = {
   primaryColor: 'hover:bg-primary-color bg-primary-color hover:text-primary-color text-primary-color border-primary-color hover:border-primary-color group-hover:text-primary-color accent-primary-color',
   primaryColor2: 'hover:bg-primary-color2 bg-primary-color2 hover:text-primary-color2 text-primary-color2 border-primary-color2 hover:border-primary-color2 group-hover:text-primary-color2 accent-primary-color2',
@@ -30,6 +30,7 @@ const router = createBrowserRouter([
         <Copyright />
         <SettingsBtn />
         <ScrollTopBtn />
+        <MobileNavBar />
       </>
     ),
     children: [

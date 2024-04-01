@@ -2,7 +2,7 @@ import Product from "../Product/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { showPreview } from "../../state/productPreviewSlice";
 
-export default function Recomended({ page, filterSortProducts, filteredTypesProducts, rangeValues, filteredBrandsProducts, isProductsList, pageProductsList, startIndex, endIndex }) {
+export default function Recomended({ page, isProductsList, pageProductsList }) {
   const theme = useSelector((state) => state.theme.value);
   const productPreviewStatus = useSelector((state) => state.productPreview);
   const dispatch = useDispatch();

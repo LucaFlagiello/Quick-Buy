@@ -26,7 +26,6 @@ export default function ShopSection() {
   const { page } = useParams();
   const [currentPage, setCurrentPage] = useState(parseInt(page) || 1);
   const productsPerPage = 6;
-  const [pageProductsList, setPageProductsList] = useState([]);
     
   //Range price slide states
   const [min, setMin] = useState(0);
@@ -36,7 +35,7 @@ export default function ShopSection() {
   // Function to filter products based on filters
   const filterProducts = () => {
     let filteredList = productList;
-    
+
     // Sort Products Filters
     if(filterSortProducts === 'Price Low-High') {
       filteredList = [ ...filteredList ]
@@ -44,7 +43,7 @@ export default function ShopSection() {
     } else if(filterSortProducts === 'Price High-Low') {
       filteredList = [ ...filteredList ]
       .sort((a,b) => b.newPrice-a.newPrice);
-    } 
+    }; 
 
     // Apply type filters
     if (filteredTypesProducts.length > 0) {
@@ -64,7 +63,7 @@ export default function ShopSection() {
     filteredList = filteredList.filter(product =>
       product.newPrice >= min && product.newPrice <= max
     );
-    
+
     return filteredList;
   };
 
@@ -308,9 +307,7 @@ export default function ShopSection() {
             filteredBrandsProducts={filteredBrandsProducts}
             rangeValues={rangeValues}
             isProductsList={isProductsList}
-            pageProductsList={getPageProductsList()} // Use filtered and paginated list
-            startIndex={(currentPage - 1) * productsPerPage}
-            endIndex={(currentPage - 1) * productsPerPage + getPageProductsList().length}
+            pageProductsList={getPageProductsList()} 
           />
           {
            totalFilteredPages !== 1 ?  

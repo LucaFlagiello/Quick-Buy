@@ -1,11 +1,17 @@
 import Product from "../Product/Product";
 import { useDispatch, useSelector } from "react-redux";
 import { showPreview } from "../../state/productPreviewSlice";
+import productList from "../../Data/productList/productsList";
 
-export default function Recomended({ page, isProductsList, pageProductsList }) {
+export default function Recomended({ page, isProductsList, pageProductsList, start, end }) {
   const theme = useSelector((state) => state.theme.value);
   const productPreviewStatus = useSelector((state) => state.productPreview);
   const dispatch = useDispatch();
+
+  //handle render productsList error
+  if(pageProductsList === undefined) {
+    pageProductsList = productList.filter(prod => prod.isRecomended).slice(start, end);  
+  };
 
   return (
     <section className={page === 'shop' ? 'max-w-[1150px] pt-10 pb-12 m-auto md:max-w-[740px] lg:max-w-[965px]' : "max-w-[1150px] pt-10 pb-12 m-auto md:max-w-[740px] lg:max-w-[965px] px-4"}>

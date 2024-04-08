@@ -109,17 +109,14 @@ export default function ProductPreview() {
         <div>
           <ProductSizeComponent theme={theme} />
           <ProductColorComponent theme={theme} />
-          <ProductQuantityComponent 
-            productQuantity={productQuantity}
-            setProductQuantity={setProductQuantity}
-          />
+          <ProductQuantityComponent />
           
           <div className='flex border-b-[1px] gap-x-3 pb-5 2xs:flex-col 2xs:max-w-[175px] 2xs:gap-y-4 xs:flex-col xs:max-w-[175px] xs:gap-y-4'>
-            <button onClick={() => dispatch(incrementCartQuantityByAmount(productQuantity))} className={`flex items-center gap-x-3 bg-${theme} text-white border border-${theme} text-Poppins font-medium py-[10px] px-6 rounded-[4px] text-[15px] hover:bg-transparent hover:text-${theme} transition duration-[.5s] ease group`}>
+            <button className={`flex items-center gap-x-3 bg-${theme} text-white border border-${theme} text-Poppins font-medium py-[10px] px-6 rounded-[4px] text-[15px] hover:bg-transparent hover:text-${theme} transition duration-[.5s] ease group`}>
               <span className={`icon-[cil--cart]  text-white items-center h-[16px] w-[16px] transition duration-[.5s] ease group-hover:text-${theme} transition duration-[.5s] ease`}></span> ADD TO CART
             </button>
             
-            <button onClick={() => dispatch(incrementWishListQuantity())} className={`flex items-center gap-x-3 bg-white text-${theme} border border-${theme} text-Poppins font-medium py-[10px] px-6 rounded-[4px] text-[15px] hover:bg-${theme} hover:text-white transition duration-[.5s] ease group`}>
+            <button className={`flex items-center gap-x-3 bg-white text-${theme} border border-${theme} text-Poppins font-medium py-[10px] px-6 rounded-[4px] text-[15px] hover:bg-${theme} hover:text-white transition duration-[.5s] ease group`}>
               <span className={`icon-[teenyicons--heart-outline] text-${theme} w-[16px] h-[16px] group-hover:text-white transition duration-[.5s] ease`}></span>WISHLIST
             </button>
           </div>

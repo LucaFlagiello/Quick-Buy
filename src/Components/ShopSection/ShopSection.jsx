@@ -96,7 +96,7 @@ export default function ShopSection() {
   ];
  
   const onChangeEventSlider = (value) => {
-    setMin(value[0]);
+    setMin(value[0]); 
     setMax(value[1]);
   };
   

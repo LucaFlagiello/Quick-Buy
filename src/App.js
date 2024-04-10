@@ -9,6 +9,7 @@ import Footer from './Components/Footer/Footer';
 import Copyright from './Components/Copyrigth/Copyright';
 import ScrollTopBtn from './Components/ScrollTopBtn/ScrollTopBtn';
 import MobileNavBar from './Components/MobileNavBar/MobileNavBar';
+import ShoppingCart from './Pages/ShoppingCart/ShoppingCart';
 
 /*Tailwind can't process dinamically variables changes, first it needs to see those classes somewhere in source code*/
 const colorVariants = {
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: '/Shop/:page',
         element: <Shop />,
+      },
+      {
+        path: '/Shopping-cart',
+        element: <ShoppingCart />,
       },
     ]
   },

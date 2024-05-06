@@ -72,7 +72,7 @@ export default function Footer() {
             </div>
             <div className="w-[32px] h-[32px] bg-[#d53982] rounded-full flex items-center justify-center cursor-pointer"> 
               <span className="icon-[la--instagram] text-white"></span>
-            </div>
+            </div>            
           </li>
         </ul>
       </section>

@@ -17,7 +17,7 @@ const cartQuantitySlice = createSlice({
     decrement: ((state, action) => {
       return state -= action.payload.quantity;
     })
-  }
+  },
 });
 
 export const { incrementCartQuantity, decrement, incrementCartQuantityByAmount } = cartQuantitySlice.actions;

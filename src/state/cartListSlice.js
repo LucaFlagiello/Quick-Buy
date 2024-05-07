@@ -7,21 +7,31 @@ const cartProductsListSlice = createSlice({
   initialState, 
   reducers: {
     addCartProduct: (state, action) => {
-      const product = state.find((item) => item.model === action.payload.model);
-      if (product) {
-        const updateList = state.filter((item) => item.model !== action.payload.model);
-        return [ ...updateList, { ...product, quantity: product.quantity + 1 }]
+        const index = state.findIndex((item) => item.model === action.payload.model);
+      if (index !== -1) {
+        state[index].quantity += 1;
       } else {
-        return [...state, { ...action.payload, quantity: 1 }];
+        state = [...state, { ...action.payload, quantity: 1 }];
+      };
+      return state;
+    },
+
+    decrementCartProduct: (state, action) => {
+      const index = state.findIndex((item) => item.model === action.payload.model);
+      if (state[index].quantity === 1) {
+        state.splice(index, 1);
+      } else if(index !== -1) {
+        state[index].quantity -= 1;
       }
     },
 
-    removeCartProduct: (state, action) => {
-      return state.filter((item) => item.model !== action.payload.model);
-    },
-  }
-})
+    removeCartProduct: ((state, action) => {
+      const index = state.findIndex((item) => item.model === action.payload.model);
+      state.splice(index, 1);
+    })
+  },
+});
 
-export const { addCartProduct, removeCartProduct } = cartProductsListSlice.actions;
+export const { addCartProduct, decrementCartProduct, removeCartProduct } = cartProductsListSlice.actions;
 
 export default cartProductsListSlice.reducer;

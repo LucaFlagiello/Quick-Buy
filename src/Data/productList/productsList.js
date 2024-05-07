@@ -27,6 +27,7 @@ const productList = [
     isNewArrival: false,
     isRecomended: true,
     quantity: 1,
+    stock: 5
   },
   {
     type: 'laptop',
@@ -41,6 +42,7 @@ const productList = [
     isNewArrival: true,
     isRecomended: false,
     quantity: 1,
+    stock: 2
   },
   {
     type: 'laptop',
@@ -55,6 +57,7 @@ const productList = [
     isNewArrival: false,
     isRecomended: true,
     quantity: 1,
+    stock: 3
   },
   {
     type: 'phone',
@@ -69,6 +72,7 @@ const productList = [
     isNewArrival: false,
     isRecomended: true,
     quantity: 1,
+    stock: 7
   },
   {
     type: 'phone',
@@ -83,6 +87,7 @@ const productList = [
     isNewArrival: true,
     isRecomended: false,
     quantity: 1,
+    stock: 10
   },
   {
     type: 'phone',
@@ -97,6 +102,7 @@ const productList = [
     isNewArrival: false,
     isRecomended: true,
     quantity: 1,
+    stock: 22
   },
   {
     type: 'headphones',
@@ -111,6 +117,7 @@ const productList = [
     isNewArrival: false,
     isRecomended: true,
     quantity: 1,
+    stock: 13
   },
   {
     type: 'headphones',
@@ -125,6 +132,7 @@ const productList = [
     isNewArrival: true,
     isRecomended: true,
     quantity: 1,
+    stock: 4
   },
   {
     type: 'headphones',
@@ -139,6 +147,7 @@ const productList = [
     isNewArrival: false,
     isRecomended: true,
     quantity: 1,
+    stock: 34
   },
   {
     type: 'watch',
@@ -153,6 +162,7 @@ const productList = [
     isNewArrival: false,
     isRecomended: false,
     quantity: 1,
+    stock: 26
   },
   {
     type: 'watch',
@@ -167,6 +177,7 @@ const productList = [
     isNewArrival: false,
     isRecomended: false,
     quantity: 1,
+    stock: 7
   },
   {
     type: 'watch',
@@ -181,6 +192,7 @@ const productList = [
     isNewArrival: false,
     isRecomended: false,
     quantity: 1,
+    stock: 11
   },   
   {
     type: 'tv',
@@ -194,6 +206,7 @@ const productList = [
     isNewArrival: true,
     isRecomended: false,
     quantity: 1,
+    stock: 19
   },
   {
     type: 'mouse pad',
@@ -207,6 +220,7 @@ const productList = [
     isNewArrival: false,
     isRecomended: true,
     quantity: 1,
+    stock: 20
   },
 ]
 

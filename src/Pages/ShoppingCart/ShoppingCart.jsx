@@ -1,6 +1,6 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductQuantityComponent from "../../Components/ProductQuantityComponent/ProductQuantityComponent";
 import { removeCartProduct } from '../../state/cartListSlice';
 import { Link } from "react-router-dom";
@@ -10,13 +10,26 @@ export default function ShoppingCart() {
   const cartList = useSelector(state => state.cartProductsList);
   const theme = useSelector(state => state.theme.value);  
   const dispatch = useDispatch();
-  const [totalPrice, setTotalPrice] = useState(1);
-   
-  const calcolateTotalPrice = (product) => {
-    setTotalPrice((Math.round((product.newPrice * product.quantity) * 100) / 100).toFixed(2));
+  const [totalProductsPrice, setTotalProductsPrice] = useState(1);
+  
+  useEffect(() => {
+    let totalPrice = 0;
+    const pricesList = cartList.map(product => product.newPrice * product.quantity);
+    
+    if(cartList.length === 1) {
+      totalPrice = pricesList[0];
+    } else if(cartList.length > 1) {
+      totalPrice = pricesList.reduce((prev, curr) => Number(prev) + Number(curr)); 
+    };
+    
+    setTotalProductsPrice(totalPrice.toFixed(2));
+    
+  },[ cartList ]);
+  
+  const calcolateTotalPrice = () => {
+    setTotalProductsPrice(totalProductsPrice);
   };
 
-  console.log(totalPrice)
   return (
     <section className="flex justify-center my-6 min-h-[417px]">
       {cartList.length === 0 
@@ -89,7 +102,7 @@ export default function ShoppingCart() {
                 <div className="mb-2 border-b font-Poppins">
                   <div className="flex justify-between mb-2">
                     <p className="font-medium">Subtotal</p>
-                    <p className="font-medium">&#36;{totalPrice}</p>
+                    <p className="font-medium">&#36;{totalProductsPrice}</p>
                   </div>
                   <div className="flex justify-between mb-2">
                     <p>Delivery</p>
@@ -102,10 +115,10 @@ export default function ShoppingCart() {
                 </div>
                 <div className="flex justify-between mt-4 font-bold">
                   <p>TOTAL</p>
-                  <p>&#36;{totalPrice}</p>
+                  <p>&#36;{totalProductsPrice}</p>
                 </div>
               </div>
-              <form className="mt-4" action="">
+              <form className="mt-4" onClick={(e) => e.preventDefault()}>
                 <div className="flex">
                   <input className="pl-4 border border-r-0 rounded rounded-r-none outline-none max-w-[150px]" type="text" placeholder="Enter a coupon" />
                   <button className={`bg-${theme} text-white font-Poppins p-[10px] px-5 text-[12px] rounded rounded-l-none font-medium border hover:border-${theme} hover:text-${theme} hover:bg-white transition ease duration-300`}>APPLY</button>

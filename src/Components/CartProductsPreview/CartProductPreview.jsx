@@ -1,6 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { removeCartProduct } from '../../state/cartListSlice';
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 
 export default function CartProductPreview({ theme, mobileStyle, isCartOpen }) {
   const dispatch = useDispatch();
@@ -13,10 +14,12 @@ export default function CartProductPreview({ theme, mobileStyle, isCartOpen }) {
   
   return (
     <div className={mobileStyle ? 'relative grid gap-y-[2px] text-center cursor-pointer mt-1' : 'relative grid gap-y-[2px] text-center cursor-pointer group sm:hidden md:hidden'}>
-      <div className='relative grid'>
-        <span className={mobileStyle ? "icon-[cil--cart] items-center h-[22px] w-[22px]" : "icon-[cil--cart] text-white items-center h-[28px] w-[28px]"}></span>
-        <span className={mobileStyle ? `absolute cursor-pointer top-[-5px] right-[-8px] bg-${theme} text-white text-[9px] font-medium rounded-full flex justify-center items-center w-[15px] h-[15px]` : `absolute cursor-pointer top-[-5px] right-[-8px] bg-black text-white text-[9px] font-medium rounded-full flex justify-center items-center w-[15px] h-[15px]`}>{cartProductsList.length}</span>
-      </div>
+      <Link to={'/Shopping-cart'}>
+        <div className='relative grid'>
+          <span className={mobileStyle ? "icon-[cil--cart] items-center h-[22px] w-[22px]" : "icon-[cil--cart] text-white items-center h-[28px] w-[28px]"}></span>
+          <span className={mobileStyle ? `absolute cursor-pointer top-[-5px] right-[-8px] bg-${theme} text-white text-[9px] font-medium rounded-full flex justify-center items-center w-[15px] h-[15px]` : `absolute cursor-pointer top-[-5px] right-[-8px] bg-black text-white text-[9px] font-medium rounded-full flex justify-center items-center w-[15px] h-[15px]`}>{cartProductsList.length}</span>
+        </div>
+      </Link>
     <div className={mobileStyle ? isCartOpen ? 'fixed top-0 bottom-0 left-0 w-[310px] bg-white z-10 pb-4 duration-600 ease transform duration-500 ease translate-x-0' : 'fixed top-0 bottom-0 left-0 w-[310px] bg-white z-10 pb-4 duration-600 ease transform duration-500 ease translate-x-[-400px]' : 'absolute top-[53px] right-[-5px] w-[310px] bg-white z-10 pb-4 duration-600 ease opacity-0 transform duration-500 ease translate-y-4 shadow-default invisible group-hover:translate-y-0 group-hover:visible group-hover:opacity-100'}>
       <div className={mobileStyle ? `flex items-center justify-center text-white font-Roboto font-medium h-[50px] text-[1.3rem] bg-${theme}` : `hidden`}>
         <h2>Cart</h2>
@@ -48,7 +51,9 @@ export default function CartProductPreview({ theme, mobileStyle, isCartOpen }) {
           <span className='font-medium font-Roboto'>&#36;{carSubTotal}</span>
         </div>
         <div className='flex justify-center mt-4 gap-x-4'>
+        <Link to={'/Shopping-cart'}>
           <button className={`bg-${theme} text-white font-Poppins py-[9px] px-[22px] border border-${theme} rounded-[4px] font-medium text-[14px] transition duration-500 ease hover:bg-transparent hover:text-${theme}`}>VIEW CART</button>
+        </Link>
           <button className={`text-${theme} font-Poppins py-[9px] px-[22px] border border-${theme} rounded-[4px] font-medium text-[14px] transition duration-500 ease hover:bg-${theme} hover:text-white`}>CHECKOUT</button>
         </div>
     </div>

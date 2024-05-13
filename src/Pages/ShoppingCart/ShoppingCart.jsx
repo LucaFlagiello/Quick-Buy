@@ -31,7 +31,7 @@ export default function ShoppingCart() {
   };
 
   return (
-    <section className="flex justify-center my-6 min-h-[417px]">
+    <section className="flex justify-center my-6 min-h-[417px] px-3">
       {cartList.length === 0 
         ? <div className="flex items-center">
             <div className='pl-6 pt-6 pb-6 border-2 border-l-0 border-r-0 h-[150px] w-[800px]'>
@@ -41,9 +41,9 @@ export default function ShoppingCart() {
           </div>
         : <div className="flex gap-x-6 sm:grid sm:gap-y-5 md:grid md:gap-y-5 lg:grid lg:gap-y-5">
             <div>
-              <table className="font-Roboto">
+              <table className="w-full font-Roboto">
                 <thead>
-                  <tr className="flex gap-x-[6rem] bg-[#E9E4E4] py-1 pl-52 w-[850px] pt-1 pb-1 sm:pl-10 sm:w-[600px] md:pl-32 md:w-[710px] lg:w-[930px]">
+                  <tr className="flex gap-x-[6rem] bg-[#E9E4E4] py-1 pl-52 w-[850px] pt-1 pb-1 xs:hidden sm:hidden md:pl-32 md:w-[710px] lg:w-[930px]">
                     <th className="mr-[10.2rem] font-medium md:mr-[6.5rem] lg:mr-[15rem]">
                       Product 
                     </th>
@@ -58,8 +58,8 @@ export default function ShoppingCart() {
                 <tbody>
                   {cartList.map(product => ( 
                     <tr key={nanoid()} className="">
-                      <td className="flex items-center justify-between pl-16 mt-6 border rounded md:pl-1">
-                        <div className="flex items-center">
+                      <td className="flex items-center justify-between pl-16 mt-6 border rounded 2xs:grid 2x-pl-0 xs:pl-0 xs:grid sm:pl-0 md:pl-1">
+                        <div className="flex items-center justify-center 2xs:grid">
                           <div className="w-[120px] py-4">
                             <img className="max-w-[120px]" src={product.img} alt="product-img"/>
                           </div>  
@@ -73,7 +73,7 @@ export default function ShoppingCart() {
                           </div>
                         </div>
                       
-                        <div className="flex items-center w-[340px]">
+                        <div className="flex items-center w-[340px] sm:justify-center">
                           <div className="flex items-center gap-x-[2rem]">
                             <div>
                               <ProductQuantityComponent 
@@ -85,10 +85,10 @@ export default function ShoppingCart() {
                             </div> 
                           </div>
                           
-                          <div className="w-[200px]">
-                            <h3 className={`text-${theme} ml-[5.5rem] font-medium font-Roboto`}>&#36;{(Math.round((product.newPrice * product.quantity) * 100) / 100).toFixed(2)}</h3>
+                          <div className="sm:w-[140px] w-[200px]">
+                            <h3 className={`text-${theme} ml-[5.5rem] font-medium font-Roboto sm:ml-[2.6rem]`}>&#36;{(Math.round((product.newPrice * product.quantity) * 100) / 100).toFixed(2)}</h3>
                           </div>  
-                          <span onClick={() => dispatch(removeCartProduct(product))} className="icon-[la--trash-alt] text-[23px]  mb-[3px] cursor-pointer"></span>
+                          <span onClick={() => dispatch(removeCartProduct(product))} className="icon-[la--trash-alt] text-[23px] mb-[3px] cursor-pointer"></span>
                         </div>
                       </td>
                     </tr>
@@ -120,8 +120,8 @@ export default function ShoppingCart() {
               </div>
               <form className="mt-4" onClick={(e) => e.preventDefault()}>
                 <div className="flex">
-                  <input className="pl-4 border border-r-0 rounded rounded-r-none outline-none w-[150px] md:w-full lg:w-full" type="text" placeholder="Enter a coupon" />
-                  <button className={`bg-${theme} text-white font-Poppins p-[10px] px-5 text-[12px] rounded rounded-l-none font-medium border hover:border-${theme} hover:text-${theme} hover:bg-white transition ease duration-300 lg:w-[200px] md:w-[140px] md:text-[14px] lg:text-[14px]`}>APPLY</button>
+                  <input className="pl-4 border border-r-0 rounded rounded-r-none outline-none w-[150px] sm:w-full md:w-full lg:w-full" type="text" placeholder="Enter a coupon"/>
+                  <button className={`bg-${theme} text-white font-Poppins p-[10px] px-5 text-[12px] rounded rounded-l-none font-medium border hover:border-${theme} hover:text-${theme} hover:bg-white transition ease duration-300 sm:w-[140px] sm:text-[14px] md:w-[140px] md:text-[14px] lg:w-[200px] lg:text-[14px]`}>APPLY</button>
                 </div>
                 <button className={`bg-${theme} text-white font-Poppins p-[10px] px-5 text-[15px] w-full rounded mt-5 font-medium hover:border-${theme} border hover:text-${theme} hover:bg-white transition ease duration-300`}>PROCESS TO CHECKOUT</button>
               </form>

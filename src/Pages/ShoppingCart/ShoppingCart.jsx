@@ -34,7 +34,7 @@ export default function ShoppingCart() {
     <section className="flex justify-center my-6 min-h-[417px] px-3">
       {cartList.length === 0 
         ? <div className="flex items-center">
-            <div className='pl-6 pt-6 pb-6 border-2 border-l-0 border-r-0 h-[150px] w-[800px]'>
+            <div className='pl-6 pt-6 pb-6 border-2 border-l-0 border-r-0 h-[150px] w-[800px] 2xs:w-[300px] xs:w-[300px] sm:w-[500px] md:w-[600px]'>
               <h2 className="font-Poppins text-[1.8rem]">Your cart is empty</h2>
               <p className="pt-1 font-Roboto text-[1.1rem]">Visit the <Link className={`text-${theme} font-medium`} to={'/Shop/:page'}>shop</Link> page to choose the product that you wish.</p> 
             </div>  

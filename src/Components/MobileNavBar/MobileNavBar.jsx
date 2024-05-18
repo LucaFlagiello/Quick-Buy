@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux"
 import { nanoid } from "@reduxjs/toolkit";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Header from "../../Components/Header/Header";
 import MobileNavCategories from "../MobileNavCategories/MobileNavCategories";
 import productList from "../../Data/productList/productsList";
@@ -8,6 +9,7 @@ import CartProductPreview from "../CartProductsPreview/CartProductPreview";
 
 export default function MobileNavBar() {
   const theme = useSelector((state) => state.theme.value);
+  const page = useLocation();
   const [isNavLinkOpen, setIsNavLinkOpen] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isCategoriesOpen, setIsCategoriesOpen] = useState(false);
@@ -18,6 +20,13 @@ export default function MobileNavBar() {
   const [searchValue, setSearchValue] = useState('');
   const [updateProductList, setUpdateProductsList] = useState([]);
   
+  useEffect(() => {
+    if(page.pathname === '/Shopping-cart') {
+      setIsCartOpen(false);    
+      setIsNavLinkOpen(false);
+    };
+  },[page]);
+
   const handleProductSearch = (value) => {
     setSearchValue(value.toLowerCase());
     setUpdateProductsList(productList.filter(product => {
@@ -32,7 +41,7 @@ export default function MobileNavBar() {
 
   const openLinks = (setLink) => {
     setIsNavLinkOpen(true);
-    setLink(true)
+    setLink(true);
   };
   
   const closeLinks = () => {

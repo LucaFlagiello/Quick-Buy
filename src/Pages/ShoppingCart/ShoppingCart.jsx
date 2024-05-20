@@ -67,7 +67,9 @@ export default function ShoppingCart() {
                               <img className="max-w-[120px]" src={product.img} alt="product-img"/>
                             </div>  
                             <div className="font-Roboto">
-                              <h2 className="font-medium uppercase">{product.model}</h2>
+                              <Link to={'/product-view'}>
+                                <h2 className={`font-medium uppercase hover:text-${theme} transition duration-300 ease`}>{product.model}</h2>
+                              </Link>
                               <h3 className={`text-${theme} font-medium mt-2`}>&#36;{product.newPrice}</h3>
                               <div className="flex text-green-500 gap-x-2">
                                 <h3 className={`font-medium`}>Available:</h3>

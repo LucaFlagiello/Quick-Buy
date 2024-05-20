@@ -1,4 +1,5 @@
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 
 export const ProductComponent = ({ model, originalPrice, newPrice, rank, reviewsNum, img }) => {
 
@@ -12,7 +13,9 @@ export const ProductComponent = ({ model, originalPrice, newPrice, rank, reviews
       </div>
 
       <div className="w-[100%]">
-        <h4 className={`font-medium hover:text-${theme} transition duration-[.3s] ease cursor-pointer`}>{model}</h4>
+        <Link to={'/product-view'}>
+          <h4 className={`font-medium hover:text-${theme} transition duration-[.3s] ease cursor-pointer`}>{model}</h4>
+        </Link>
         <div className="flex gap-x-[.5rem] w-[100%] items-center">
            <span className={`font-medium text-[16px] text-${theme}`}>&#36;{newPrice}</span>
           <span className="line-through text-light-gray-price font-medium text-[14px]">&#36;{originalPrice}</span>

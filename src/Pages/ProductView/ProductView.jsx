@@ -35,7 +35,7 @@ export default function ProductView() {
   };
 
   return (
-    <section className="px-2">
+    <section className="px-2 pt-6">
       <PageIndicator page={"Men's Adidas Courtsmash"} />
       <div className="flex justify-center ">
         <PreviewProductComponent page={'product-view'} />

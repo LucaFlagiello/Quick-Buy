@@ -1,16 +1,15 @@
-import { nanoid } from '@reduxjs/toolkit'
-import bgImg from '../../Assets/coffee-work-productivity.jpg'
-import AboutVisionImg from '../../Assets/about-vision-img-2.jpg'
-import teamFounderImg from '../../Assets/team-founder-1.jpg'
-import teamLeaderImg from '../../Assets/team-teamLeader2.jpg'
-import teamSeniorOfficere from '../../Assets/team-senior-officer-4.jpg'
-import teamMarketingOfficer from '../../Assets/team-marketing-officer-3.jpg'
-import partner1 from '../../Assets/partner1.png'
-import partner2 from '../../Assets/partner2.png'
-import partner3 from '../../Assets/partner3.png'
-import AboutHistoryImg from '../../Assets/about-history-img.jpg'
-import { useSelector } from 'react-redux'
-import BannerHeroInformation from '../../Components/BannerHeroInformation/BannerHeroInformation'
+import { nanoid } from '@reduxjs/toolkit';
+import AboutVisionImg from '../../Assets/about-vision-img-2.jpg';
+import teamFounderImg from '../../Assets/team-founder-1.jpg';
+import teamLeaderImg from '../../Assets/team-teamLeader2.jpg';
+import teamSeniorOfficere from '../../Assets/team-senior-officer-4.jpg';
+import teamMarketingOfficer from '../../Assets/team-marketing-officer-3.jpg';
+import partner1 from '../../Assets/partner1.png';
+import partner2 from '../../Assets/partner2.png';
+import partner3 from '../../Assets/partner3.png';
+import AboutHistoryImg from '../../Assets/about-history-img.jpg';
+import { useSelector } from 'react-redux';
+import BannerHeroInformation from '../../Components/BannerHeroInformation/BannerHeroInformation';
 
 export default function AboutUs() {
 
@@ -42,7 +41,7 @@ export default function AboutUs() {
 
   return (
     <section>
-      <BannerHeroInformation pageComponent={'about us'} heroImg={bgImg} />
+      <BannerHeroInformation pageComponent={'about us'} />
     
       <div className='grid items-center m-auto justify-center px-5 mt-10  sm:max-w-[540px] md:max-w-[720px]'>
         <div className='flex justify-center m-auto gap-x-6 md:max-w-[720px] sm:max-w-[540px] sm:flex-col sm:gap-y-6 md:flex-col md:gap-y-6'>

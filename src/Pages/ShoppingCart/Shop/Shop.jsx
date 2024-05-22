@@ -4,9 +4,9 @@ import ShopSection from "../../../Components/ShopSection/ShopSection";
 
 export default function Shop() {
   return (
-    <div>
-      <PageIndicator page={'Shop'}/>
-      <ShopSection />
+    <div className="pt-6">
+        <PageIndicator page={'Shop'}/>
+        <ShopSection />
     </div>
   )
 };

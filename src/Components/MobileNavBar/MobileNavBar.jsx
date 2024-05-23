@@ -54,7 +54,7 @@ export default function MobileNavBar() {
   };
 
   return (
-    <nav className="flex justify-center fixed bottom-0 h-[60px] bg-white border-t-[1px] w-full lg:hidden xl:hidden">
+    <nav className="flex justify-center fixed bottom-0 h-[60px] bg-white border-t-[1px] w-full z-[9999999999999999] lg:hidden xl:hidden">
       <div className="flex items-center justify-between w-[600px] px-2 gap-x-3 2xs:px-5 xs:px-5 sm:px-10">
         <div onClick={() => openLinks(setIsMenuOpen)} className="grid cursor-pointer">
           <span className="icon-[basil--menu-outline] w-[24px] h-[24px] m-auto"></span>
@@ -101,6 +101,7 @@ export default function MobileNavBar() {
           <MobileNavCategories 
           closeLinks={closeLinks}  
           theme={theme}
+          isNavLinkOpen={isNavLinkOpen}
           />
       </aside>
       

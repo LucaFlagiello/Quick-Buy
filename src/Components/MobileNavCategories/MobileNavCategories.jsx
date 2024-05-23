@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function MobileNavCategories ({ theme, closeLinks }) {
   const [navCategories, setNavCategories] = useState(navSideCategories);
-  
+
   const handleCategorySelected = (category) => {
     const updateCategoris = navCategories.map(cat => {
       if(cat.category === category) {
@@ -16,7 +16,7 @@ export default function MobileNavCategories ({ theme, closeLinks }) {
     })
     setNavCategories(updateCategoris);
   };
- 
+  
   const handleSubCategorySelected = (categoryName, subCategoryName) => {
     const updatedCategories = navCategories.map(item => {
       const updatedSideCategories = item.sideCategories.map(subCategory => {
@@ -31,6 +31,32 @@ export default function MobileNavCategories ({ theme, closeLinks }) {
     setNavCategories(updatedCategories);
   };
    
+  const closeSelectedCategories = (category, subCategoryName) => {
+    const updatedSubCategories = navCategories.map(item => {
+      const updatedSideCategories = item.sideCategories.map(subCategory => {
+        if (item.category === category && subCategory.headerCategory.name === subCategoryName) {
+          return { ...subCategory, headerCategory: { ...subCategory.headerCategory, isSelected: !subCategory.headerCategory.isSelected } };
+        } else {
+          return subCategory;
+        }
+      });
+      return { ...item, sideCategories: updatedSideCategories };
+    });
+    
+    const updateCategories = updatedSubCategories.map(cat => {
+      if(cat.category === category) {
+        return { ...cat, isOnCategory: !cat.isOnCategory }  
+      } else {
+        return cat;
+      }
+    });
+    
+    setNavCategories(updateCategories);
+    closeLinks();
+  };
+    
+  
+  
   return (
     <ul className={'visible transition ease duration-[.2s] absolute w-full text-gray-800 text-[15px] font-Poppins bottom-0 left-0 top-14  h-fit pt-[14px] pb-[13px] z-10 '}>
       {navCategories.map((item, i) => 
@@ -48,23 +74,23 @@ export default function MobileNavCategories ({ theme, closeLinks }) {
                     <span className={subCat.headerCategory.isSelected ? "icon-[ph--minus-thin] absolute right-[16px] top-[10px] text-[#424242]" : "icon-[ph--plus-thin] absolute right-[16px] top-[10px] text-[#424242] "}></span>
                     <ul className={subCat.headerCategory.isSelected ? "pl-3 text-gray-500 font-Poppins" : 'hidden'}>
                       <Link to={"/Shop/:page"}>
-                        <li onClick={() => closeLinks()} className={`cursor-pointer hover:text-${theme} transition duration-300 ease`}>{subCat.subCategory1}</li>
+                        <li onClick={() => closeSelectedCategories(item.category, subCat.headerCategory.name)} className={`cursor-pointer hover:text-${theme} transition duration-300 ease`}>{subCat.subCategory1}</li>
                       </Link>
                       
                       <Link to={"/Shop/:page"}>
-                        <li onClick={() => closeLinks()} className={`cursor-pointer hover:text-${theme} transition duration-300 ease`}>{subCat.subCategory2}</li>
+                        <li onClick={() => closeSelectedCategories(item.category, subCat.headerCategory.name)} className={`cursor-pointer hover:text-${theme} transition duration-300 ease`}>{subCat.subCategory2}</li>
                       </Link>
                       
                       <Link to={"/Shop/:page"}>
-                        <li onClick={() => closeLinks()} className={`cursor-pointer hover:text-${theme} transition duration-300 ease`}>{subCat.subCategory3}</li>
+                        <li onClick={() => closeSelectedCategories(item.category, subCat.headerCategory.name)} className={`cursor-pointer hover:text-${theme} transition duration-300 ease`}>{subCat.subCategory3}</li>
                       </Link>
 
                       <Link to={"/Shop/:page"}>
-                        <li onClick={() => closeLinks()} className={`cursor-pointer hover:text-${theme} transition duration-300 ease`}>{subCat.subCategory4}</li>
+                        <li onClick={() => closeSelectedCategories(item.category, subCat.headerCategory.name)} className={`cursor-pointer hover:text-${theme} transition duration-300 ease`}>{subCat.subCategory4}</li>
                       </Link>
 
                       <Link to={"/Shop/:page"}>
-                        <li onClick={() => closeLinks()} className={`cursor-pointer hover:text-${theme} transition duration-300 ease`}>{subCat.subCategory5}</li>
+                        <li onClick={() => closeSelectedCategories(item.category, subCat.headerCategory.name)} className={`cursor-pointer hover:text-${theme} transition duration-300 ease`}>{subCat.subCategory5}</li>
                       </Link>
                     </ul>
                   </li>

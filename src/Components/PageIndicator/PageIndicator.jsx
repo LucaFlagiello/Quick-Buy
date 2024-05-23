@@ -5,16 +5,16 @@ export default function PageIndicator({ page }) {
   const theme = useSelector((state) => state.theme.value);
 
   return (
-    <div className={page === 'Shopping Cart' ? "max-w-[1144px] m-auto sm:max-w-[670px] 2xs:px-2 xs:px-2 sm:px-2 md:px-7 md:max-w-[770px] lg:max-w-[935px]" : "max-w-[1168px] m-auto px-4 pt-6 md:pl-8 md:pb-2 md:max-w-[780px] lg:max-w-[965px]"}>
+    <div className={"max-w-[1138px] m-auto sm:max-w-[670px] md:pb-2 md:pl-3 md:max-w-[735px] lg:max-w-[935px]"}>
       <div> 
         <div className="flex items-center gap-x-2">
           <Link to={'/'}>
-            <span className={`icon-[la--home] text-${theme}`}></span>
+            <span className={`icon-[la--home] mt-1 text-${theme}`}></span>
           </Link>
           
           {
             page === "Men's Adidas Courtsmash" 
-            ? <div className="flex items-center gap-x-2">
+              ? <div className="flex items-center gap-x-2">
                   <span className="icon-[la--angle-right] text-[14px]"></span>
                   <Link to={'/Shop/:page'}>
                     <h4  className={`font-Poppins text-${theme}`}>Shop</h4>

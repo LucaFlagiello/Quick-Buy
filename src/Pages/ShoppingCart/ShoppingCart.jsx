@@ -32,7 +32,7 @@ export default function ShoppingCart() {
   };
 
   return (
-    <section className="my-6 min-h-[417px] sm:px-2">
+    <section className="my-6 px-4 min-h-[417px]">
       <PageIndicator page={'Shopping Cart'} />
       <div className="flex justify-center mt-4">
         {cartList.length === 0 

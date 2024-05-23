@@ -137,7 +137,7 @@ export default function ShopSection() {
   };
 
   return (
-    <section className={isProductsList ? 'max-w-[1165px] pb-[3rem] m-auto px-4  lg:max-w-[965px]' : "max-w-[1165px] m-auto px-4 lg:max-w-[965px] lg:h-[850px] xl:h-[850px]"}>
+    <section className={isProductsList ? 'max-w-[1135px] pb-[3rem] m-auto lg:max-w-[935px]' : "max-w-[1135px] m-auto lg:max-w-[935px] lg:h-[850px] xl:h-[850px]"}>
       <div className="flex mt-6 gap-x-6">
         <div className={"w-[300px] max-h-[750px] p-4 bg-white shadow-shop-shadow  sm:hidden md:hidden"}>
           <h3 className="font-medium font-Roboto text-[1.3rem] mb-4">CATEGORIES</h3>

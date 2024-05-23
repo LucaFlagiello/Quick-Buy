@@ -6,7 +6,6 @@ import ProductPreview from '../../Components/ProductPreview/ProductPreview'
 import OfferBanner from '../../Components/OfferBanner/OfferBanner'
 import Recomended from '../../Components/Recomended/Recomended'
 import Download from '../../Components/Download/Download'
-import ScrollTopBtn from '../../Components/ScrollTopBtn/ScrollTopBtn'
 
 const Home = () => {
   return (

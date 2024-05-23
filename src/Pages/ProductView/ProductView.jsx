@@ -35,16 +35,16 @@ export default function ProductView() {
   };
 
   return (
-    <section className="px-2 pt-6">
+    <section className="px-4 pt-6">
       <PageIndicator page={"Men's Adidas Courtsmash"} />
       <div className="flex justify-center ">
         <PreviewProductComponent page={'product-view'} />
       </div>
       
-      <div className="mt-10 mb-6 max-w-[1114px] m-auto sm:px-2 sm:w-full md:max-w-[700px] lg:max-w-[940px]">
+      <div className="mt-10 mb-6 max-w-[1114px] m-auto  sm:w-full md:max-w-[700px] lg:max-w-[940px]">
         <div className="flex w-full border-b gap-x-2">
           {tableBtns.map(btn => 
-            <button key={nanoid()} onClick={() => handleSelectedBtns(btn)} className={btn.selected ? `px-3 py-2 font-medium border border-b-0 border-${theme} text-${theme} rounded-t cursor-pointer  font-Roboto max-w-fit xs:text-[13px]` : "px-3 py-2 font-medium border border-b-0 border-[#b2b2b2] rounded-t cursor-pointer font-Roboto max-w-fit xs:text-[13px]"}>{btn.name}
+            <button key={nanoid()} onClick={() => handleSelectedBtns(btn)} className={btn.selected ? `px-3  py-2 font-medium border border-b-0 border-${theme} text-${theme} rounded-t cursor-pointer  font-Roboto max-w-fit xs:text-[13px]` : "px-3 py-2 font-medium border border-b-0 border-[#b2b2b2] rounded-t cursor-pointer font-Roboto max-w-fit xs:text-[13px]"}>{btn.name}
             </button>)
           }
         </div>

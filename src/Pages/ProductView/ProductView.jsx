@@ -36,7 +36,7 @@ export default function ProductView() {
 
   return (
     <section className="px-4 pt-6">
-      <PageIndicator page={"Men's Adidas Courtsmash"} />
+      <PageIndicator page={"Men's Adidas Courtsmash"} pagesNumber={2} prevPage={'Shop'} prevPathPage={'/Shop/:page'}/>
       <div className="flex justify-center ">
         <PreviewProductComponent page={'product-view'} />
       </div>

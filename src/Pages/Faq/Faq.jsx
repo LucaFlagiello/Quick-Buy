@@ -51,7 +51,7 @@ export default function Faq() {
 
   return (
     <section className="px-4 pt-6">
-      <PageIndicator page={'FAQ'}/>
+      <PageIndicator page={'FAQ'} pagesNumber={1}/>
 
       <main className="m-auto font-Poppins max-w-[1136px] mt-5 md:max-w-[710px] lg:max-w-[933px]">
         <div>

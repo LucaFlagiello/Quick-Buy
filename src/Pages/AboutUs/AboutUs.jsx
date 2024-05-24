@@ -41,7 +41,7 @@ export default function AboutUs() {
 
   return (
     <section>
-      <BannerHeroInformation pageComponent={'about us'} />
+      <BannerHeroInformation pageComponent={'about us'} pagesNummber={1} />
     
       <div className='grid items-center m-auto justify-center px-5 mt-10  sm:max-w-[540px] md:max-w-[720px]'>
         <div className='flex justify-center m-auto gap-x-6 md:max-w-[720px] sm:max-w-[540px] sm:flex-col sm:gap-y-6 md:flex-col md:gap-y-6'>

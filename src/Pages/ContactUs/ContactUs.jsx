@@ -7,7 +7,7 @@ export default function ContactUs() {
 
   return (
     <section>
-      <BannerHeroInformation pageComponent={'Contact us'} />
+      <BannerHeroInformation pageComponent={'Contact us'} pagesNumber={1}/>
       
       <main className='my-10'>
         <div className='flex justify-center px-4 gap-x-6 sm:flex-col sm:gap-y-6 sm:max-w-[550px] md:flex-col md:gap-y-6 md:max-w-[750px] m-auto'>

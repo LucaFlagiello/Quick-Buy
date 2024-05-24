@@ -6,7 +6,7 @@ export default function ForgotPassword() {
 
   return (
     <section className="p-4">
-      <PageIndicator page={'Forgot password'} />
+      <PageIndicator page={'Forgot password'} pagesNumber={1}/>
 
       <main className="flex justify-center py-24 items font-Poppins">
         <div className="p-6 m-auto shadow-contact max-w-[476px]">

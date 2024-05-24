@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux"
 import { Link } from "react-router-dom";
 
-export default function PageIndicator({ page }) {
+export default function PageIndicator({ page, pagesNumber, prevPage, prevPathPage }) {
   const theme = useSelector((state) => state.theme.value);
 
   return (
@@ -13,11 +13,13 @@ export default function PageIndicator({ page }) {
           </Link>
           
           {
-            page === "Men's Adidas Courtsmash" 
-              ? <div className="flex items-center gap-x-2">
+            pagesNumber > 1  
+            
+              ? 
+                <div className="flex items-center gap-x-2">
                   <span className="icon-[la--angle-right] text-[14px]"></span>
-                  <Link to={'/Shop/:page'}>
-                    <h4  className={`font-Poppins text-${theme}`}>Shop</h4>
+                  <Link to={prevPathPage}>
+                    <h4  className={`font-Poppins text-${theme}`}>{prevPage}</h4>
                   </Link>
                 </div>
                 

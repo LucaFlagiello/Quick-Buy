@@ -1,4 +1,5 @@
 import PageIndicator from "../../Components/PageIndicator/PageIndicator";
+import TextInput from "../../Components/TextInput/TextInput";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -34,29 +35,17 @@ export default function LoginRegister({ componentPage }) {
                   
                     ?
                       <div className="mb-4">
-                        <label htmlFor="name">
-                          Full Name
-                        <span className={`text-${theme}`}> *</span>
-                        </label>
-                        <input className={`outline-${theme} placeholder:text-[14px] border mt-2 py-2 pl-4 w-full rounded-sm`} type="text" id="name" placeholder="your name"/>
+                        <TextInput inputType={'text'} theme={theme} label={'Full Name'} placeholder={'your name'}/>
                       </div>
                       
                     : null
                 }
-
-                <label htmlFor="email">
-                  Email Address
-                  <span className={`text-${theme}`}> *</span>
-                </label>
-                <input className={`outline-${theme} placeholder:text-[14px] border mt-2 py-2 pl-4 w-full rounded-sm mb-4`} type="text" id="email" placeholder="example@mail.com"/>
+                
+                <TextInput inputType={'text'} theme={theme} label={'Email Address'} placeholder={'example@mail.com'}/>
               </div>
               
               <div>
-                <label htmlFor="password">
-                  Password
-                  <span className={`text-${theme}`}> *</span>
-                </label>
-                <input className={`outline-${theme} border placeholder:text-[14px] mt-2 py-2 pl-4 w-full rounded-sm`} type="text" id="password" placeholder="type password"/>
+                <TextInput inputType={'text'} theme={theme} label={'Password'} placeholder={'type password'}/>
               </div>
 
               { 
@@ -64,11 +53,7 @@ export default function LoginRegister({ componentPage }) {
                 
                   ?
                     <div className="mt-4">
-                      <label htmlFor="confirm_password">
-                        Confirm Password
-                      <span className={`text-${theme}`}> *</span>
-                      </label>
-                      <input className={`outline-${theme} placeholder:text-[14px] border mt-2 py-2 pl-4 w-full rounded-sm`} type="text" id="confirm_password" placeholder="confirm your password"/>
+                      <TextInput inputType={'text'} theme={theme} label={'Confirm Password'} placeholder={'confirm your password'}/>
                     </div>
                     
                   : null

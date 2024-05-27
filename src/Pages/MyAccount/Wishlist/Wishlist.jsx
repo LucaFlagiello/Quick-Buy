@@ -16,21 +16,21 @@ export default function Wishlist() {
     <section className="px-4 py-6">
       <PageIndicator page={'Wishlist'}/>
 
-      <main className="flex justify-center ">
-        <div className="flex justify-center my-6 gap-x-6 sm:flex-col sm:w-full md:flex-col md:w-[713px] lg:w-[935px]">
+      <main className="flex justify-center m-auto">
+        <div className="w-[1138px] flex justify-center my-6 gap-x-6 sm:flex-col sm:w-full md:flex-col md:w-[713px] lg:w-[935px]">
           <MyAccountNavBar page={'Wishlist'} theme={theme}/>
           
-          <div className="max-w-[738px] sm:w-full md:w-full sm:mt-6 md:mt-6 lg:w-[560px]">
+          <div className="w-full sm:w-full md:w-full sm:mt-6 md:mt-6 lg:w-[900px]">
             { wishlist.length 
                 ?  wishlist.map(product => (
-                    <div key={nanoid()} className="flex items-center py-6 pl-10 mb-6 border sm:relative gap-y-4 gap-x-12 font-Poppins sm:pl-0 sm:flex-col md:pl-6 lg:gap-x-5 lg:pl-8">
-                      <img className="max-w-[70px] max-h-[52px] sm:max-h-full sm:max-w-[100px]" src={product.img} alt="product-img" />
+                    <div key={nanoid()} className="flex items-center py-6 pl-10 mb-6 border sm:relative gap-y-4 gap-x-[4.5rem] font-Poppins sm:pl-0 sm:flex-col md:pl-6 md:gap-x-12 lg:gap-x-8 lg:pl-8">
+                      <img className="w-[60px] max-h-[52px] sm:max-h-full sm:max-w-[100px]" src={product.img} alt="product-img" />
                       <div>
-                        <h4 className="font-medium font-Roboto text-[1.1rem] sm:text-center sm:text-[1.4rem]">{product.model}</h4>
+                        <h4 className="font-medium  w-[151px] font-Roboto text-[1.1rem] sm:text-center sm:text-[1.4rem] sm:w-full">{product.model}...</h4>
                         <p>Avaiability: <span className="text-[#5DB972]">In stock</span></p>
                       </div>
 
-                      <span className={`text-${theme} font-medium sm:text-[1.2rem]`}>&#36;{product.newPrice}</span>
+                      <span className={`w-[65px] text-${theme} font-medium sm:text-[1.2rem]`}>&#36;{product.newPrice}</span>
                       <button onClick={() => dispatch(addCartProduct(product))} className={`flex gap-x-4 bg-${theme} text-white uppercase px-3 py-[8px] text-[15px] rounded font-medium border border-${theme} transition duration-500 ease hover:text-${theme} hover:bg-white sm:px-5`}>
                         <span className="icon-[cil--cart] mt-[2px] w-[20px] h-[18px] sm:mt-0"></span>  Add to Cart
                       </button>
@@ -39,7 +39,7 @@ export default function Wishlist() {
                   ))
                   
                 : <div className="flex items-center h-full text-center">
-                    <div className='h-[150px] w-[800px] sm:w-full sm:mt-6 md:w-full md:mt-6'>
+                    <div className='h-[150px] w-[738px] sm:w-full sm:mt-6 md:w-full md:mt-6'>
                       <h2 className="font-Poppins text-[1.8rem] 2xs:text-[1.4rem] 2xs:font-medium xs:text-[1.5rem] xs:font-medium">Your wishlist is empty</h2>
                       <p className="pt-1 font-Roboto text-[1.1rem]">Visit the <Link className={`text-${theme} font-medium`} to={'/Shop/:page'}>shop</Link> page to choose the product that you wish.</p> 
                     </div>  

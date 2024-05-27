@@ -1,3 +1,4 @@
+import { nanoid } from "@reduxjs/toolkit";
 import OrderSummary from "../../Components/OrderSummary/OrderSummary";
 import PageIndicator from "../../Components/PageIndicator/PageIndicator"
 import TextInput from "../../Components/TextInput/TextInput";
@@ -33,7 +34,7 @@ export default function Checkout() {
               </div>
               <div>
                 {billingInputs.map(inputs => (
-                  <TextInput inputType={'text'} theme={theme} label={inputs.label} />
+                  <TextInput key={nanoid()} inputType={'text'} theme={theme} label={inputs.label} />
                 ))}
               </div>
             </div>

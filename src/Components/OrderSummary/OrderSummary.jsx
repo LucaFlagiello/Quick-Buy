@@ -1,5 +1,6 @@
 import { useState,useEffect } from "react";
 import { useSelector } from "react-redux"
+import { Link } from "react-router-dom";
 
 export default function OrderSummary({ page }) {
 
@@ -75,7 +76,9 @@ export default function OrderSummary({ page }) {
                 </div>
               </div>
 
-              <button className={`w-full bg-${theme} text-white uppercase py-[7px] mt-5 rounded-md font-medium border border-${theme} transition duration-500 ease hover:text-${theme} hover:bg-white`}>Place order</button>
+              <Link to={'/payment'}>
+                <button className={`w-full bg-${theme} text-white uppercase py-[7px] mt-5 rounded-md font-medium border border-${theme} transition duration-500 ease hover:text-${theme} hover:bg-white`}>Place order</button>
+              </Link>
             </form>
             
           : null

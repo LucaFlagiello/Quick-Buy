@@ -10,6 +10,7 @@ import { useState } from "react";
 import { nanoid } from "@reduxjs/toolkit";
 import TextInput from '../../Components/TextInput/TextInput';
 import OrderSummary from '../../Components/OrderSummary/OrderSummary';
+import { Link } from 'react-router-dom';
 
 export default function Payment() {
 
@@ -92,7 +93,9 @@ export default function Payment() {
                     </div>
                     
                     <div className='flex justify-center'>
-                      <button className={`uppercase bg-${theme} text-white mt-4 font-medium px-6 py-[8px] rounded-md border border-${theme} hover:text-${theme} hover:bg-white transition duration-300 ease-in-out`}>Confirm Order</button>
+                      <Link to={'/order-complete'}>
+                        <button className={`uppercase bg-${theme} text-white mt-4 font-medium px-6 py-[8px] rounded-md border border-${theme} hover:text-${theme} hover:bg-white transition duration-300 ease-in-out`}>Confirm Order</button>
+                      </Link>
                     </div>
                   </div>
                   
@@ -105,7 +108,9 @@ export default function Payment() {
                       <TextInput label={'CVV'} theme={theme}/>
                     </div>
 
-                    <button className={`uppercase bg-${theme} text-white mt-6 font-medium px-6 py-[8px] rounded-md border border-${theme} hover:text-${theme} hover:bg-white transition duration-300 ease-in-out`}>Pay Now</button>
+                    <Link to={'/order-complete'}>
+                      <button className={`uppercase bg-${theme} text-white mt-6 font-medium px-6 py-[8px] rounded-md border border-${theme} hover:text-${theme} hover:bg-white transition duration-300 ease-in-out`}>Pay Now</button>
+                    </Link>
                   </div>
               }
             </div>

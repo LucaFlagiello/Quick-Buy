@@ -36,9 +36,9 @@ export default function ShoppingCart() {
       <PageIndicator page={'Shopping Cart'} />
       <div className="flex justify-center mt-4">
         {cartList.length === 0 
-          ? <div className="flex items-center mt-10">
-              <div className='pl-6 pt-6 pb-6 border-2 border-l-0 border-r-0 h-[150px] w-[800px] 2xs:w-[300px] xs:w-[300px] sm:w-[500px] md:w-[600px]'>
-                <h2 className="font-Poppins text-[1.8rem]">Your cart is empty</h2>
+          ? <div className="flex items-center h-full mt-20 text-center">
+              <div className='h-full w-[800px] sm:w-full sm:mt-6 md:w-full md:mt-6'>
+                <h2 className="font-Poppins font-medium text-[1.8rem] 2xs:text-[1.4rem] 2xs:font-medium xs:text-[1.5rem] xs:font-medium">Your cart is empty</h2>
                 <p className="pt-1 font-Roboto text-[1.1rem]">Visit the <Link className={`text-${theme} font-medium`} to={'/Shop/:page'}>shop</Link> page to choose the product that you wish.</p> 
               </div>  
             </div>
@@ -128,7 +128,9 @@ export default function ShoppingCart() {
                     <input className="pl-4 border border-r-0 rounded rounded-r-none outline-none w-[150px] sm:w-full md:w-full lg:w-full" type="text" placeholder="Enter a coupon"/>
                     <button className={`bg-${theme} text-white font-Poppins p-[10px] px-5 text-[12px] rounded rounded-l-none font-medium border hover:border-${theme} hover:text-${theme} hover:bg-white transition ease duration-300 sm:w-[140px] sm:text-[14px] md:w-[140px] md:text-[14px] lg:w-[200px] lg:text-[14px]`}>APPLY</button>
                   </div>
-                  <button className={`bg-${theme} text-white font-Poppins p-[10px] px-5 text-[15px] w-full rounded mt-5 font-medium hover:border-${theme} border hover:text-${theme} hover:bg-white transition ease duration-300`}>PROCESS TO CHECKOUT</button>
+                  <Link to={'/checkout'}>
+                    <button className={`bg-${theme} text-white font-Poppins p-[10px] px-5 text-[15px] w-full rounded mt-5 font-medium hover:border-${theme} border hover:text-${theme} hover:bg-white transition ease duration-300`}>PROCESS TO CHECKOUT</button>
+                  </Link>
                 </form>
               </div>
             </div>

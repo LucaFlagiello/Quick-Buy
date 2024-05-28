@@ -30,6 +30,11 @@ export default function ShopSection() {
   const end = start + productsPerPage;
   const navigate = useNavigate();
   
+  //Range price slide states
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(800);
+  const rangeValues = [min, max];
+  
   //Changing pages safely
   useEffect(() => {
     setCurrentPage(parseInt(page) || 1);
@@ -38,12 +43,7 @@ export default function ShopSection() {
   //Return to the first page when using filters on pages different from 1
   useEffect(() => {
     navigate('/Shop/1');
-  }, [filteredTypesProducts, filteredBrandsProducts, navigate]);
-    
-  //Range price slide states
-  const [min, setMin] = useState(0);
-  const [max, setMax] = useState(800);
-  const rangeValues = [min, max];
+  }, [filteredTypesProducts, filteredBrandsProducts, max, min, navigate]);
 
   // Function to filter products based on filters
   const filterProducts = () => {

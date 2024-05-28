@@ -27,16 +27,17 @@ export default function MobileNavBar() {
     };
   },[page]);
 
+
   const handleProductSearch = (value) => {
-    setSearchValue(value.toLowerCase());
-    setUpdateProductsList(productList.filter(product => {
-      let model = product.model.toLowerCase();
-      return model.includes(searchValue);  
-    }));
-    
     if(!value) {
       setUpdateProductsList([]);
     };
+    
+    setSearchValue(value.toLowerCase());
+    setUpdateProductsList(productList.filter(product => {
+      let model = product.model.toLowerCase();
+      return model.includes(searchValue.toLocaleLowerCase());  
+    }));
   };
 
   const openLinks = (setLink) => {

@@ -1,6 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate, useParams, Link } from "react-router-dom";
 import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import ProductColorComponent from "../ProductColorComponent/ProductColorComponent";
@@ -9,7 +10,6 @@ import SearchCategory from "../SearchCategory/SearchCategory";
 import Categories from "../../Data/navSideCategories";
 import Recomended from "../Recomended/Recomended";
 import ProductPreview from "../ProductPreview/ProductPreview";
-import { useParams, Link } from "react-router-dom";
 import productList from "../../Data/productList/productsList";
 
 export default function ShopSection() {
@@ -22,13 +22,23 @@ export default function ShopSection() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [isProductsList, setIsProductsList] = useState(false);
   
-
   //Pages States
   const { page } = useParams();
   const [currentPage, setCurrentPage] = useState(parseInt(page) || 1);
   const productsPerPage = 6;
   const start = (currentPage - 1) * productsPerPage;
   const end = start + productsPerPage;
+  const navigate = useNavigate();
+  
+  //Changing pages safely
+  useEffect(() => {
+    setCurrentPage(parseInt(page) || 1);
+  }, [page]);
+  
+  //Return to the first page when using filters on pages different from 1
+  useEffect(() => {
+    navigate('/Shop/1');
+  }, [filteredTypesProducts, filteredBrandsProducts, navigate]);
     
   //Range price slide states
   const [min, setMin] = useState(0);
@@ -53,7 +63,7 @@ export default function ShopSection() {
       filteredList = filteredList.filter(product =>
         filteredTypesProducts.includes(product.type.toLowerCase())
       );
-    };
+    } 
 
     // Apply brand filters
     if (filteredBrandsProducts.length > 0) {
@@ -78,7 +88,7 @@ export default function ShopSection() {
 
   // Total number of pages after filtering
   const totalFilteredPages = Math.ceil(filterProducts().length / productsPerPage);
-  
+
   const productsTypes = [ 
     {category: 'Laptop', stock: 15,}, 
     {category: 'Phone', stock: 32,}, 
@@ -303,9 +313,6 @@ export default function ShopSection() {
           </div>
           <Recomended 
             page={'shop'}
-            filterSortProducts={filterSortProducts}
-            filteredTypesProducts={filteredTypesProducts}
-            filteredBrandsProducts={filteredBrandsProducts}
             rangeValues={rangeValues}
             isProductsList={isProductsList}
             pageProductsList={getPageProductsList()} 
@@ -313,7 +320,7 @@ export default function ShopSection() {
             end = {end}
           />
           {
-           totalFilteredPages !== 1 ?  
+           totalFilteredPages !== 0 ?  
             <ul className="flex justify-center mb-[1rem] gap-x-2">
               {Array.from({  length:totalFilteredPages  }).map((_, index) => {
                 return (

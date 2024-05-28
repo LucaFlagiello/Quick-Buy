@@ -1,16 +1,51 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from "react-redux";
 import Categories from '../../Data/navSideCategories';
 import SearchCategory from '../SearchCategory/SearchCategory';
 import NavAsideCategories from '../NavAsideCategories/NavAsideCategories';
 import CartProductPreview from '../CartProductsPreview/CartProductPreview';
+import productList from '../../Data/productList/productsList';
+import { nanoid } from '@reduxjs/toolkit';
 
 const Nav = () => {
   const [isMouseOnAccount, setIsMouseOnAccount] = useState(false);
   const theme = useSelector((state) => state.theme.value);
   const wishList = useSelector((state) => state.wishList);
   let carSubTotal = 0;
+
+  //Search products states
+  const [searchValue, setSearchValue] = useState('');
+  const [updateProductList, setUpdateProductsList] = useState([]);
+
+  const handleProductSearch = (value, nextPage) => {
+    if(!value) {
+      setUpdateProductsList([]);
+      return;
+    };
+    
+    setSearchValue(value.toLowerCase());
+    setUpdateProductsList(productList.filter(product => {
+      let model = product.model.toLowerCase();
+      return model.includes(searchValue.toLowerCase()); 
+    }));
+  };
+  
+  let searchRef = useRef();
+  
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (searchRef.current && !searchRef.current.contains(e.target)) {
+        setSearchValue('');
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <nav className={`bg-${theme} box-border h-[65px] flex justify-center w-full`}>
@@ -25,10 +60,25 @@ const Nav = () => {
           </div>
           <NavAsideCategories theme={theme} />
         </div>
-        <div className='flex h-[44px] font-Poppins md:hidden sm:hidden'>
+        <div className='relative flex h-[44px] font-Poppins md:hidden sm:hidden'>
           <SearchCategory categories={Categories} />
-          <input className='border-l pl-5 w-[24rem] border-black text-[14px] outline-none placeholder:text-[14px] placeholder:text-gray-400 lg:w-[15rem]' type='text' placeholder='Search product...'/>
+          <input onChange={(e) => handleProductSearch(e.target.value)} className='border-l pl-5 w-[24rem] border-black text-[14px] outline-none placeholder:text-[14px] placeholder:text-gray-400 lg:w-[15rem]' type='text' placeholder='Search product...'/>
           <button className='bg-secondary-color rounded-l-none font-medium px-10 text-white font-Poppins rounded-r-[6px]'>Search</button>
+          
+          <div ref={searchRef} className={searchValue ? 'border-l border-r shadow-shop-shadow cursor-pointer absolute z-30 w-full bg-white rounded-b-md opacity-100 translate-y-[3.4rem]' : 'opacity-0 translate-y-0 z-[-1] hidden'}>
+            {updateProductList.map(product => (
+              <Link key={nanoid()} to={'/product-view'}>
+                <div className='flex p-4 border-b gap-x-6 hover:bg-gray-100'>
+                  <img className='w-[60px] max-h-[60px]' src={product.img} alt="product-img" />
+                  
+                  <div>
+                    <h4 className='font-medium font-Roboto text-[1.1rem]'>{product.model}</h4>
+                    <span className={`text-${theme} font-medium text-[15px]`}>&#36;{product.newPrice}</span>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
         
         <div className={`hidden hover:bg-${theme}`}></div>

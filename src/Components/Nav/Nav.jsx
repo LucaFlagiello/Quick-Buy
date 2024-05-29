@@ -105,39 +105,39 @@ const Nav = () => {
               <div className={isMouseOnAccount ? 'bg-white absolute opacity-1 transition duration-[.3s] easy  shadow-md left-[-168px] mt-[6px] px-4 pt-5 rounded-[4px] z-[10]' : ' translate-y-[20px] shadow-md left-[-168px]  px-4 pt-5 absolute transition-drop-in duration-[.4s]  pointer-events-none opacity-0 z-10'}>
                 <h3 className='font-Roboto text-light-black font-medium text-[14px]'>Welcome to QUICKBUY Shop</h3>
                 <div className='flex justify-between mt-4 gap-x-3'>
-                  <Link to={'/register'}>
+                  <Link to={'/register'} onClick={() => setIsMouseOnAccount(false)}>
                     <button className={`bg-${theme} font-Roboto font-medium text-[14px] text-white px-[24px] py-[4px] rounded-[4px] hover:bg-white hover:text-${theme} border-${theme} border-[1px] transition duration-[.5s] ease`}>JOIN</button>
                   </Link>
-                  <Link to={'/login'}>
+                  <Link to={'/login'} onClick={() => setIsMouseOnAccount(false)}>
                     <button className={`font-Roboto font-medium text-[14px] border-${theme} border-[1px] rounded-[4px] py-1 px-[16px] text-${theme} hover:bg-${theme} hover:text-white transition duration-[.5s] ease`}>SIGN IN</button>
                   </Link>
                 </div>
                 <ul className='font-Poppins text-light-black grid gap-y-[10px] my-4'>
-                  <Link to={'my-account'}>
+                  <Link to={'my-account'}  onClick={() => setIsMouseOnAccount(false)}>
                     <li className={`flex items-center gap-x-2 hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>
                       <span className="icon-[la--id-card]  h-[20px] w-[20px] "></span>
                       <span className='text-[15px]'>My Account</span>
                     </li>
                   </Link>
-                  <Link to={'order-history'}>
+                  <Link to={'order-history'}  onClick={() => setIsMouseOnAccount(false)}>
                     <li className={`flex items-center gap-x-2 hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>
                       <span className="icon-[la--gift]  h-[20px] w-[20px] "></span>
                       <span className='text-[15px] mt-[3px]'>My Order</span>
                     </li>
                   </Link>
-                  <Link to={'/wishlist'}>
+                  <Link to={'/wishlist'}  onClick={() => setIsMouseOnAccount(false)}>
                     <li className={`flex items-center gap-x-2 hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>
                     <span className="icon-[teenyicons--heart-outline] w-[18px] h-[18px]"></span>
                     <span className='text-[15px] mt-[3px]'>My Wishlist</span>
                     </li>
                   </Link>
-                  <Link to={'/shopping-cart'}>
+                  <Link to={'/shopping-cart'}  onClick={() => setIsMouseOnAccount(false)}>
                     <li className={`flex items-center gap-x-2 hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>
                       <span className="icon-[cil--cart] w-[18px] h-[18px]"></span>
                       <span className='text-[15px] mt-[3px]'>My Cart</span>
                     </li>
                   </Link>
-                  <Link to={'/login'}>
+                  <Link to={'/login'}  onClick={() => setIsMouseOnAccount(false)}>
                     <li className={`flex items-center gap-x-2 hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>
                       <span className="icon-[la--power-off] w-[20px] h-[20px]"></span>
                       <span className='text-[15px]'>Log Out</span>

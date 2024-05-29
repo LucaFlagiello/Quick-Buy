@@ -23,7 +23,7 @@ export default function OrderSummary({ page }) {
   },[ cartList ]);
 
   return (
-    <div className="min-w-[350px]">
+    <div className="min-w-[350px] sm:min-w-0">      
       <div className="bg-[#e9e4e4] w-full py-2">
         <h4 className="pl-4 font-medium font-Roboto">Your Order</h4>
       </div>

@@ -5,5 +5,10 @@
 @layer base {
   body {
     @apply text-secondary-color
+  };
+
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px
   }
-} 
+}; 

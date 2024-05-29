@@ -4,7 +4,7 @@ export default function TextInput({ theme, label, placeholder, inputType, inputV
       <label htmlFor="email">
         {label} <span className={`text-${theme}`}>*</span>
       </label>
-      <input className={`border outline-${theme} py-2 rounded-sm pl-4 mt-2 placeholder:text-[14px]`} id="email" value={inputValue} type={inputType} placeholder={placeholder}/>
+      <input className={`border outline-${theme} py-2 rounded-sm pl-4 mt-2 w-full placeholder:text-[14px]`} id="email" value={inputValue} type={inputType} placeholder={placeholder}/>
     </form>
   )
 };

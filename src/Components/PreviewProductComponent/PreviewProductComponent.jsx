@@ -55,7 +55,7 @@ export default function PreviewProductComponent({ page }) {
   
   
   return (
-    <div className={page === 'home' ? "relative flex p-8 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease sm:flex-col sm:max-h-[800px] sm:w-[900px] sm:overflow-y-auto sm:pt-14 md:overflow-y-auto md:flex-col md:max-h-[800px] md:w-[900px] md:pt-14" : " flex pt-4 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease   xs:w-full sm:flex-col sm:w-full sm:pt-4 md:flex-col md:w-[710px] md:pt-4 sm:mr-0 md:mr-0 lg:mr-0 "}>
+    <div className={page === 'home' ? "relative flex p-8 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease sm:flex-col sm:max-h-[600px] sm:mb-6 sm:w-[900px] sm:overflow-y-auto sm:pt-14 md:mb-14 md:overflow-y-auto md:flex-col md:max-h-[800px] md:w-[900px] md:pt-14" : " flex pt-4 bg-white rounded-[4px] gap-x-6 transition duration-[.6s] ease   xs:w-full sm:flex-col sm:w-full sm:pt-4 md:flex-col md:w-[710px] md:pt-4 sm:mr-0 md:mr-0 lg:mr-0 "}>
         <div className={page === 'home' ? 'max-w-[452px] sm:max-w-full md:max-w-full' : 'w-[540px] sm:w-full md:w-full lg:w-[460px]'}>
           { page === 'home' ?
             <div onClick={() => dispatch(showPreview(false))} className={`flex bg-${theme} absolute top-[8px] right-[8px] p-1 rounded-[3px] cursor-pointer`}>

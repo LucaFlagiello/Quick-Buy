@@ -47,7 +47,7 @@ export default function AboutUs() {
         <div className='flex justify-center m-auto gap-x-6 md:max-w-[720px] sm:max-w-[540px] sm:flex-col sm:gap-y-6 md:flex-col md:gap-y-6'>
           <div className='m-auto'>
             <h4 className={`text-${theme} font-medium font-Roboto text-[15px]`}>OUR HISTORY</h4>
-            <h2 className='font-medium font-Roboto text-[1.8rem] max-w-[450px] leading-10 mt-2 sm:leading-8 sm:max-w-full sm:text-[1.6rem] md:max-w-full'>CREATIVE AND NEW FASHION
+            <h2 className='font-medium font-Roboto text-[1.8rem] max-w-[450px] leading-10 mt-2 sm:leading-8 sm:max-w-full sm:text-[1.3rem] md:max-w-full'>CREATIVE AND NEW FASHION
             TRENDS COLLECTION</h2>
             <p className='max-w-[700px] font-Poppins mt-5 lg:max-w-[400px]'>
               Fashion is a potent visual marker of our times,” says Caroline Stevenson, head of cultural and ... “Trend analysis of any given era will reveal society's values and aspirations.” ... The urge to creative expression runs deep
@@ -55,17 +55,17 @@ export default function AboutUs() {
 
             <div className='flex mt-4 gap-x-14 sm:gap-x-5 md:gap-x-5 lg:gap-x-6'>
               <div>
-                <span className={`text-${theme} font-medium text-[2rem]`}>12</span>
+                <span className={`text-${theme} font-medium text-[2rem] sm:text-[1.6rem]`}>12</span>
                 <p className='font-Poppins'>Years Exprience</p>
               </div>
               
               <div>
-                <span className={`text-${theme} font-medium text-[2rem]`}>20K</span>
+                <span className={`text-${theme} font-medium text-[2rem] sm:text-[1.6rem]`}>20K</span>
                 <p>Happy Customer</p>
               </div>
               
               <div>
-                <span className={`text-${theme} font-medium text-[2rem]`}>100&#37;</span>
+                <span className={`text-${theme} font-medium text-[2rem] sm:text-[1.6rem]`}>100&#37;</span>
                 <p>Clients Satisfaction</p>
               </div>
             </div>
@@ -83,7 +83,7 @@ export default function AboutUs() {
           
           <div>
             <h4 className={`text-${theme} font-medium font-Roboto text-[15px]`}>OUR VISION</h4>
-            <h2 className='font-medium font-Roboto text-[1.9rem] max-w-[670px] leading-10 mt-2 sm:leading-8 sm:text-[1.6rem] lg:text-[1.8rem] lg:max-w-[500px]'>OUR VISION IS SIMPLE - WE EXIST TO
+            <h2 className='font-medium font-Roboto text-[1.9rem] max-w-[670px] leading-10 mt-2 sm:leading-8 sm:text-[1.3rem] lg:text-[1.8rem] lg:max-w-[500px]'>OUR VISION IS SIMPLE - WE EXIST TO
             ACCELERATE OUR CUSTOMERS’ PROGRESS</h2>
             <p className='max-w-[700px] font-Poppins mt-5 lg:max-w-[450px]'>
               we design and deliver our customers’ digital transformation by bringing together their vision with our industry knowledge and deep technological expertise. we design and deliver our customers’ digital transformation

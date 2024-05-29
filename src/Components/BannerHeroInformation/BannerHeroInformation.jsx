@@ -1,5 +1,4 @@
 import PageIndicator from "../PageIndicator/PageIndicator"
-import bgiMG from '/Users/trono/quick-buy/src/Assets/coffee-work-productivity.jpg'
 
 export default function BannerHeroInformation({ pageComponent }) {
   return (

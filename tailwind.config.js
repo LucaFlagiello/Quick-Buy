@@ -43,9 +43,6 @@ module.exports = {
       animation: {
         'spin-slow': 'spin 3.5s linear infinite',
       },
-      backgroundImage: {
-        'hero-pattern': "url('/Users/trono/quick-buy/public/coffee-work-productivity.jpg')",
-      },
     },
   },
 }

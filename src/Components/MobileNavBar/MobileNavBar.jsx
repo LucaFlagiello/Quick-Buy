@@ -21,7 +21,7 @@ export default function MobileNavBar() {
   const [updateProductList, setUpdateProductsList] = useState([]);
   
   useEffect(() => {
-    if(page.pathname === '/Shopping-cart') {
+    if(page.pathname === '/Shopping-cart' || page.pathname === '/checkout') {
       setIsCartOpen(false);    
       setIsNavLinkOpen(false);
     };
@@ -77,6 +77,8 @@ export default function MobileNavBar() {
             mobileStyle={true}
             isCartOpen={isCartOpen}
             theme={theme}
+            closeLinks={closeLinks}
+            setIsCartOpen={setIsCartOpen}
           />
         </div>
         <span onClick={closeLinks} className={isCartOpen ? "icon-[material-symbols--close] fixed text-[23px] text-white left-[280px] z-30 top-[13px] transform translate-x-0 cursor-pointer transition duration-1000 ease" : "icon-[material-symbols--close] fixed text-[23px] text-white left-[280px] z-30 top-[12px] cursor-pointer opacity-0 invisible transform translate-x-[-400]"}></span>

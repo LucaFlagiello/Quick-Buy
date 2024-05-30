@@ -86,8 +86,8 @@ const Nav = () => {
           <Link to={'/wishlist'}>
             <div className='grid gap-y-[2px] text-center cursor-pointer'>
               <div className='relative grid'>
-                <span className="icon-[teenyicons--heart-outline]  text-white m-auto w-[28px] h-[28px] sm:w-[20px]"></span>
-                <span className='absolute top-[-5px] right-[2px] sm:top-[-2px] sm:right-[3px] bg-black text-white text-[9px] font-medium rounded-full flex justify-center items-center w-[15px] h-[15px]'>{wishList.length}</span>
+                <span className="icon-[teenyicons--heart-outline]  text-white m-auto w-[28px] h-[28px] sm:h-[23px] sm:w-[23px]"></span>
+                <span className='absolute top-[-5px] right-[2px] sm:top-[-5px] sm:right-[3px] bg-black text-white text-[9px] font-medium rounded-full flex justify-center items-center w-[15px] h-[15px]'>{wishList.length}</span>
               </div>
                 <span className='text-white text-[11px] font-Poppins'>Wish List</span>
             </div>
@@ -98,7 +98,7 @@ const Nav = () => {
           />
           <div className='relative grid text-center cursor-pointer' onMouseEnter={() => setIsMouseOnAccount(true)} onMouseLeave={() => setIsMouseOnAccount(false)}>
             <div className='grid justify-center'>
-            <span className="icon-[clarity--user-line]  text-white w-[30px] h-[30px] sm:w-[25px]"></span>
+            <span className="icon-[clarity--user-line]  text-white w-[30px] h-[30px] sm:h-[25px] sm:w-[25px]"></span>
             </div>
             <span className='text-white text-[11px] font-Poppins'>Account</span>
             <div className='absolute h-[20px] w-[100%] bottom-[-20px]' onMouseEnter={() => setIsMouseOnAccount(true)}>

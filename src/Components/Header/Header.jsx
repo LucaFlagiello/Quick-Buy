@@ -147,7 +147,15 @@ const Header = ({ component, closeLinks }) => {
       </div>
 
       <div className={component === 'mobile-menu' ? 'hidden' : 'text-[16px] font-Poppins text-secondary-color font-medium'}>
-        <a href='/' className={`hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>Login</a><span className='hover:text-black'>/</span><a className={`hover:text-${theme} cursor-pointer transition duration-[.3s] ease`} href='/'>Register</a>
+        <Link to={'/login'}>
+          <span className={`hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>Login</span>
+        </Link>
+        
+        <span className='hover:text-black'>/</span>
+        
+        <Link to={'/register'}>
+          <span className={`hover:text-${theme} cursor-pointer transition duration-[.3s] ease`}>Register</span>
+        </Link>
       </div>
     </header>
   )

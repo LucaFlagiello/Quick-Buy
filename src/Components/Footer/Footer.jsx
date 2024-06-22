@@ -1,5 +1,6 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux"
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const theme = useSelector((state) => state.theme.value);  
@@ -34,7 +35,11 @@ export default function Footer() {
           return (
             <ul className="leading-[35px] " key={nanoid()}>
               {list.map(listLink => {
-                return (<li className={`first:font-Roboto first:font-medium first:text-[1.1rem] lg:first:text-[16px] first:mb-2  first:pointer-events-none hover:text-${theme} text-[#18181b] cursor-pointer transition duration-600 ease`} key={nanoid()}>{listLink.link}</li>)
+                return (
+                <Link to={`${listLink.path}`}>
+                  <li className={`first:font-Roboto first:font-medium first:text-[1.1rem] lg:first:text-[16px] first:mb-2  first:pointer-events-none hover:text-${theme} text-[#18181b] cursor-pointer transition duration-600 ease`} key={nanoid()}>{listLink.link}</li>
+                </Link>
+              )
               })}
             </ul>
           )

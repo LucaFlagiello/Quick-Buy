@@ -5,18 +5,14 @@ export default function Footer() {
   const theme = useSelector((state) => state.theme.value);  
   const footerLinks = [
     [
-      {link: 'MY ACCOUNT'},
-      {link: 'Orders'},
-      {link: 'Wishlist'},
-      {link: 'Track Order'},
-      {link: 'Manage Account'},
+      {link: 'MY ACCOUNT', path: '/my-account'},
+      {link: 'Orders', path: '/order-history'},
+      {link: 'Wishlist', path: '/wishlist'},
     ],
     [
-      {link: 'INFORMATION'},
-      {link: 'About Us'},
-      {link: 'Terms & Condition'},
-      {link: 'Privacy Policy'},
-      {link: 'FAQ'},
+      {link: 'INFORMATION', path: '/profile-information'},
+      {link: 'About Us', path: '/about-us'},
+      {link: 'FAQ', path: '/faq'},
     ]
   ];
   
